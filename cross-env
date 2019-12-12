@@ -1,0 +1,1566 @@
+ DONE  Compiled successfully in 1539ms3:24:16 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  4.65 KiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...3:26:40 PM
+
+ DONE  Compiled successfully in 2307ms3:26:42 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...3:52:07 PM
+
+ DONE  Compiled successfully in 122ms3:52:07 PM
+
+ WAIT  Compiling...3:55:58 PM
+
+ DONE  Compiled successfully in 317ms3:55:59 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...3:56:28 PM
+
+ DONE  Compiled successfully in 86ms3:56:28 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...3:56:41 PM
+
+ DONE  Compiled successfully in 67ms3:56:41 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...3:59:43 PM
+
+ ERROR  Failed to compile with 1 errors3:59:43 PM
+
+This relative module was not found:
+
+* ./components/App in ./resources/js/app.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/app.js
+Module not found: Error: Can't resolve './components/App' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js'
+ @ ./resources/js/app.js 4:0-35 5:36-39
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:00:00 PM
+
+ DONE  Compiled successfully in 96ms4:00:00 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:00:05 PM
+
+ DONE  Compiled successfully in 80ms4:00:05 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:01:43 PM
+
+ ERROR  Failed to compile with 1 errors4:01:43 PM
+
+ error  in ./resources/js/components/App.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\App.js: Unexpected token (4:4)
+
+  2 | 
+  3 | class App extends Component{
+> 4 |     <div className="todoListMain">
+    |     ^
+  5 |         <div className="header">
+  6 |             <form>
+  7 |                 <input
+
+
+ @ ./resources/js/app.js 4:0-35 5:36-39
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/App.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\App.js: Unexpected token (4:4)
+
+  2 | 
+  3 | class App extends Component{
+> 4 |     <div className="todoListMain">
+    |     ^
+  5 |         <div className="header">
+  6 |             <form>
+  7 |                 <input
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.unexpected (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8368:16)
+    at Object.parseIdentifierName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10327:18)
+    at Object.parseIdentifier (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10305:23)
+    at Object.parseMaybePrivateName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9649:19)
+    at Object.parsePropertyName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10117:98)
+    at Object.parseClassPropertyName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11610:22)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11528:22)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 4:0-35 5:36-39
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:02:10 PM
+
+ DONE  Compiled successfully in 373ms4:02:10 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:02:34 PM
+
+ DONE  Compiled successfully in 63ms4:02:35 PM
+
+ WAIT  Compiling...4:08:49 PM
+
+ DONE  Compiled successfully in 182ms4:08:49 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.19 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:09:07 PM
+
+ ERROR  Failed to compile with 1 errors4:09:07 PM
+
+ error  in ./resources/js/app.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\app.js: Unexpected token, expected "," (13:4)
+
+  11 |     <TodoList />,
+  12 |     <TodoItem />
+> 13 |     document.getElementById('root')
+     |     ^
+  14 | );
+  15 | 
+
+
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  8.15 KiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/app.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\app.js: Unexpected token, expected "," (13:4)
+
+  11 |     <TodoList />,
+  12 |     <TodoItem />
+> 13 |     document.getElementById('root')
+     |     ^
+  14 | );
+  15 | 
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.unexpected (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8368:16)
+    at Object.expect (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8354:28)
+    at Object.parseCallExpressionArguments (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9387:14)
+    at Object.parseSubscript (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9315:29)
+    at Object.parseSubscripts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9231:19)
+    at Object.parseExprSubscripts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9220:17)
+    at Object.parseMaybeUnary (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9190:21)
+    at Object.parseExprOps (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9056:23)
+    at Object.parseMaybeConditional (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9029:23)
+    at Object.parseMaybeAssign (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8975:21)
+    at Object.parseExpression (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8925:23)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10785:23)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ multi ./resources/js/app.js ./resources/sass/app.scss /js/app[0]
+ WAIT  Compiling...4:10:30 PM
+
+ DONE  Compiled successfully in 1583ms4:10:31 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:12:33 PM
+
+ ERROR  Failed to compile with 1 errors4:12:33 PM
+
+ error  in ./resources/js/components/TodoItem.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoItem.js: Unexpected token, expected "," (6:17)
+
+  4 |     render(){
+  5 |         return (
+> 6 |             Todo Item
+    |                  ^
+  7 |         )
+  8 |     }
+  9 | }
+
+
+ @ ./resources/js/app.js 6:0-45 7:105-113
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoItem.js: Unexpected token, expected "," (6:17)
+
+  4 |     render(){
+  5 |         return (
+> 6 |             Todo Item
+    |                  ^
+  7 |         )
+  8 |     }
+  9 | }
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.unexpected (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8368:16)
+    at Object.expect (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8354:28)
+    at Object.parseParenAndDistinguishExpression (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9749:14)
+    at Object.parseExprAtom (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9548:21)
+    at Object.parseExprAtom (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4097:20)
+    at Object.parseExprSubscripts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9210:23)
+    at Object.parseMaybeUnary (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9190:21)
+    at Object.parseExprOps (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9056:23)
+    at Object.parseMaybeConditional (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9029:23)
+    at Object.parseMaybeAssign (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8975:21)
+    at Object.parseExpression (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8925:23)
+    at Object.parseReturnStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11025:28)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10704:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseBlock (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11203:10)
+    at Object.parseFunctionBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10222:24)
+    at Object.parseFunctionBodyAndFinish (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10192:10)
+    at Object.parseMethod (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10146:10)
+    at Object.pushClassMethod (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11637:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11556:12)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+ @ ./resources/js/app.js 6:0-45 7:105-113
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:13:05 PM
+
+ WARNING  Compiled with 1 warnings4:13:06 PM
+
+ warning  in ./resources/js/app.js
+
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+WARNING in ./resources/js/app.js 7:105-113
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:13:35 PM
+
+ ERROR  Failed to compile with 1 errors4:13:35 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Unexpected token, expected ";" (20:20)
+
+  18 | }
+  19 | 
+> 20 | export default Todo Item
+     |                     ^
+  21 | 
+
+
+ @ ./resources/js/app.js 5:0-45 7:68-76
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+WARNING in ./resources/js/app.js 7:105-113
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Unexpected token, expected ";" (20:20)
+
+  18 | }
+  19 | 
+> 20 | export default Todo Item
+     |                     ^
+  21 | 
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.unexpected (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8368:16)
+    at Object.semicolon (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8350:40)
+    at Object.parseExportDefaultExpression (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11837:12)
+    at Object.parseExport (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11738:31)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10760:27)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:68-76
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:13:39 PM
+
+ WARNING  Compiled with 1 warnings4:13:39 PM
+
+ warning  in ./resources/js/app.js
+
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+WARNING in ./resources/js/app.js 7:105-113
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:14:06 PM
+
+ WARNING  Compiled with 1 warnings4:14:06 PM
+
+ warning  in ./resources/js/app.js
+
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+WARNING in ./resources/js/app.js 7:73-81
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:14:21 PM
+
+ DONE  Compiled successfully in 189ms4:14:22 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:15:22 PM
+
+ WARNING  Compiled with 1 warnings4:15:23 PM
+
+ warning  in ./resources/js/app.js
+
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+WARNING in ./resources/js/app.js 7:111-119
+"export 'default' (imported as 'TodoItem') was not found in './components/TodoItem'
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:16:10 PM
+
+ DONE  Compiled successfully in 125ms4:16:10 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:16:24 PM
+
+ DONE  Compiled successfully in 165ms4:16:24 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:16:35 PM
+
+ DONE  Compiled successfully in 99ms4:16:35 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:16:40 PM
+
+ ERROR  Failed to compile with 1 errors4:16:41 PM
+
+ error  in ./resources/js/components/TodoItem.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoItem.js: Unterminated JSX contents (8:18)
+
+   6 |             <div>
+   7 |                 <br>Todo Item
+>  8 |             </div>
+     |                   ^
+   9 |         )
+  10 |     }
+  11 | }
+
+
+ @ ./resources/js/app.js 6:0-45 7:106-114
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoItem.js: Unterminated JSX contents (8:18)
+
+   6 |             <div>
+   7 |                 <br>Todo Item
+>  8 |             </div>
+     |                   ^
+   9 |         )
+  10 |     }
+  11 | }
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.jsxReadToken (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:3724:20)
+    at Object.getTokenFromCode (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4106:19)
+    at Object.nextToken (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:7195:12)
+    at Object.next (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:7124:10)
+    at Object.eat (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:7129:12)
+    at Object.expect (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8354:10)
+    at Object.jsxParseClosingElementAt (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4004:10)
+    at Object.jsxParseElementAt (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4023:37)
+    at Object.jsxParseElementAt (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4027:32)
+    at Object.jsxParseElement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4085:17)
+    at Object.parseExprAtom (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4092:19)
+    at Object.parseExprSubscripts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9210:23)
+    at Object.parseMaybeUnary (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9190:21)
+    at Object.parseExprOps (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9056:23)
+    at Object.parseMaybeConditional (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9029:23)
+    at Object.parseMaybeAssign (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8975:21)
+    at Object.parseParenAndDistinguishExpression (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9765:28)
+    at Object.parseExprAtom (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9548:21)
+    at Object.parseExprAtom (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:4097:20)
+    at Object.parseExprSubscripts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9210:23)
+    at Object.parseMaybeUnary (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9190:21)
+    at Object.parseExprOps (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9056:23)
+    at Object.parseMaybeConditional (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:9029:23)
+    at Object.parseMaybeAssign (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8975:21)
+    at Object.parseExpression (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8925:23)
+    at Object.parseReturnStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11025:28)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10704:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseBlock (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11203:10)
+    at Object.parseFunctionBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10222:24)
+    at Object.parseFunctionBodyAndFinish (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10192:10)
+    at Object.parseMethod (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10146:10)
+    at Object.pushClassMethod (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11637:30)
+ @ ./resources/js/app.js 6:0-45 7:106-114
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:16:52 PM
+
+ DONE  Compiled successfully in 48ms4:16:52 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:17:35 PM
+
+ DONE  Compiled successfully in 140ms4:17:35 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:18:29 PM
+
+ DONE  Compiled successfully in 108ms4:18:29 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:18:30 PM
+
+ DONE  Compiled successfully in 149ms4:18:30 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:18:45 PM
+
+ DONE  Compiled successfully in 138ms4:18:46 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:21:34 PM
+
+ DONE  Compiled successfully in 210ms4:21:35 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:22:03 PM
+
+ DONE  Compiled successfully in 137ms4:22:04 PM
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:22:26 PM
+
+ ERROR  Failed to compile with 1 errors4:22:26 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state ={
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 |     render(){
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state ={
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 |     render(){
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:22:28 PM
+
+ ERROR  Failed to compile with 1 errors4:22:28 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state ={
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state ={
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:24:01 PM
+
+ ERROR  Failed to compile with 1 errors4:24:01 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:24:03 PM
+
+ ERROR  Failed to compile with 1 errors4:24:03 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+ WAIT  Compiling...4:24:37 PM
+
+ ERROR  Failed to compile with 1 errors4:24:38 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: "Im Chinh"
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: "Im Chinh"
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:25:29 PM
+
+ ERROR  Failed to compile with 1 errors4:25:30 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:27:04 PM
+
+ ERROR  Failed to compile with 1 errors4:27:04 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = item => {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = item => {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:27:28 PM
+
+ ERROR  Failed to compile with 1 errors4:27:28 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset     Size   Chunks             Chunk Names
+/css/app.css  0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.2 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 5:0-45 7:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:35:40 PM
+
+ ERROR  Failed to compile with 1 errors4:35:40 PM
+
+ error  in ./resources/js/app.js
+
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find module '@babel/plugin-proposal-class-properties' from 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes'
+    at Function.module.exports [as sync] (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\resolve\lib\sync.js:74:15)
+    at resolveStandardizedName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:101:31)
+    at resolvePlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:54:10)
+    at loadPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:62:20)
+    at createDescriptor (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:154:9)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:109:50
+    at Array.map (<anonymous>)
+    at createDescriptors (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:109:29)
+    at createPluginDescriptors (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:105:10)
+    at plugins (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:40:19)
+    at mergeChainOpts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:319:26)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:283:7
+    at buildRootChain (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:120:22)
+    at loadPrivatePartialConfig (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\partial.js:85:55)
+    at Object.loadPartialConfig (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\partial.js:110:18)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:144:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:3:103)
+    at _next (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:194)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:364
+    at new Promise (<anonymous>)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:97)
+    at Object.loader (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:60:18)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:55:12)
+
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  7.65 KiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/app.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find module '@babel/plugin-proposal-class-properties' from 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes'
+    at Function.module.exports [as sync] (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\resolve\lib\sync.js:74:15)
+    at resolveStandardizedName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:101:31)
+    at resolvePlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:54:10)
+    at loadPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:62:20)
+    at createDescriptor (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:154:9)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:109:50
+    at Array.map (<anonymous>)
+    at createDescriptors (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:109:29)
+    at createPluginDescriptors (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:105:10)
+    at plugins (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:40:19)
+    at mergeChainOpts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:319:26)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:283:7
+    at buildRootChain (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:120:22)
+    at loadPrivatePartialConfig (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\partial.js:85:55)
+    at Object.loadPartialConfig (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\partial.js:110:18)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:144:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:3:103)
+    at _next (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:194)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:364
+    at new Promise (<anonymous>)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:97)
+    at Object.loader (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:60:18)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:55:12)
+ @ multi ./resources/js/app.js ./resources/sass/app.scss /js/app[0]
+ WAIT  Compiling...4:35:48 PM
+
+ ERROR  Failed to compile with 1 errors4:35:48 PM
+
+ error  in ./resources/js/app.js
+
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find module '@babel/plugin-proposal-class-properties' from 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes'
+    at Function.module.exports [as sync] (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\resolve\lib\sync.js:74:15)
+    at resolveStandardizedName (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:101:31)
+    at resolvePlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:54:10)
+    at loadPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\files\plugins.js:62:20)
+    at createDescriptor (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:154:9)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:109:50
+    at Array.map (<anonymous>)
+    at createDescriptors (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:109:29)
+    at createPluginDescriptors (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:105:10)
+    at plugins (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-descriptors.js:40:19)
+    at mergeChainOpts (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:319:26)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:283:7
+    at buildRootChain (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\config-chain.js:120:22)
+    at loadPrivatePartialConfig (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\partial.js:85:55)
+    at Object.loadPartialConfig (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\config\partial.js:110:18)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:144:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:3:103)
+    at _next (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:194)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:364
+    at new Promise (<anonymous>)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:5:97)
+    at Object.loader (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:60:18)
+    at Object.<anonymous> (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\babel-loader\lib\index.js:55:12)
+
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+ WAIT  Compiling...4:46:11 PM
+
+ DONE  Compiled successfully in 774ms4:46:12 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.05 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:46:13 PM
+
+ DONE  Compiled successfully in 36ms4:46:13 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.05 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:46:27 PM
+
+ ERROR  Failed to compile with 1 errors4:46:27 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.05 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:49:43 PM
+
+ DONE  Compiled successfully in 63ms4:49:44 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.05 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:49:54 PM
+
+ ERROR  Failed to compile with 1 errors4:49:54 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module not found: Error: Can't resolve './components/Task' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components'
+ @ ./resources/js/components/TodoItem.js 20:0-37 38:29-33
+ @ ./resources/js/app.js
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:50:18 PM
+
+ ERROR  Failed to compile with 1 errors4:50:18 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module not found: Error: Can't resolve './components/Task' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components'
+ @ ./resources/js/components/TodoItem.js 20:0-37
+ @ ./resources/js/app.js
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:50:40 PM
+
+ ERROR  Failed to compile with 1 errors4:50:40 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module not found: Error: Can't resolve './components/Task' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components'
+ @ ./resources/js/components/TodoItem.js 20:0-37 38:29-33
+ @ ./resources/js/app.js
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:51:48 PM
+
+ ERROR  Failed to compile with 1 errors4:51:48 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+ WAIT  Compiling...4:52:15 PM
+
+ DONE  Compiled successfully in 59ms4:52:15 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:52:23 PM
+
+ DONE  Compiled successfully in 100ms4:52:24 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:52:28 PM
+
+ DONE  Compiled successfully in 71ms4:52:28 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:52:32 PM
+
+ DONE  Compiled successfully in 33ms4:52:33 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...4:52:41 PM
+
+ ERROR  Failed to compile with 1 errors4:52:42 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module not found: Error: Can't resolve './components/Task' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components'
+ @ ./resources/js/components/TodoItem.js 20:0-37 38:29-33
+ @ ./resources/js/app.js
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:52:48 PM
+
+ ERROR  Failed to compile with 1 errors4:52:48 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+ WAIT  Compiling...4:56:49 PM
+
+ ERROR  Failed to compile with 1 errors4:56:49 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module not found: Error: Can't resolve './components/Task' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components'
+ @ ./resources/js/components/TodoItem.js 20:0-37 38:29-33
+ @ ./resources/js/app.js
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...4:57:28 PM
+
+ ERROR  Failed to compile with 1 errors4:57:28 PM
+
+This relative module was not found:
+
+* ./components/Task in ./resources/js/components/TodoItem.js
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoItem.js
+Module not found: Error: Can't resolve './components/Task' in 'C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components'
+ @ ./resources/js/components/TodoItem.js 20:0-37 38:29-33
+ @ ./resources/js/app.js
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...5:09:29 PM
+
+ DONE  Compiled successfully in 276ms5:09:29 PM
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+ WAIT  Compiling...5:09:56 PM
+
+ ERROR  Failed to compile with 1 errors5:09:56 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...5:15:32 PM
+
+ ERROR  Failed to compile with 1 errors5:15:32 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (9:11):
+
+   7 |     // }
+   8 | 
+>  9 |     state = { foo: false };
+     |           ^
+  10 | 
+  11 |     handleChange = (e) => {
+  12 |         console.log(e.target.value);
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (9:11):
+
+   7 |     // }
+   8 | 
+>  9 |     state = { foo: false };
+     |           ^
+  10 | 
+  11 |     handleChange = (e) => {
+  12 |         console.log(e.target.value);
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...5:15:45 PM
+
+ ERROR  Failed to compile with 1 errors5:15:45 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   0 bytes  /js/app  [emitted]  /js/app
+  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+
+ERROR in ./resources/js/components/TodoList.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+    at Object.raise (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:6975:17)
+    at Object.expectPlugin (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:8373:18)
+    at Object.parseClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11663:12)
+    at Object.pushClassProperty (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11628:30)
+    at Object.parseClassMemberWithIsStatic (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11561:14)
+    at Object.parseClassMember (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11498:10)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11453:14
+    at Object.withTopicForbiddingContext (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10531:14)
+    at Object.parseClassBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11430:10)
+    at Object.parseClass (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11404:22)
+    at Object.parseStatementContent (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10698:21)
+    at Object.parseStatement (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10656:17)
+    at Object.parseBlockOrModuleBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11232:25)
+    at Object.parseBlockBody (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:11219:10)
+    at Object.parseTopLevel (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:10587:10)
+    at Object.parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12097:10)
+    at parse (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\parser\lib\index.js:12148:38)
+    at parser (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:168:34)
+    at normalizeFile (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\normalize-file.js:102:11)
+    at runSync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:44:43)
+    at runAsync (C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transformation\index.js:35:14)
+    at C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\node_modules\@babel\core\lib\transform.js:34:34
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+ WAIT  Compiling...5:21:19 PM
+
+ ERROR  Failed to compile with 1 errors5:21:19 PM
+
+ error  in ./resources/js/components/TodoList.js
+
+Syntax Error: SyntaxError: C:\Users\MinhChinh\Desktop\App GyGes\AppGyGes\resources\js\components\TodoList.js: Support for the experimental syntax 'classProperties' isn't currently enabled (5:11):
+
+  3 | class TodoList extends Component{
+  4 | 
+> 5 |     state = {
+    |           ^
+  6 |         inputValue: ""
+  7 |     }
+  8 | 
+
+Add @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.
+
+
+ @ ./resources/js/app.js 4:0-45 6:69-77
+ @ multi ./resources/js/app.js ./resources/sass/app.scss
+
