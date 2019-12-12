@@ -7,10 +7,10 @@ class Task extends Component{
                 <span style={{ textDecoration: this.props.todo.done ? 'Line-through' : 'none' }}>
                     { this.props.todo.value }
                 </span>
-                <button onClick={(e) => this.props.handleChanged(this.props.index)}>
+                <button onClick={(e) => this.props.handleChanged(this.props.index)} className="taskChange">
                     { this.props.todo.done ? 'Undo' : 'Complete'}
                 </button>
-                <button onClick={() => this.props.handleRemove(this.props.todo)}>Remove</button>
+                <button onClick={() => this.props.handleRemove(this.props.todo)} className="taskRemove">Remove</button>
             </div>
         )
     }

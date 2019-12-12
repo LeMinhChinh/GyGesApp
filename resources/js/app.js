@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import './todo.css'
 // import {BrowserRouter} from 'react-router-dom'
 
 import TodoList from './components/TodoList'
@@ -7,12 +8,7 @@ import TodoItem from './components/TodoItem'
 export class Master extends Component{
     state = {
         inputValue: "",
-        todos: [
-            {
-                value: "Hello",
-                done: true
-            }
-        ]
+        todos: []
     };
 
     handleChange = (e) => {
@@ -38,6 +34,7 @@ export class Master extends Component{
     }
 
     handleRemove = (todo) => {
+        // console.log(todo);
         const todos = this.state.todos;
         todos.splice(todo,1);
         this.setState({todos});
