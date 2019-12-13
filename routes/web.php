@@ -25,12 +25,22 @@ Route::group([
 
 Route::group([
     'prefix' => 'api',
+    'middleware' => 'cors',
     'namespace' => 'Product',
-    'middleware' => 'cors'
 ], function () {
     Route::apiResource('product','ProductController');
     Route::get('product_check','ProductController@check');
     Route::get('wl_delete','ProductController@deleteProduct');
 });
 
+Route::group([
+    'prefix' => 'api',
+    'namespace' => 'Shop',
+    'middleware' => 'cors'
+], function () {
+    Route::get('getProducts','ShopController@getProducts');
+});
+
+
 Route::view('admin/{path}', 'TodoApp')->where('path', '.*');
+Route::view('wishlist/{path}', 'WishlistApp')->where('path', '.*');
