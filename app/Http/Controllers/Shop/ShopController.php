@@ -12,10 +12,23 @@ class ShopController extends Controller
         $sh = $shop->getCurrentShop();
         $idCustomer = $shop->getIdCustomer($sh->id);
 
+
+
         return response()->json([
             'success' =>true,
             // 'products' => $shop->products,
             'idCustomer' => $idCustomer
         ]) ;
+    }
+
+    public function filterProducts(Request $request, Shop $shop)
+    {
+        $idCus = $request->idCus;
+        $sh = $shop->getCurrentShop();
+        $filter = $shop->getDataFilter($sh->id, $idCus);
+
+        return response()->json([
+            'filterProduct' => $filter
+        ]);
     }
 }

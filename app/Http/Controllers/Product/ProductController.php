@@ -59,35 +59,43 @@ class ProductController extends Controller
                 );
                 if($validator2->fails()){
                     echo "Error";
+                    // $cus_prod = new CustomerProduct;
+                    // $cus_prod->customer_id = $customId;
+                    // $cus_prod->product_id = $idPr;
+                    // $cus_prod->save();
                 }else{
+                    // echo "Error";
                     $cus_prod = new CustomerProduct;
                     $cus_prod->customer_id = $customId;
                     $cus_prod->product_id = $idPr;
                     $cus_prod->save();
                 }
             }else{
-                $customer = new Customer;
-                $customer->id_customer = $customId;
-                $customer->shop_id = $val->id;
-                $customer->save();
+                $s = $shop->getIdShop();
+                foreach ($s as $val) {
+                    $customer = new Customer;
+                    $customer->id_customer = $customId;
+                    $customer->shop_id = $val->id;
+                    $customer->save();
 
-                $validator2 = Validator::make(
-                    [
-                        'customer_id' => $customId,
-                        'product_id' => $idPr
-                    ],
-                    [
-                        'customer_id' => 'unique:customer_product,customer_id,'.$customId,
-                        'product_id' => 'unique:customer_product,product_id,'.$idPr
-                    ]
-                );
-                if($validator2->fails()){
-                    echo "Error";
-                }else{
-                    $cus_prod = new CustomerProduct;
-                    $cus_prod->customer_id = $customId;
-                    $cus_prod->product_id = $idPr;
-                    $cus_prod->save();
+                    $validator2 = Validator::make(
+                        [
+                            'customer_id' => $customId,
+                            'product_id' => $idPr
+                        ],
+                        [
+                            'customer_id' => 'unique:customer_product,customer_id,'.$customId,
+                            'product_id' => 'unique:customer_product,product_id,'.$idPr
+                        ]
+                    );
+                    if($validator2->fails()){
+                        echo "Error";
+                    }else{
+                        $cus_prod = new CustomerProduct;
+                        $cus_prod->customer_id = $customId;
+                        $cus_prod->product_id = $idPr;
+                        $cus_prod->save();
+                    }
                 }
             }
         }else{
@@ -152,11 +160,12 @@ class ProductController extends Controller
     {
         //
     }
-    public function check(Request $request, Product $product, Customer $customer, Shop $shop)
+    public function check(Request $request, Product $product, Customer $customer, Shop $shop, CustomerProduct $cp)
     {
         $idPro = $request->idPr;
         $url = $request->shopUrl;
         $cusId = $request->customerId;
+        // dd($request->all());
 
         $arr_idProduct = [];
         $arr_urlShop = [];
@@ -164,6 +173,8 @@ class ProductController extends Controller
         $pr = $product->getAllProduct();
         $cus = $customer->getIdCustomer();
         $sh = $shop->getIdShop();
+        $checkCP = $cp->getDataCP();
+
         foreach ($pr as $value1) {
             array_push($arr_idProduct,$value1->id_product);
         }
@@ -175,23 +186,32 @@ class ProductController extends Controller
         foreach ($cus as $value3) {
             array_push($arr_idCustomer,$value3->id_customer);
         }
+
         foreach ($arr_urlShop as $s) {
             if($s == $url){
-                foreach ($arr_idCustomer as $cs) {
-                    if($cs == $cusId){
-                        foreach ($arr_idProduct as $p) {
-                            if($p == $idPro){
-                                echo "Success";
-                            }
-                        }
-                    }else{
-                        echo "Error Cus";
+                // foreach ($arr_idCustomer as $cs) {
+                //     if($cs == $cusId){
+                //         foreach ($arr_idProduct as $p) {
+                //             if($p == $idPro){
+                //                 echo "Success";
+                //             }
+                //         }
+                //     }else{
+                //         echo "Error Cus";
+                //     }
+                // }
+                foreach ($checkCP as $item) {
+                    if($item->customer_id == $cusId && $item->product_id == $idPro){
+                        return response()->json([
+                            'status' => true
+                        ]);
                     }
                 }
-            }else{
-                echo "Error Shop";
             }
         }
+        return response()->json([
+            'status' => false
+        ]);
     }
 
     public function deleteProduct(Request $request, Product $product, CustomerProduct $cuspr)

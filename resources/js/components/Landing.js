@@ -2,24 +2,60 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 export default class Landing extends Component{
-
-
     state = {
-        products: []
+        products: [],
+        idCust: []
     };
 
     componentDidMount = () => {
         var self = this
 
-        const response = fetch('http://localhost:8888/api/getProducts')
+        fetch('http://localhost:8888/api/getProducts')
         .then((response) => response.json())
         .then((response) => {
-            self.setState({products: response.idCustomer})
+            self.setState({idCust: response.idCustomer})
+        });
+    }
+    handleChangeCustomer = (e) => {
+       // console.log(e.target.value)
+        var self = this
+        let idCus = document.getElementById('idCustomer').value;
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        let header = new Headers
+        fetch('http://localhost:8888/api/filterProducts',{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+            idCus: document.getElementById('idCustomer').value
+        })
+        })
+        .then((response) => response.json())
+        .then(function(response) {
+            self.setState({
+                products: response.filterProduct
+            })
+        })
+        .catch(function() {
         });
     }
 
     render = () => {
         // console.log(this.state.products);
+
+        let pushedCustomers = []
+        const optionsCustomers = this.state.idCust.map((product, index) => {
+            if(typeof product.customer_id !== 'undefined' && pushedCustomers.indexOf(product.customer_id) === -1){
+                pushedCustomers.push(product.customer_id)
+                return (
+                    <option key={index} value={product.customer_id}>{product.customer_id}</option>
+                )
+            }
+        })
         return (
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -117,20 +153,9 @@ export default class Landing extends Component{
                                         <li className="breadcrumb-item active">Overview</li>
                                     </ol>
                                     <div className="dropdown">
-                                        <select>
+                                        <select onChange={this.handleChangeCustomer} id="idCustomer">
                                             <option>--- Choose Customer ---</option>
-                                            {this.state.products.map((product, index) => {
-                                                // if(!product.customer_id){
-                                                //     return (
-                                                //         <option key={index}>{product.customer_id}</option>
-                                                //     )
-                                                // }else{
-                                                //     return false;
-                                                // }
-                                                return (
-                                                    <option key={index}>{product.customer_id}</option>
-                                                )
-                                            })}
+                                            {optionsCustomers}
                                         </select>
                                     </div>
                                     <table className="table table-border table-striped table-hover mt-2">
@@ -146,9 +171,9 @@ export default class Landing extends Component{
                                         </thead>
                                         <tbody>
                                             {this.state.products.map((product, index) => {
-                                                return (
+                                                    return (
                                                         <tr key={index}>
-                                                            <td>{product.id}</td>
+                                                            <td>{product.id_pr}</td>
                                                             <td>{product.id_product}</td>
                                                             <td>{product.name}</td>
                                                             <td>{product.price}</td>

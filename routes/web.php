@@ -39,6 +39,7 @@ Route::group([
     'middleware' => 'cors'
 ], function () {
     Route::get('getProducts','ShopController@getProducts');
+    Route::post('filterProducts','ShopController@filterProducts');
 });
 
 

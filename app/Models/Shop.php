@@ -44,6 +44,18 @@ class Shop extends Model
         return $data;
     }
 
+    public function getDataFilter($idShop, $idCus)
+    {
+        $data = DB::table('shops AS s')
+                    ->select('s.*','cp.customer_id','p.id AS id_pr','p.name','p.price','p.id_product','p.image')
+                    ->join('products AS p','p.shop_id','=','s.id')
+                    ->join('customer_product AS cp','cp.product_id','=','id_product')
+                    ->where('s.id',$idShop)
+                    ->where('cp.customer_id',$idCus)
+                    ->get();
+        return $data;
+    }
+
     public function getIdShop()
     {
         $data = DB::table('shops AS s')
