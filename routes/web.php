@@ -42,6 +42,14 @@ Route::group([
     Route::post('filterProducts','ShopController@filterProducts');
 });
 
+Route::group([
+    'prefix' => 'api',
+    'namespace' => 'Setting',
+    'middleware' => 'cors'
+], function () {
+    Route::post('saveSetting','SettingController@saveSettings');
+});
+
 
 Route::view('admin/{path}', 'TodoApp')->where('path', '.*');
 Route::view('wishlist/{path}', 'WishlistApp')->where('path', '.*');
