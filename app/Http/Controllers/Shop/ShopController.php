@@ -11,12 +11,9 @@ class ShopController extends Controller
         // $shop = Shop::getCurrentShop();
         $sh = $shop->getCurrentShop();
         $idCustomer = $shop->getIdCustomer($sh->id);
-
-
-
         return response()->json([
             'success' =>true,
-            // 'products' => $shop->products,
+            'shop' => $sh,
             'idCustomer' => $idCustomer
         ]) ;
     }

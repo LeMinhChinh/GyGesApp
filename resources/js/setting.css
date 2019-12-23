@@ -7,7 +7,7 @@
     height: 50px;
     background-color: rgb(238, 73, 31);
     margin: -10px 10px;
-    font-size: 16px;
+    font-size: 1.4rem;
     width: 200px;
     color: #fff;
     align-items: center;
@@ -24,7 +24,7 @@
 .RadioButton{
     height: 50px;
     margin: -10px 10px;
-    font-size: 16px;
+    font-size:1.4rem;
     width: 200px;
     color: rgb(238, 73, 31);
     align-items: center;
@@ -39,7 +39,7 @@
 }
 
 #PolarisTextField1Label,#PolarisTextField2Label{
-    font-size:17px;
+    font-size:1.4rem;
 }
 
 .sortColor{
@@ -114,7 +114,7 @@ border-radius: 34px;
 border-radius: 50%;
 }
 .title{
-    font-size:16px;
+    font-size:1.4rem;
     color:black;
     margin: 0;
 }
@@ -131,4 +131,19 @@ border-radius: 50%;
 }
 .contentDisplay{
     padding: 15px 15px;
+}
+.upColor{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+h2.Polaris-Heading{
+    font-size:16px;
+}
+
+.Polaris-Layout__AnnotationDescription p{
+    font-size: 13px;
 }

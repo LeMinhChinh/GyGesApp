@@ -47,7 +47,8 @@ Route::group([
     'namespace' => 'Setting',
     'middleware' => 'cors'
 ], function () {
-    Route::post('saveSetting','SettingController@saveSettings');
+    Route::post('saveSettings','SettingController@saveSettings');
+    Route::get('getSettings','SettingController@getSettings');
 });
 
 

@@ -39,7 +39,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.26",
         "@fortawesome/free-solid-svg-icons": "^5.12.0",
         "@fortawesome/react-fontawesome": "^0.1.8",
-        "@shopify/polaris": "^4.9.1",
+        "@shopify/polaris": "^4.10.2",
         "bootstrap": "^4.4.1",
         "font-awesome": "^4.7.0",
         "history": "^4.10.1",
