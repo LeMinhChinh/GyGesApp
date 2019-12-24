@@ -27,10 +27,11 @@ class CustomerProduct extends Model
         return $data;
     }
 
-    public function deleteCusPro($id)
+    public function deleteCusPro($idCus,$idPr)
     {
         $del = DB::table('customer_product')
-                    ->where('product_id',$id)
+                    ->where('product_id',$idPr)
+                    ->where('customer_id',$idCus)
                     ->delete();
         return $del;
     }

@@ -9,8 +9,13 @@ import {
     Filters,
     TextField,
     Button,
-    Layout
+    Layout,
+    Popover,
+    OptionList,
+    Page
 } from '@shopify/polaris'
+import '../wishlist.css'
+import CurrencyFormat from 'react-currency-format';
 
 export default class Landing extends Component{
     constructor(props){
@@ -19,61 +24,79 @@ export default class Landing extends Component{
             selectedItems: [],
             queryValue: "",
             taggedWith: "",
-            data: []
+            sortValue: "Count_wishlist",
+            data: [],
+            selected: [],
+            popoverActive: false,
+            idCustomer: []
         }
+        this.setSelected = this.setSelected.bind(this)
     }
 
     componentDidMount(){
         var self = this
-        fetch('http://localhost:8888/api/getProducts')
+        fetch('http://localhost:8888/api/getCustomer')
         .then((response) => response.json())
         .then((response) => {
-            self.setState({data: response.idCustomer})
+            self.setState({idCustomer: response.idCus})
         });
     }
+
+    setSelected(selected){
+        var self = this
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        let header = new Headers
+        fetch('http://localhost:8888/api/filterProducts',{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+            idCus: selected
+        })
+        })
+        .then((response) => response.json())
+        .then(function(response) {
+            self.setState({
+                data: response.filterProduct
+            })
+        })
+    }
+
+    handleChange = (value) => {
+        this.setState({sortValue: value})
+    }
+
+    togglePopoverActive = () => {
+        let {popoverActive} = this.state
+        this.setState({popoverActive: !popoverActive})
+    }
+
     render(){
         const{
             selectedItems,
             queryValue,
             taggedWith,
-            data
+            sortValue,
+            data,
+            selected,
+            popoverActive,
+            allProduct,
+            idCustomer
         }=this.state
 
-        console.log(data);
-
-
-        const items = [
-            {
-                id: 341,
-                url: 'customers/341',
-                name: 'LMC',
-                location: 'Decatur, USA',
-                latestOrderUrl: 'orders/1456',
+        const items = data.map((item, index) => {
+          return {
+                id: index,
+                id_product: item.id_product,
+                name:item.name,
+                price: item.price,
+                image: item.image
             }
-
-        ];
-
-        // const promotedBulkActions = [
-        //     {
-        //       content: 'Edit customers',
-        //       onAction: () => console.log('Todo: implement bulk edit'),
-        //     },
-        // ];
-
-        // const bulkActions = [
-        //     {
-        //       content: 'Add tags',
-        //       onAction: () => console.log('Todo: implement bulk add tags'),
-        //     },
-        //     {
-        //       content: 'Remove tags',
-        //       onAction: () => console.log('Todo: implement bulk remove tags'),
-        //     },
-        //     {
-        //       content: 'Delete customers',
-        //       onAction: () => console.log('Todo: implement bulk delete'),
-        //     },
-        // ];
+        })
 
         const filters = [
             {
@@ -83,75 +106,98 @@ export default class Landing extends Component{
                 <TextField
                   label="Tagged with"
                   value={taggedWith}
-                //   onChange={handleTaggedWithChange}
                   labelHidden
                 />
               ),
               shortcut: true,
             },
         ];
+        let arr_idCus = [];
+        let id = idCustomer.map(value => {
+            arr_idCus.push(value.id_customer)
+        })
 
+        let options = arr_idCus.map(value => {
+            return {
+                value: value,
+                label: value
+            }
+        });
+        let op = [
+            {
+                value: "",
+                label: "None"
+            },
+            ...options
+        ]
+
+        const activator = (
+            <Button onClick={() => this.togglePopoverActive()} disclosure>
+              Filter
+            </Button>
+        );
         const filterControl = (
             <Filters
               queryValue={queryValue}
               filters={filters}
             >
-              <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>Save</Button>
-              </div>
+                <div>
+                    <Popover
+                        active={popoverActive}
+                        activator={activator}
+                        onClose={this.togglePopoverActive}
+                    >
+                        <OptionList
+                        title="Choose Customer"
+                        onChange={(selected) => this.setSelected(selected)}
+                        options={
+                            op
+                        }
+                        selected={selected}
+                        />
+                    </Popover>
+                </div>
+
             </Filters>
-          );
+        );
+
         return (
-            <Card>
-                <ResourceList
-                    items={items}
-                    renderItem={renderItem}
-                    selectedItems={selectedItems}
-                        // promotedBulkActions={promotedBulkActions}
-                        // bulkActions={bulkActions}
-                    sortOptions={[
-                        {label: 'Customer', value: 'DATE_MODIFIED_DESC'},
-                        {label: 'Count wishlist', value: 'DATE_MODIFIED_ASC'},
-                    ]}
-                    onSortChange={(selected) => {
-                        setSortValue(selected);
-                        console.log(`Sort option changed to ${selected}.`);
-                    }}
-                    filterControl={filterControl}
-                />
-            </Card>
+            <Page
+                fullWidth
+                title="Wishlist"
+            >
+                <Card>
+                    <ResourceList
+                        items={items}
+                        renderItem={renderItem}
+                        sortValue={sortValue}
+                        sortOptions={[
+                            {label: 'Count wishlist', value: 'Count_wishlist'}
+                        ]}
+                        onSortChange={(selected) =>  this.handleChange(selected) }
+                        filterControl={filterControl}
+                    />
+                </Card>
+            </Page>
         );
 
         function renderItem(item) {
-            const {id, url, name, location, latestOrderUrl} = item;
-            const media = <Avatar customer size="medium" name={name} />;
-            const shortcutActions = latestOrderUrl
-              ? [{content: 'View latest order', url: latestOrderUrl}]
-              : null;
+            const { id_product, name, price, image, id_cus} = item;
+            const media = <div><img src={image} className="img_pr" /></div>
+            var CurrencyFormat = require('react-currency-format');
             return (
               <ResourceItem
-                id={id}
-                url={url}
                 media={media}
-                accessibilityLabel={`View details for ${name}`}
-                shortcutActions={shortcutActions}
                 persistActions
               >
                 <h3>
                   <TextStyle variation="strong">{name}</TextStyle>
                 </h3>
-                <div>{location}</div>
+                <div className="infoP">Id Product: {id_product}</div>
+                <div className="infoP">Price: <CurrencyFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                <div className="infoP">User: {id_cus}</div>
               </ResourceItem>
             );
         }
-
-        // function disambiguateLabel(key, value) {
-        //     switch (key) {
-        //         case 'taggedWith':
-        //         return `Tagged with ${value}`;
-        //         default:
-        //         return value;
-        //     }
-        // }
     }
 }

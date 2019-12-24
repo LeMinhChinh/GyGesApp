@@ -18,6 +18,16 @@ class ShopController extends Controller
         ]) ;
     }
 
+    public function getCustomer(Request $request, Shop $shop)
+    {
+        $s = $shop->getCurrentShop();
+        $idCus = $shop->getIdCustomerByIdShop($s->id);
+
+        return \response()->json([
+            'idCus' => $idCus
+        ]);
+    }
+
     public function filterProducts(Request $request, Shop $shop)
     {
         $idCus = $request->idCus;
@@ -26,6 +36,18 @@ class ShopController extends Controller
 
         return response()->json([
             'filterProduct' => $filter
+        ]);
+    }
+
+    public function getWishlist(Request $request, Shop $shop)
+    {
+        $url = $request->shopUrl;
+        $idCus = $request->customerId;
+
+        $wishlist = $shop->getDataWishlist($url, $idCus);
+
+        return response()->json([
+            'wishlist' => $wishlist
         ]);
     }
 }

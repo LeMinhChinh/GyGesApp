@@ -49,6 +49,7 @@ import history from '../history';
 import Setting from './Setting';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
+import en from '@shopify/polaris/locales/en.json';
 
 export default class FrameExample extends Component{
     defaultState = {
@@ -237,7 +238,7 @@ export default class FrameExample extends Component{
         };
 
         return(
-            <AppProvider theme={theme}
+            <AppProvider theme={theme} i18n={en}
             >
                 <Frame
                     topBar={topBarMarkup}

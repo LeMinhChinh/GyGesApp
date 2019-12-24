@@ -1,0 +1,15 @@
+.infoP{
+    font-size:1.4rem;
+    padding: 5px 0;
+}
+
+.img_pr{
+    width: 120px;
+    height: auto;
+}
+.Polaris-ResourceList__HeaderTitleWrapper{
+    font-size: 1.4rem;
+}
+li.Polaris-OptionList-Option{
+    font-size: 1.2rem
+}
