@@ -9,6 +9,8 @@ class Shop extends Model
 {
     protected $table = 'shops';
 
+    protected $fillable = ['url','token'];
+
     public function customers()
     {
         return $this->hasmany('App\Models\Customer');

@@ -9,6 +9,8 @@ class CustomerProduct extends Model
 {
     protected $table = 'customer_product';
 
+    protected $fillable = ['customer_id','product_id'];
+
     public function customers()
     {
         return $this->belongsTo('App\Models\Customer');

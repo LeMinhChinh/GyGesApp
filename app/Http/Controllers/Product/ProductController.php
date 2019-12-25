@@ -28,113 +28,39 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Customer $customer,Shop $shop, Product $product, CustomerProduct $cp)
+    public function store(Request $request)
     {
-        $idPr = $request->idPr;
-        $titlePr = $request->titlePr;
-        $pricePr = $request->pricePr;
-        $imgPr = $request->imgPr;
+        $id = $request->idPr;
+        $name = $request->titlePr;
+        $price = $request->pricePr;
+        $img = $request->imgPr;
         $shopUrl = $request->shopUrl;
         $customId = $request->customerId;
 
-        $validator = Validator::make(
-            ['id_product' => $idPr],
-            ['id_product' => 'unique:products,id_product,'.$idPr]
-        );
+        //check shop
+        $shop = Shop::where('url', $shopUrl)->first();
+        if(!$shop)
+            return response()->json([
+                'error' => true,
+                'message' => 'Not found shop'
+            ]);
 
-        $validator1 = Validator::make(
+        // first or create customer
+        $customer = Customer::firstOrCreate(
             ['id_customer' => $customId],
-            ['id_customer' => 'unique:customers,id_customer,'.$customId]
+            ['shop_id' => $shop->id]
         );
 
-        $s = $shop->getIdShop();
-        $checkCP = $cp->getDataCP();
+        //first or create product
+        $product = Product::firstOrCreate(
+            ['id_product' => $id],
+            ['shop_id' => $shop->id, 'name' => $name, 'price' => $price, 'image' => $img]
+        );
 
-        foreach ($s as $item) {
-            if($shopUrl == $item->url){
-                if($validator->fails()){
-                    if($validator1->fails()){
-                        foreach ($checkCP as $check) {
-                            if($idPr == $check->product_id && $customId == $check->customer_id){
-                                return response()->json([
-                                    'statusCP' => false
-                                ]);
-                            }else{
-                                $cus_prod = new CustomerProduct;
-                                $cus_prod->customer_id = $customId;
-                                $cus_prod->product_id = $idPr;
-
-                                $cus_prod->save();
-
-                                return response()->json([
-                                    'cus_prod' => $cus_prod
-                                ]);
-                            }
-                        }
-                    }else{
-                        $customer = new Customer;
-                        $customer->id_customer = $customId;
-                        $customer->shop_id = $item->id;
-
-                        $customer->save();
-
-                        $cus_prod = new CustomerProduct;
-                        $cus_prod->customer_id = $customId;
-                        $cus_prod->product_id = $idPr;
-
-                        $cus_prod->save();
-
-                        return response()->json([
-                            'cus_prod' => $cus_prod,
-                            'customer' => $customer
-                        ]);
-                    }
-                }else{
-                    $products = new Product;
-                    $products->id_product = $idPr;
-                    $products->shop_id = $item->id;
-                    $products->name = $titlePr;
-                    $products->price = $pricePr;
-                    $products->image = $imgPr;
-
-                    $products->save();
-
-                    if($validator1->fails()){
-                        $cus_prod = new CustomerProduct;
-                        $cus_prod->customer_id = $customId;
-                        $cus_prod->product_id = $idPr;
-                        $cus_prod->save();
-
-                        return response()->json([
-                            'cus_prod' => $cus_prod,
-                            'product' => $products
-                        ]);
-                    }else{
-                        $customer = new Customer;
-                        $customer->id_customer = $customId;
-                        $customer->shop_id = $item->id;
-                        $customer->save();
-
-                        $cus_prod = new CustomerProduct;
-
-                        $cus_prod->customer_id = $customId;
-                        $cus_prod->product_id = $idPr;
-
-                        $cus_prod->save();
-
-                        return response()->json([
-                            'cus_prod' => $cus_prod,
-                            'customer' => $customer,
-                            'product' => $products
-                        ]);
-                    }
-                }
-            }else{
-                return response()->json([
-                    'statusShop' => false
-                ]);
-            }
-        }
+        //first or create customer product
+        $product = CustomerProduct::firstOrCreate(
+            ['customer_id' => $customId, 'product_id' => $id]
+        );
     }
 
     /**
@@ -147,120 +73,67 @@ class ProductController extends Controller
     {
         //
     }
-    public function check(Request $request, Product $product, Customer $customer, Shop $shop, CustomerProduct $cp)
+    public function check(Request $request)
     {
         $arrPr = $request->arr_id;
         $url = $request->shopUrl;
         $cusId = $request->customerId;
 
-        $arr_idProduct = [];
-        $arr_urlShop = [];
-        $arr_idCustomer = [];
-        $pr = $product->getAllProduct();
-        $cus = $customer->getIdCustomer();
-        $sh = $shop->getIdShop();
-        $checkCP = $cp->getDataCP();
+        // get shop id
+        $shop = Shop::where('url', $url)->first();
+        if(!$shop)
+            return response()->json([
+                'error' => true,
+                'message' => 'Not found shop'
+            ]);
 
-        foreach ($pr as $value1) {
-            array_push($arr_idProduct,$value1->id_product);
-        }
 
-        foreach ($sh as $value2) {
-            array_push($arr_urlShop,$value2->url);
-        }
+        //check customer
+        $customer = Customer::where('shop_id', $shop->id)->where('id_customer', $cusId)->first();
+        if(!$customer)
+            return response()->json([
+                'error' => true,
+                'message' => 'Not found customer'
+            ]);
 
-        foreach ($cus as $value3) {
-            array_push($arr_idCustomer,$value3->id_customer);
-        }
+        //get product ids by shopid andcustomer id
+        $product_ids = CustomerProduct::where('customer_id', $cusId)->whereIn('product_id', $arrPr)->pluck('product_id')->toArray();
+            return response()->json([
+                'success' => true,
+                'ids' => $product_ids
+            ]);
 
-        foreach ($arr_urlShop as $s) {
-            if($s == $url){
-                foreach ($checkCP as $item) {
-                    foreach ($arrPr as $value) {
-                        if($item->customer_id == $cusId && $item->product_id == $value){
-                            return response()->json([
-                                'status' => true,
-                                'value' => $value
-                            ]);
-                        }
-                    }
-                }
-            }
-        }
-        return response()->json([
-            'statusShop' => false
-        ]);
     }
 
-    public function deleteProduct(Request $request, Product $product, CustomerProduct $cuspr, Shop $shop, Customer $customer)
+    public function deleteProduct(Request $request)
     {
         $idPro = $request->idPr;
-        $idCus = $request->idCus;
-        $url = $request->idShop;
+        $cusId = $request->idCus;
+        $shopUrl = $request->idShop;
 
-        $arr_idProduct = [];
-        $pr = $product->getAllProduct();
-        foreach ($pr as $value1) {
-            array_push($arr_idProduct,$value1->id_product);
+        //check shop
+        $shop = Shop::where('url', $shopUrl)->first();
+        if(!$shop)
+            return response()->json([
+                'error' => true,
+                'message' => 'Not found shop'
+            ]);
+
+        //check customer
+        $customer = Customer::where('id_customer',$cusId)->first();
+        if(!$customer){
+            return response()->json([
+                'error' => true,
+                'message' => 'Not found customer'
+            ]);
         }
 
-        $cp = $cuspr->getDataCP();
+        $cus_pro = CustomerProduct::where('customer_id',$cusId)->where('product_id',$idPro)->first();
+        $cus_pro->delete();
 
-        $arr_idShop = [];
-        $sh = $shop->getIdShop();
-        foreach ($sh as $value3) {
-            array_push($arr_idShop,$value3->url);
-        }
-
-        $arr_idCustomer = [];
-        $cus = $customer->getIdCustomer();
-        foreach ($cus as $value4) {
-            array_push($arr_idCustomer,$value4->id_customer);
-        }
-
-        foreach ($arr_idShop as $s) {
-            if($url == $s){
-                foreach ($arr_idCustomer as $c) {
-                    if($idCus == $c){
-                        foreach ($cp as $cusp) {
-                            if($idPro == $cusp->product_id && $idCus == $cusp->customer_id){
-                                $delCp = $cuspr->deleteCusPro($idCus,$idPro);
-                                if($delCp){
-                                    return response()->json([
-                                        'status' => true
-                                    ]);
-                                }
-                            }
-                        }
-                    }
-                }
-            }else{
-                return response()->json([
-                    'statusShop' => false
-                ]);
-            }
-        }
-
-        // foreach ($arr_idCP as $cusp) {
-        //     if($cusp == $idPro){
-        //         $delCp = $cuspr->deleteCusPro($cusp);
-        //         if($delCp){
-        //             foreach ($arr_idProduct as $p) {
-        //                 if($p == $idPro){
-        //                     $del = $product->deleteProductWL($p);
-        //                     if($del){
-        //                         echo "Ok";
-        //                     }else{
-        //                         echo "fail";
-        //                     }
-        //                 }
-        //             }
-        //         }else{
-        //             echo "fail";
-        //         }
-        //     }
-        // }
-
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     /**

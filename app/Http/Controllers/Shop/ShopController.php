@@ -8,7 +8,6 @@ use App\Models\Shop;
 class ShopController extends Controller
 {
     public function getProducts(Request $request,Shop $shop){
-        // $shop = Shop::getCurrentShop();
         $sh = $shop->getCurrentShop();
         $idCustomer = $shop->getIdCustomer($sh->id);
         return response()->json([

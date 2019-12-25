@@ -9,6 +9,7 @@ class Customer extends Model
 {
     protected $table = 'customers';
 
+    protected $fillable = ['id_customer','shop_id'];
     public function shops()
     {
         return $this->belongsTo('App\Models\Shop');
@@ -24,7 +25,6 @@ class Customer extends Model
         $data = DB::table('customers AS c')
                     ->select('c.*')
                     ->get();
-                    // dd($data);
         return $data;
     }
 }

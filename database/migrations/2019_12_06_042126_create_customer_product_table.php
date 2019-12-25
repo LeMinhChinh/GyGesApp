@@ -16,7 +16,7 @@ class CreateCustomerProductTable extends Migration
         Schema::create('customer_product', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('customer_id');
-            $table->bigInteger('product_id');
+            $table->string('product_id',1000);
             $table->timestamps();
         });
     }
