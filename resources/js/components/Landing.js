@@ -12,7 +12,8 @@ import {
     Layout,
     Popover,
     OptionList,
-    Page
+    Page,
+    DataTable
 } from '@shopify/polaris'
 import '../wishlist.css'
 import CurrencyFormat from 'react-currency-format';
@@ -24,13 +25,15 @@ export default class Landing extends Component{
             selectedItems: [],
             queryValue: "",
             taggedWith: "",
-            sortValue: "Count_wishlist",
+            sortValue: "",
             data: [],
             selected: [],
             popoverActive: false,
-            idCustomer: []
+            idCustomer: [],
+            sortedRows: []
         }
         this.setSelected = this.setSelected.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     componentDidMount(){
@@ -38,14 +41,26 @@ export default class Landing extends Component{
         fetch('http://localhost:8888/api/getCustomer')
         .then((response) => response.json())
         .then((response) => {
-            self.setState({idCustomer: response.idCus})
+            let counted = response.count.map((item) => {
+                return [
+                    item.name,
+                    item.id_product,
+                    item.price,
+                    item.count_id,
+                    item.image,
+                ]
+            })
+            self.setState({
+                idCustomer: response.idCus,
+                data: response.count,
+                sortedRows: counted
+            })
         });
     }
 
     setSelected(selected){
         var self = this
         var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        let header = new Headers
         fetch('http://localhost:8888/api/filterProducts',{
         method: 'POST',
         headers: {
@@ -66,8 +81,28 @@ export default class Landing extends Component{
         })
     }
 
-    handleChange = (value) => {
-        this.setState({sortValue: value})
+    handleChange = (key, value) => {
+        var self = this
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        fetch('http://localhost:8888/api/sortCountProduct',{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+            sort: value
+        })
+        })
+        .then((response) => response.json())
+        .then(function(response){
+            self.setState({
+                data: response.count,
+                [key]: value
+            })
+        })
     }
 
     togglePopoverActive = () => {
@@ -75,17 +110,35 @@ export default class Landing extends Component{
         this.setState({popoverActive: !popoverActive})
     }
 
+    handleQueryChange(value){
+        this.setState({queryValue: value})
+    }
+
+    handleSort = (index, direction) => {
+        let sorted = this.sortCurrency(this.state.sortedRows, index, direction)
+        this.setState({'sortedRows': sorted});
+    }
+
+    sortCurrency = (rows, index, direction) => {
+        return [...rows].sort((rowA, rowB) => {
+            const amountA = parseFloat((rowA[index].toString().substring(0,1)));
+            const amountB = parseFloat((rowB[index].toString().substring(0,1)));
+
+            return direction === 'descending' ? amountB - amountA : amountA - amountB;
+            // return direction === 'descending' ? 1 : -1; =>sort string
+        });
+    }
+
     render(){
         const{
-            selectedItems,
             queryValue,
             taggedWith,
             sortValue,
             data,
             selected,
             popoverActive,
-            allProduct,
-            idCustomer
+            idCustomer,
+            sortedRows
         }=this.state
 
         const items = data.map((item, index) => {
@@ -94,7 +147,9 @@ export default class Landing extends Component{
                 id_product: item.id_product,
                 name:item.name,
                 price: item.price,
-                image: item.image
+                image: item.image,
+                id_cus: item.customer_id,
+                count: item.count_id
             }
         })
 
@@ -126,7 +181,7 @@ export default class Landing extends Component{
         let op = [
             {
                 value: "",
-                label: "None"
+                label: "All"
             },
             ...options
         ]
@@ -140,6 +195,7 @@ export default class Landing extends Component{
             <Filters
               queryValue={queryValue}
               filters={filters}
+              onQueryChange={(queryValue) => this.handleQueryChange(queryValue)}
             >
                 <div>
                     <Popover
@@ -161,6 +217,17 @@ export default class Landing extends Component{
             </Filters>
         );
 
+        const rows = sortedRows.map((value) => {
+            return (
+                [
+                    <p className="name_pr"><img src={value[4]} className="img_pr"></img>{value[0]}</p>,
+                    value[1],
+                    <CurrencyFormat value={value[2]} displayType={'text'} thousandSeparator={true} prefix={'$'} />,
+                    value[3]
+                ]
+            )
+        })
+
         return (
             <Page
                 fullWidth
@@ -172,17 +239,40 @@ export default class Landing extends Component{
                         renderItem={renderItem}
                         sortValue={sortValue}
                         sortOptions={[
-                            {label: 'Count wishlist', value: 'Count_wishlist'}
+                            {label: 'Sort Product', value: ''},
+                            {label: 'Sort Count ASC', value: 'ASC'},
+                            {label: 'Sort Count DESC', value: 'DESC'}
                         ]}
-                        onSortChange={(selected) =>  this.handleChange(selected) }
+                        onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
                         filterControl={filterControl}
+                    />
+                </Card>
+                <Card>
+                    <DataTable
+                        columnContentTypes={[
+                            'text',
+                            'text',
+                            'numeric',
+                            'numeric'
+                        ]}
+                        headings={[
+                            'Product',
+                            'Handle',
+                            'Price',
+                            'Count',
+                        ]}
+                        rows={rows}
+                        sortable={[true,true,true,true]}
+                        defaultSortDirection= "none"
+                        initialSortColumnIndex={3}
+                        onSort={this.handleSort}
                     />
                 </Card>
             </Page>
         );
 
         function renderItem(item) {
-            const { id_product, name, price, image, id_cus} = item;
+            const { id_product, name, price, image, id_cus, count} = item;
             const media = <div><img src={image} className="img_pr" /></div>
             var CurrencyFormat = require('react-currency-format');
             return (
@@ -195,7 +285,9 @@ export default class Landing extends Component{
                 </h3>
                 <div className="infoP">Id Product: {id_product}</div>
                 <div className="infoP">Price: <CurrencyFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
-                <div className="infoP">User: {id_cus}</div>
+                {count && (
+                    <div className="infoP">Count: {count}</div>
+                )}
               </ResourceItem>
             );
         }

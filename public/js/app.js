@@ -37902,7 +37902,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 120px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n", ""]);
+exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\n", ""]);
 
 // exports
 
@@ -73587,7 +73587,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80034,9 +80034,27 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Landing).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (value) {
-      _this.setState({
-        sortValue: value
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (key, value) {
+      var self = _assertThisInitialized(_this);
+
+      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      fetch('http://localhost:8888/api/sortCountProduct', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text-plain, */*",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          sort: value
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        self.setState(_defineProperty({
+          data: response.count
+        }, key, value));
       });
     });
 
@@ -80048,17 +80066,35 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleSort", function (index, direction) {
+      var sorted = _this.sortCurrency(_this.state.sortedRows, index, direction);
+
+      _this.setState({
+        'sortedRows': sorted
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "sortCurrency", function (rows, index, direction) {
+      return _toConsumableArray(rows).sort(function (rowA, rowB) {
+        var amountA = parseFloat(rowA[index].toString().substring(0, 1));
+        var amountB = parseFloat(rowB[index].toString().substring(0, 1));
+        return direction === 'descending' ? amountB - amountA : amountA - amountB; // return direction === 'descending' ? 1 : -1; =>sort string
+      });
+    });
+
     _this.state = {
       selectedItems: [],
       queryValue: "",
       taggedWith: "",
-      sortValue: "Count_wishlist",
+      sortValue: "",
       data: [],
       selected: [],
       popoverActive: false,
-      idCustomer: []
+      idCustomer: [],
+      sortedRows: []
     };
     _this.setSelected = _this.setSelected.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -80069,8 +80105,13 @@ function (_Component) {
       fetch('http://localhost:8888/api/getCustomer').then(function (response) {
         return response.json();
       }).then(function (response) {
+        var counted = response.count.map(function (item) {
+          return [item.name, item.id_product, item.price, item.count_id, item.image];
+        });
         self.setState({
-          idCustomer: response.idCus
+          idCustomer: response.idCus,
+          data: response.count,
+          sortedRows: counted
         });
       });
     }
@@ -80079,7 +80120,6 @@ function (_Component) {
     value: function setSelected(selected) {
       var self = this;
       var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      var header = new Headers();
       fetch('http://localhost:8888/api/filterProducts', {
         method: 'POST',
         headers: {
@@ -80100,27 +80140,35 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleQueryChange",
+    value: function handleQueryChange(value) {
+      this.setState({
+        queryValue: value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       var _this$state = this.state,
-          selectedItems = _this$state.selectedItems,
           queryValue = _this$state.queryValue,
           taggedWith = _this$state.taggedWith,
           sortValue = _this$state.sortValue,
           data = _this$state.data,
           selected = _this$state.selected,
           popoverActive = _this$state.popoverActive,
-          allProduct = _this$state.allProduct,
-          idCustomer = _this$state.idCustomer;
+          idCustomer = _this$state.idCustomer,
+          sortedRows = _this$state.sortedRows;
       var items = data.map(function (item, index) {
         return {
           id: index,
           id_product: item.id_product,
           name: item.name,
           price: item.price,
-          image: item.image
+          image: item.image,
+          id_cus: item.customer_id,
+          count: item.count_id
         };
       });
       var filters = [{
@@ -80145,7 +80193,7 @@ function (_Component) {
       });
       var op = [{
         value: "",
-        label: "None"
+        label: "All"
       }].concat(_toConsumableArray(options));
       var activator = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         onClick: function onClick() {
@@ -80155,7 +80203,10 @@ function (_Component) {
       }, "Filter");
       var filterControl = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Filters"], {
         queryValue: queryValue,
-        filters: filters
+        filters: filters,
+        onQueryChange: function onQueryChange(queryValue) {
+          return _this2.handleQueryChange(queryValue);
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Popover"], {
         active: popoverActive,
         activator: activator,
@@ -80168,6 +80219,19 @@ function (_Component) {
         options: op,
         selected: selected
       }))));
+      var rows = sortedRows.map(function (value) {
+        return [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "name_pr"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: value[4],
+          className: "img_pr"
+        }), value[0]), value[1], react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_currency_format__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          value: value[2],
+          displayType: 'text',
+          thousandSeparator: true,
+          prefix: '$'
+        }), value[3]];
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Page"], {
         fullWidth: true,
         title: "Wishlist"
@@ -80176,13 +80240,27 @@ function (_Component) {
         renderItem: renderItem,
         sortValue: sortValue,
         sortOptions: [{
-          label: 'Count wishlist',
-          value: 'Count_wishlist'
+          label: 'Sort Product',
+          value: ''
+        }, {
+          label: 'Sort Count ASC',
+          value: 'ASC'
+        }, {
+          label: 'Sort Count DESC',
+          value: 'DESC'
         }],
-        onSortChange: function onSortChange(selected) {
-          return _this2.handleChange(selected);
+        onSortChange: function onSortChange(sortValue) {
+          return _this2.handleChange('sortValue', sortValue);
         },
         filterControl: filterControl
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["DataTable"], {
+        columnContentTypes: ['text', 'text', 'numeric', 'numeric'],
+        headings: ['Product', 'Handle', 'Price', 'Count'],
+        rows: rows,
+        sortable: [true, true, true, true],
+        defaultSortDirection: "none",
+        initialSortColumnIndex: 3,
+        onSort: this.handleSort
       })));
 
       function renderItem(item) {
@@ -80190,7 +80268,8 @@ function (_Component) {
             name = item.name,
             price = item.price,
             image = item.image,
-            id_cus = item.id_cus;
+            id_cus = item.id_cus,
+            count = item.count;
         var media = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: image,
           className: "img_pr"
@@ -80212,9 +80291,9 @@ function (_Component) {
           displayType: 'text',
           thousandSeparator: true,
           prefix: '$'
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), count && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoP"
-        }, "User: ", id_cus));
+        }, "Count: ", count));
       }
     }
   }]);

@@ -86,4 +86,30 @@ class Shop extends Model
                     ->get();
         return $data;
     }
+
+    public function getCountProduct($id)
+    {
+        $data = DB::table('shops AS s')
+                    ->join('products AS p','p.shop_id','=','s.id')
+                    ->join('customer_product as cp','cp.product_id','=','p.id_product')
+                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->where('s.id',$id)
+                    ->groupby('cp.product_id')
+                    // ->orderby('count_id','desc')
+                    ->get();
+        return $data;
+    }
+
+    public function sortCount($id, $key)
+    {
+        $data = DB::table('shops AS s')
+                    ->join('products AS p','p.shop_id','=','s.id')
+                    ->join('customer_product as cp','cp.product_id','=','p.id_product')
+                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->where('s.id',$id)
+                    ->groupby('cp.product_id')
+                    ->orderby('count_id',$key)
+                    ->get();
+        return $data;
+    }
 }

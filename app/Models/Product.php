@@ -38,19 +38,4 @@ class Product extends Model
                     ->get();
         return $data;
     }
-
-    public function insertDataWishList($data)
-    {
-        DB::table('products')->insert($data);
-        $id = DB::getPdo()->lastInsertId();
-        return $id;
-    }
-
-    public function deleteProductWL($id)
-    {
-        $del = DB::table('products')
-                    ->where('id_product',$id)
-                    ->delete();
-        return $del;
-    }
 }
