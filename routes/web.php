@@ -43,6 +43,7 @@ Route::group([
     Route::get('getCustomer','ShopController@getCustomer');
     Route::get('getWishlist','ShopController@getWishlist');
     Route::post('sortCountProduct','ShopController@sortCountProduct');
+    Route::post('filterajax','ShopController@filterajax');
 });
 
 Route::group([

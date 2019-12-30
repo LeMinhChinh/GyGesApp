@@ -71,4 +71,21 @@ class ShopController extends Controller
             'count' => $sortCount
         ]) ;
     }
+
+    public function filterajax(Request $request, Shop $shop)
+    {
+        $data = $request->data;
+        $s = $shop->getCurrentShop();
+
+        $name = $data ? ($data['name'] ? $data['name'] : null) : null;
+        $price = $data ? ($data['price'] ? explode(',', $data['price'][0]) : null) : null;
+        $tagwith = $data ? ($data['tagwith'] ? $data['tagwith'] : null) : null;
+
+        if($data){
+            $filter = $shop->filterDataProduct($s->id, $name, $price, $tagwith);
+        }
+        return response()->json([
+            'data' => $filter
+        ]);
+    }
 }

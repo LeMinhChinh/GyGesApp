@@ -80034,30 +80034,6 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Landing).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (key, value) {
-      var self = _assertThisInitialized(_this);
-
-      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      fetch('http://localhost:8888/api/sortCountProduct', {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json, text-plain, */*",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-CSRF-TOKEN": token
-        },
-        body: JSON.stringify({
-          sort: value
-        })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (response) {
-        self.setState(_defineProperty({
-          data: response.count
-        }, key, value));
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "togglePopoverActive", function () {
       var popoverActive = _this.state.popoverActive;
 
@@ -80082,6 +80058,56 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleFilter", function (newState) {
+      var self = _assertThisInitialized(_this);
+
+      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      fetch('http://localhost:8888/api/filterajax', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text-plain, */*",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          data: {
+            'name': newState.availability,
+            'price': newState.productType,
+            'tagwith': newState.taggedWith
+          }
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        var setData = response.data.map(function (item) {
+          return [item.name, item.id_product, item.price, item.count_id, item.image];
+        });
+        self.setState({
+          sortedRows: setData,
+          data: response.data
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (key, value) {
+      var self = _assertThisInitialized(_this);
+
+      var newState = self.state;
+      newState[key] = value;
+      self.setState(_defineProperty({}, key, value));
+      self.handleFilter(newState);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleRemove", function (key) {
+      var self = _assertThisInitialized(_this);
+
+      var newState = self.state;
+      newState[key] = "";
+      self.setState(_defineProperty({}, key, ""));
+      self.handleFilter(newState);
+    });
+
     _this.state = {
       selectedItems: [],
       queryValue: "",
@@ -80091,10 +80117,18 @@ function (_Component) {
       selected: [],
       popoverActive: false,
       idCustomer: [],
-      sortedRows: []
+      sortedRows: [],
+      availability: "",
+      productType: "",
+      keys: {
+        availability: '',
+        productType: ''
+      }
     };
     _this.setSelected = _this.setSelected.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleRemove = _this.handleRemove.bind(_assertThisInitialized(_this));
+    _this.handleFiltersClearAll = _this.handleFiltersClearAll.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -80140,10 +80174,25 @@ function (_Component) {
       });
     }
   }, {
-    key: "handleQueryChange",
-    value: function handleQueryChange(value) {
+    key: "handleFiltersClearAll",
+    value: function handleFiltersClearAll() {
+      // var self = this
+      // var newState = self.state
+      // newState[
+      //     availability: "",
+      //     productType: "",
+      //     taggedWith: ""
+      // ]
+      // self.setState({
+      //     availability: "",
+      //     productType: "",
+      //     taggedWith: ""
+      // })
+      // self.handleFilter(newState)
       this.setState({
-        queryValue: value
+        availability: "",
+        productType: "",
+        taggedWith: ""
       });
     }
   }, {
@@ -80159,7 +80208,9 @@ function (_Component) {
           selected = _this$state.selected,
           popoverActive = _this$state.popoverActive,
           idCustomer = _this$state.idCustomer,
-          sortedRows = _this$state.sortedRows;
+          sortedRows = _this$state.sortedRows,
+          availability = _this$state.availability,
+          productType = _this$state.productType;
       var items = data.map(function (item, index) {
         return {
           id: index,
@@ -80177,9 +80228,60 @@ function (_Component) {
         filter: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["TextField"], {
           label: "Tagged with",
           value: taggedWith,
-          labelHidden: true
+          labelHidden: true,
+          onChange: function onChange(value) {
+            return _this2.handleChange('taggedWith', value);
+          }
         }),
         shortcut: true
+      }, {
+        key: 'availability',
+        label: 'Name',
+        filter: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["ChoiceList"], {
+          title: "Name Product",
+          titleHidden: true,
+          choices: [{
+            label: 'T-Shirt Women Summer',
+            value: 'T-Shirt Women Summer'
+          }, {
+            label: 'Hand Bag Women',
+            value: 'Hand Bag Women'
+          }, {
+            label: 'Shoes Women',
+            value: 'Shoes Women'
+          }, {
+            label: 'Jean Women Summer',
+            value: 'Jean Women Summer'
+          }],
+          selected: availability || [],
+          onChange: function onChange(value) {
+            return _this2.handleChange('availability', value);
+          },
+          allowMultiple: true
+        }),
+        shortcut: true
+      }, {
+        key: 'productType',
+        label: 'Price range',
+        filter: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["ChoiceList"], {
+          title: "Price range",
+          titleHidden: true,
+          choices: [{
+            label: '<=2000',
+            value: '0,2000'
+          }, {
+            label: '2000-4000',
+            value: '2000,4000'
+          }, {
+            label: '4000<=',
+            value: '4000'
+          }],
+          selected: productType || [],
+          onChange: function onChange(value) {
+            return _this2.handleChange('productType', value);
+          } // allowMultiple
+
+        })
       }];
       var arr_idCus = [];
       var id = idCustomer.map(function (value) {
@@ -80195,6 +80297,41 @@ function (_Component) {
         value: "",
         label: "All"
       }].concat(_toConsumableArray(options));
+      var appliedFilters = [];
+
+      if (!isEmpty(availability)) {
+        var key = 'availability';
+        appliedFilters.push({
+          key: key,
+          label: disambiguateLabel(key, availability),
+          onRemove: function onRemove() {
+            return _this2.handleRemove('availability');
+          }
+        });
+      }
+
+      if (!isEmpty(productType)) {
+        var _key = 'productType';
+        appliedFilters.push({
+          key: _key,
+          label: disambiguateLabel(_key, productType),
+          onRemove: function onRemove() {
+            return _this2.handleRemove('productType');
+          }
+        });
+      }
+
+      if (!isEmpty(taggedWith)) {
+        var _key2 = 'taggedWith';
+        appliedFilters.push({
+          key: _key2,
+          label: disambiguateLabel(_key2, taggedWith),
+          onRemove: function onRemove() {
+            return _this2.handleRemove('taggedWith');
+          }
+        });
+      }
+
       var activator = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         onClick: function onClick() {
           return _this2.togglePopoverActive();
@@ -80204,9 +80341,14 @@ function (_Component) {
       var filterControl = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Filters"], {
         queryValue: queryValue,
         filters: filters,
+        appliedFilters: appliedFilters,
         onQueryChange: function onQueryChange(queryValue) {
-          return _this2.handleQueryChange(queryValue);
-        }
+          return _this2.handleChange('queryValue', queryValue);
+        },
+        onQueryClear: function onQueryClear() {
+          return _this2.handleRemove('queryValue');
+        },
+        onClearAll: this.handleFiltersClearAll
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_2__["Popover"], {
         active: popoverActive,
         activator: activator,
@@ -80294,6 +80436,34 @@ function (_Component) {
         })), count && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoP"
         }, "Count: ", count));
+      }
+
+      function disambiguateLabel(key, value) {
+        switch (key) {
+          case 'taggedWith':
+            return "Tagged with ".concat(value);
+
+          case 'availability':
+            return value.map(function (val) {
+              return "Name: ".concat(val);
+            }).join(', ');
+
+          case 'productType':
+            return value.map(function (val) {
+              return "Price range: ".concat(val);
+            }).join(', ');
+
+          default:
+            return value;
+        }
+      }
+
+      function isEmpty(value) {
+        if (Array.isArray(value)) {
+          return value.length === 0;
+        } else {
+          return value === '' || value == null;
+        }
       }
     }
   }]);

@@ -13,7 +13,8 @@ import {
     Popover,
     OptionList,
     Page,
-    DataTable
+    DataTable,
+    ChoiceList
 } from '@shopify/polaris'
 import '../wishlist.css'
 import CurrencyFormat from 'react-currency-format';
@@ -30,10 +31,18 @@ export default class Landing extends Component{
             selected: [],
             popoverActive: false,
             idCustomer: [],
-            sortedRows: []
+            sortedRows: [],
+            availability: "",
+            productType: "",
+            keys: {
+                availability : '',
+                productType : ''
+            }
         }
         this.setSelected = this.setSelected.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
+        this.handleFiltersClearAll = this.handleFiltersClearAll.bind(this)
     }
 
     componentDidMount(){
@@ -81,37 +90,9 @@ export default class Landing extends Component{
         })
     }
 
-    handleChange = (key, value) => {
-        var self = this
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        fetch('http://localhost:8888/api/sortCountProduct',{
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json, text-plain, */*",
-            "X-Requested-With": "XMLHttpRequest",
-            "X-CSRF-TOKEN": token
-        },
-        body: JSON.stringify({
-            sort: value
-        })
-        })
-        .then((response) => response.json())
-        .then(function(response){
-            self.setState({
-                data: response.count,
-                [key]: value
-            })
-        })
-    }
-
     togglePopoverActive = () => {
         let {popoverActive} = this.state
         this.setState({popoverActive: !popoverActive})
-    }
-
-    handleQueryChange(value){
-        this.setState({queryValue: value})
     }
 
     handleSort = (index, direction) => {
@@ -129,6 +110,80 @@ export default class Landing extends Component{
         });
     }
 
+    handleFilter = (newState) => {
+        var self = this
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        fetch('http://localhost:8888/api/filterajax',{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+            data: {
+                'name': newState.availability,
+                'price' : newState.productType,
+                'tagwith' : newState.taggedWith
+            }
+        })
+        })
+        .then((response) => response.json())
+        .then(function(response){
+            let setData = response.data.map((item) => {
+                return [
+                    item.name,
+                    item.id_product,
+                    item.price,
+                    item.count_id,
+                    item.image,
+                ]
+            })
+            self.setState({
+                sortedRows: setData,
+                data: response.data,
+            })
+        })
+    }
+
+    handleChange = (key, value) => {
+        var self = this;
+        var newState = self.state;
+        newState[key] = value;
+        self.setState({[key] : value})
+        self.handleFilter(newState)
+    }
+
+    handleRemove = (key) => {
+        var self = this;
+        var newState = self.state;
+        newState[key] = "";
+        self.setState({[key] : ""})
+        self.handleFilter(newState)
+    }
+
+    handleFiltersClearAll(){
+        // var self = this
+        // var newState = self.state
+        // newState[
+        //     availability: "",
+        //     productType: "",
+        //     taggedWith: ""
+        // ]
+        // self.setState({
+        //     availability: "",
+        //     productType: "",
+        //     taggedWith: ""
+        // })
+        // self.handleFilter(newState)
+        this.setState({
+            availability: "",
+            productType: "",
+            taggedWith: ""
+        });
+    }
+
     render(){
         const{
             queryValue,
@@ -138,7 +193,9 @@ export default class Landing extends Component{
             selected,
             popoverActive,
             idCustomer,
-            sortedRows
+            sortedRows,
+            availability,
+            productType
         }=this.state
 
         const items = data.map((item, index) => {
@@ -159,13 +216,52 @@ export default class Landing extends Component{
               label: 'Tagged with',
               filter: (
                 <TextField
-                  label="Tagged with"
-                  value={taggedWith}
-                  labelHidden
+                    label="Tagged with"
+                    value={taggedWith}
+                    labelHidden
+                    onChange={(value) => this.handleChange('taggedWith',value)}
                 />
               ),
               shortcut: true,
             },
+            {
+                key: 'availability',
+                label: 'Name',
+                filter: (
+                  <ChoiceList
+                    title="Name Product"
+                    titleHidden
+                    choices={[
+                        {label: 'T-Shirt Women Summer', value: 'T-Shirt Women Summer'},
+                        {label: 'Hand Bag Women', value: 'Hand Bag Women'},
+                        {label: 'Shoes Women', value: 'Shoes Women'},
+                        {label: 'Jean Women Summer', value: 'Jean Women Summer'},
+                    ]}
+                    selected={availability || []}
+                    onChange={(value) => this.handleChange('availability',value)}
+                    allowMultiple
+                  />
+                ),
+                shortcut: true,
+              },
+              {
+                key: 'productType',
+                label: 'Price range',
+                filter: (
+                  <ChoiceList
+                    title="Price range"
+                    titleHidden
+                    choices={[
+                        {label: '<=2000', value: '0,2000'},
+                        {label: '2000-4000', value: '2000,4000'},
+                        {label: '4000<=', value: '4000'},
+                    ]}
+                    selected={productType || []}
+                    onChange={(value) => this.handleChange('productType',value)}
+                    // allowMultiple
+                  />
+                ),
+              }
         ];
         let arr_idCus = [];
         let id = idCustomer.map(value => {
@@ -186,6 +282,32 @@ export default class Landing extends Component{
             ...options
         ]
 
+        const appliedFilters = [];
+        if (!isEmpty(availability)) {
+            const key = 'availability';
+            appliedFilters.push({
+            key,
+            label: disambiguateLabel(key, availability),
+            onRemove: () => this.handleRemove('availability'),
+            });
+        }
+        if (!isEmpty(productType)) {
+            const key = 'productType';
+            appliedFilters.push({
+            key,
+            label: disambiguateLabel(key, productType),
+            onRemove: () => this.handleRemove('productType'),
+            });
+        }
+        if (!isEmpty(taggedWith)) {
+            const key = 'taggedWith';
+            appliedFilters.push({
+            key,
+            label: disambiguateLabel(key, taggedWith),
+            onRemove: () => this.handleRemove('taggedWith'),
+            });
+        }
+
         const activator = (
             <Button onClick={() => this.togglePopoverActive()} disclosure>
               Filter
@@ -195,7 +317,10 @@ export default class Landing extends Component{
             <Filters
               queryValue={queryValue}
               filters={filters}
-              onQueryChange={(queryValue) => this.handleQueryChange(queryValue)}
+              appliedFilters={appliedFilters}
+              onQueryChange={(queryValue) => this.handleChange('queryValue',queryValue)}
+              onQueryClear={() => this.handleRemove('queryValue')}
+              onClearAll={this.handleFiltersClearAll}
             >
                 <div>
                     <Popover
@@ -290,6 +415,27 @@ export default class Landing extends Component{
                 )}
               </ResourceItem>
             );
+        }
+
+        function disambiguateLabel(key, value) {
+            switch (key) {
+              case 'taggedWith':
+                return `Tagged with ${value}`;
+              case 'availability':
+                return value.map((val) => `Name: ${val}`).join(', ');
+              case 'productType':
+                return value.map((val) => `Price range: ${val}`).join(', ');
+              default:
+                return value;
+            }
+        }
+
+        function isEmpty(value) {
+            if (Array.isArray(value)) {
+              return value.length === 0;
+            } else {
+              return value === '' || value == null;
+            }
         }
     }
 }

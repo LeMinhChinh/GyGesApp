@@ -112,4 +112,31 @@ class Shop extends Model
                     ->get();
         return $data;
     }
+
+    public function filterDataProduct($id, $name,$price, $tagwith)
+    {
+
+        $data = DB::table('shops AS s')
+                    ->join('products AS p','p.shop_id','=','s.id')
+                    ->join('customer_product as cp','cp.product_id','=','p.id_product')
+                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->where('s.id',$id)
+                    ->groupby('cp.product_id');
+                    if($tagwith){
+                        $data = $data->where('p.name','like','%'.$tagwith.'%');
+                    }
+                    if($name) {
+                        $data = $data->wherein('p.name',$name);
+                    }
+                    if($price){
+                        if (isset($price[0])) {
+                            $data = $data->where('p.price','>',$price[0]);
+                        }
+                        if (isset($price[1])) {
+                            $data = $data->where('p.price','<=',$price[1]);
+                        }
+                    }
+                    $data = $data->get();
+        return $data;
+    }
 }
