@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import {
     Card,
     ResourceList,
@@ -18,6 +17,7 @@ import {
 } from '@shopify/polaris'
 import '../wishlist.css'
 import CurrencyFormat from 'react-currency-format';
+import Pagination from "react-js-pagination";
 
 export default class Landing extends Component{
     constructor(props){
@@ -34,23 +34,32 @@ export default class Landing extends Component{
             sortedRows: [],
             availability: "",
             productType: "",
-            keys: {
-                availability : '',
-                productType : ''
-            }
+            activePage: 1,
+            totalItems: "",
+            itemInPage: "",
+            timeOutId: null
         }
         this.setSelected = this.setSelected.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.handleFiltersClearAll = this.handleFiltersClearAll.bind(this)
+        this.handleFilter = this.handleFilter.bind(this)
     }
 
     componentDidMount(){
         var self = this
-        fetch('http://localhost:8888/api/getCustomer')
+        var page = this.state.activePage
+        self.loadPage(page)
+    }
+
+    loadPage(page){
+        fetch('http://localhost:8888/api/getCustomer?page='+page)
         .then((response) => response.json())
         .then((response) => {
-            let counted = response.count.map((item) => {
+            let datas = response.count.data
+            let total = response.count.total
+            let item = response.count.per_page
+            let counted = datas.map((item) => {
                 return [
                     item.name,
                     item.id_product,
@@ -59,10 +68,12 @@ export default class Landing extends Component{
                     item.image,
                 ]
             })
-            self.setState({
+            this.setState({
                 idCustomer: response.idCus,
-                data: response.count,
-                sortedRows: counted
+                data: datas,
+                sortedRows: counted,
+                totalItems: total,
+                itemInPage: item
             })
         });
     }
@@ -151,8 +162,15 @@ export default class Landing extends Component{
         var self = this;
         var newState = self.state;
         newState[key] = value;
-        self.setState({[key] : value})
-        self.handleFilter(newState)
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+        var timeOutId = setTimeout(() => {
+            self.handleFilter(newState)
+        }, 2000);
+
+        self.setState({[key] : value, timeOutId: timeOutId})
+
     }
 
     handleRemove = (key) => {
@@ -164,24 +182,16 @@ export default class Landing extends Component{
     }
 
     handleFiltersClearAll(){
-        // var self = this
-        // var newState = self.state
-        // newState[
-        //     availability: "",
-        //     productType: "",
-        //     taggedWith: ""
-        // ]
-        // self.setState({
-        //     availability: "",
-        //     productType: "",
-        //     taggedWith: ""
-        // })
-        // self.handleFilter(newState)
         this.setState({
             availability: "",
             productType: "",
             taggedWith: ""
         });
+    }
+
+    handlePageChange = (activePage) => {
+        this.setState({activePage});
+        this.loadPage(activePage)
     }
 
     render(){
@@ -391,6 +401,17 @@ export default class Landing extends Component{
                         defaultSortDirection= "none"
                         initialSortColumnIndex={3}
                         onSort={this.handleSort}
+                    />
+                    <Pagination
+                        prevPageText='prev'
+                        nextPageText='next'
+                        firstPageText='first'
+                        lastPageText='last'
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.itemInPage}
+                        totalItemsCount={this.state.totalItems}
+                        // pageRangeDisplayed={5}
+                        onChange={(activePage) => this.handlePageChange(activePage)}
                     />
                 </Card>
             </Page>

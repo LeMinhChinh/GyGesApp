@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import {
     Button,
     AppProvider,
@@ -11,12 +10,9 @@ import {
     Stack,
     Collapsible,
     PageActions,
-    Heading,
     RadioButton,
     Select,
     TextStyle,
-    Frame,
-    ContextualSaveBar
 } from '@shopify/polaris'
 import { SketchPicker } from 'react-color'
 import '../setting.css'
@@ -169,9 +165,10 @@ export default class Setting extends Component{
         ];
         return (
             <AppProvider>
-                <Page>
-                {this.state.dtSetting.map((setting,index) => {
-                })}
+                <Page
+                    fullWidth
+                    title="Setting"
+                >
                     <div className="posiColor">
                     <Layout>
                         <Layout.AnnotatedSection>

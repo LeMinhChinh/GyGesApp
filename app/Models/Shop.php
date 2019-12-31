@@ -87,7 +87,7 @@ class Shop extends Model
         return $data;
     }
 
-    public function getCountProduct($id)
+    public function getCountProduct($id, $page)
     {
         $data = DB::table('shops AS s')
                     ->join('products AS p','p.shop_id','=','s.id')
@@ -95,8 +95,8 @@ class Shop extends Model
                     ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
                     ->where('s.id',$id)
                     ->groupby('cp.product_id')
-                    // ->orderby('count_id','desc')
-                    ->get();
+                    ->paginate(2, ['*'], 'page', $page);
+                    // ->get();
         return $data;
     }
 

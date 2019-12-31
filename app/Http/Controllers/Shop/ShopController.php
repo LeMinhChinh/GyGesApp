@@ -20,8 +20,9 @@ class ShopController extends Controller
 
     public function getCustomer(Request $request, Shop $shop)
     {
+        $page = $request->page;
         $s = $shop->getCurrentShop();
-        $sortCount = $shop->getCountProduct($s->id);
+        $sortCount = $shop->getCountProduct($s->id, $page);
         $idCus = $shop->getIdCustomerByIdShop($s->id);
 
         return response()->json([

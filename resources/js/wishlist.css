@@ -32,3 +32,39 @@ button.Polaris-DataTable__Heading{
     font-weight: 600;
     color: black;
 }
+ul.pagination{
+    font-size: 14px;
+    margin: 20px 38%;
+    border-radius: 4px;
+}
+ul.pagination li{
+    padding: 5px 15px;
+    border: 1px solid #c9c9c9;
+    display: inline;
+}
+
+ul.pagination li.active{
+    background-color: #337ab7;
+    border-color: #337ab7
+}
+
+ul.pagination li.active:hover{
+    background-color: #337ab7;
+    border-color: #337ab7
+}
+
+ul.pagination li.active a{
+    color: #fff;
+}
+
+ul.pagination a{
+    color: #337ab7;
+}
+
+ul.pagination a:hover{
+   text-decoration: none;
+}
+
+ul.pagination li:hover{
+    background-color: #eee;
+}
