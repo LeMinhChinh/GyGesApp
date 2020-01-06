@@ -80206,6 +80206,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var initialValue = [2000, 4000];
+var min = 0;
+var max = 5000;
+var prefix = '$';
+var step = 20;
 
 var Landing =
 /*#__PURE__*/
@@ -80265,12 +80270,17 @@ function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (response) {
-        var setData = response.data.map(function (item) {
+        var datas = response.data.data;
+        var total = response.data.total;
+        var item = response.data.per_page;
+        var setData = datas.map(function (item) {
           return [item.name, item.id_product, item.price, item.count_id, item.image];
         });
         self.setState({
           sortedRows: setData,
-          data: response.data
+          data: datas,
+          totalItems: total,
+          itemInPage: item
         });
       });
     });
@@ -80285,7 +80295,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         self.handleFilter(newState);
-      }, 2000);
+      }, 1000);
       self.setState((_self$setState = {}, _defineProperty(_self$setState, key, value), _defineProperty(_self$setState, "timeOutId", timeOutId), _self$setState));
     });
 
@@ -80293,9 +80303,15 @@ function (_Component) {
       var self = _assertThisInitialized(_this);
 
       var newState = self.state;
+      var page = _this.state.activePage;
       newState[key] = "";
       self.setState(_defineProperty({}, key, ""));
-      self.handleFilter(newState);
+
+      if (newState == "") {
+        self.loadPage(page);
+      } else {
+        self.handleFilter(newState);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "handlePageChange", function (activePage) {
@@ -80304,6 +80320,41 @@ function (_Component) {
       });
 
       _this.loadPage(activePage);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleRangeSliderChange", function (value) {
+      _this.setState({
+        rangeValue: value,
+        intermediateTextFieldValue: value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleLowerTextFieldChange", function (value) {
+      _this.setState({
+        intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
+          return index === 0 ? parseInt(value, 10) : item;
+        })
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleUpperTextFieldChange", function (value) {
+      _this.setState({
+        intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
+          return index === 1 ? parseInt(value, 10) : item;
+        })
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleLowerTextFieldBlur", function (value) {
+      _this.setState({
+        rangeValue: [parseInt(_this.state.rangeValue[1], 10), _this.state.intermediateTextFieldValue[0]]
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleUpperTextFieldBlur", function (value) {
+      _this.setState({
+        rangeValue: [_this.state.rangeValue[0], parseInt(_this.state.intermediateTextFieldValue[1], 10)]
+      });
     });
 
     _this.state = {
@@ -80321,7 +80372,9 @@ function (_Component) {
       activePage: 1,
       totalItems: "",
       itemInPage: "",
-      timeOutId: null
+      timeOutId: null,
+      rangeValue: initialValue,
+      intermediateTextFieldValue: initialValue
     };
     _this.setSelected = _this.setSelected.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -80389,11 +80442,13 @@ function (_Component) {
   }, {
     key: "handleFiltersClearAll",
     value: function handleFiltersClearAll() {
+      var page = this.state.activePage;
       this.setState({
         availability: "",
         productType: "",
         taggedWith: ""
       });
+      this.loadPage(page);
     }
   }, {
     key: "render",
@@ -80410,7 +80465,9 @@ function (_Component) {
           idCustomer = _this$state.idCustomer,
           sortedRows = _this$state.sortedRows,
           availability = _this$state.availability,
-          productType = _this$state.productType;
+          productType = _this$state.productType,
+          rangeValue = _this$state.rangeValue,
+          intermediateTextFieldValue = _this$state.intermediateTextFieldValue;
       var items = data.map(function (item, index) {
         return {
           id: index,
@@ -80452,6 +80509,9 @@ function (_Component) {
           }, {
             label: 'Jean Women Summer',
             value: 'Jean Women Summer'
+          }, {
+            label: 'Glasses',
+            value: 'Glasses'
           }],
           selected: availability || [],
           onChange: function onChange(value) {
@@ -80574,6 +80634,8 @@ function (_Component) {
           prefix: '$'
         }), value[3]];
       });
+      var lowerTextFieldValue = intermediateTextFieldValue[0] === rangeValue[0] ? rangeValue[0] : intermediateTextFieldValue[0];
+      var upperTextFieldValue = intermediateTextFieldValue[1] === rangeValue[1] ? rangeValue[1] : intermediateTextFieldValue[1];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], {
         fullWidth: true,
         title: "Wishlist"
@@ -80595,7 +80657,45 @@ function (_Component) {
           return _this3.handleChange('sortValue', sortValue);
         },
         filterControl: filterControl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["DataTable"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RangeSlider"], {
+        output: true,
+        label: "Money spent is between",
+        value: rangeValue,
+        prefix: prefix,
+        min: min,
+        max: max,
+        step: step,
+        onChange: function onChange(rangeValue) {
+          return _this3.handleRangeSliderChange(rangeValue);
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Stack"], {
+        distribution: "equalSpacing",
+        spacing: "extraLoose"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextField"], {
+        label: "Min money spent",
+        type: "number",
+        value: "".concat(lowerTextFieldValue),
+        prefix: prefix,
+        min: min,
+        max: max,
+        step: step,
+        onChange: function onChange(lowerTextFieldValue) {
+          return _this3.handleLowerTextFieldChange(lowerTextFieldValue);
+        },
+        onBlur: this.handleLowerTextFieldBlur
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextField"], {
+        label: "Max money spent",
+        type: "number",
+        value: "".concat(upperTextFieldValue),
+        prefix: prefix,
+        min: min,
+        max: max,
+        step: step,
+        onChange: function onChange(value) {
+          return _this3.handleUpperTextFieldChange(value);
+        },
+        onBlur: this.handleUpperTextFieldBlur
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["DataTable"], {
         columnContentTypes: ['text', 'text', 'numeric', 'numeric'],
         headings: ['Product', 'Handle', 'Price', 'Count'],
         rows: rows,

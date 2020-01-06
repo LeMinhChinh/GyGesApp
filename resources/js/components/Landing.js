@@ -13,11 +13,19 @@ import {
     OptionList,
     Page,
     DataTable,
-    ChoiceList
+    ChoiceList,
+    RangeSlider,
+    Stack
 } from '@shopify/polaris'
 import '../wishlist.css'
 import CurrencyFormat from 'react-currency-format';
 import Pagination from "react-js-pagination";
+
+const initialValue = [2000, 4000];
+const min = 0;
+const max = 5000;
+const prefix = '$';
+const step = 20;
 
 export default class Landing extends Component{
     constructor(props){
@@ -37,7 +45,9 @@ export default class Landing extends Component{
             activePage: 1,
             totalItems: "",
             itemInPage: "",
-            timeOutId: null
+            timeOutId: null,
+            rangeValue: initialValue,
+            intermediateTextFieldValue: initialValue
         }
         this.setSelected = this.setSelected.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -142,7 +152,10 @@ export default class Landing extends Component{
         })
         .then((response) => response.json())
         .then(function(response){
-            let setData = response.data.map((item) => {
+            let datas = response.data.data
+            let total = response.data.total
+            let item = response.data.per_page
+            let setData = datas.map((item) => {
                 return [
                     item.name,
                     item.id_product,
@@ -153,7 +166,9 @@ export default class Landing extends Component{
             })
             self.setState({
                 sortedRows: setData,
-                data: response.data,
+                data: datas,
+                totalItems: total,
+                itemInPage: item
             })
         })
     }
@@ -167,7 +182,7 @@ export default class Landing extends Component{
 
         var timeOutId = setTimeout(() => {
             self.handleFilter(newState)
-        }, 2000);
+        }, 1000);
 
         self.setState({[key] : value, timeOutId: timeOutId})
 
@@ -176,23 +191,71 @@ export default class Landing extends Component{
     handleRemove = (key) => {
         var self = this;
         var newState = self.state;
+        var page = this.state.activePage
         newState[key] = "";
         self.setState({[key] : ""})
-        self.handleFilter(newState)
+        if(newState == ""){
+            self.loadPage(page)
+        }else{
+            self.handleFilter(newState)
+        }
     }
 
     handleFiltersClearAll(){
+        var page = this.state.activePage
         this.setState({
             availability: "",
             productType: "",
             taggedWith: ""
         });
+        this.loadPage(page)
     }
 
     handlePageChange = (activePage) => {
         this.setState({activePage});
         this.loadPage(activePage)
     }
+
+    handleRangeSliderChange = (value) => {
+        this.setState({
+            rangeValue: value,
+            intermediateTextFieldValue: value
+        })
+    }
+
+    handleLowerTextFieldChange = (value) => {
+		this.setState({
+			intermediateTextFieldValue: this.state.intermediateTextFieldValue.map(
+				(item, index) => (index === 0 ? parseInt(value, 10) : item)
+			)
+		});
+	};
+
+	handleUpperTextFieldChange = (value) => {
+		this.setState({
+			intermediateTextFieldValue: this.state.intermediateTextFieldValue.map(
+				(item, index) => (index === 1 ? parseInt(value, 10) : item)
+			)
+		});
+    };
+
+    handleLowerTextFieldBlur = (value) => {
+		this.setState({
+			rangeValue: [
+				parseInt(this.state.rangeValue[1], 10),
+				this.state.intermediateTextFieldValue[0]
+			]
+		});
+	};
+
+	handleUpperTextFieldBlur = (value) => {
+		this.setState({
+			rangeValue: [
+				this.state.rangeValue[0],
+				parseInt(this.state.intermediateTextFieldValue[1], 10)
+			]
+		});
+	};
 
     render(){
         const{
@@ -205,7 +268,9 @@ export default class Landing extends Component{
             idCustomer,
             sortedRows,
             availability,
-            productType
+            productType,
+            rangeValue,
+            intermediateTextFieldValue
         }=this.state
 
         const items = data.map((item, index) => {
@@ -246,6 +311,7 @@ export default class Landing extends Component{
                         {label: 'Hand Bag Women', value: 'Hand Bag Women'},
                         {label: 'Shoes Women', value: 'Shoes Women'},
                         {label: 'Jean Women Summer', value: 'Jean Women Summer'},
+                        {label: 'Glasses', value: 'Glasses'},
                     ]}
                     selected={availability || []}
                     onChange={(value) => this.handleChange('availability',value)}
@@ -363,6 +429,16 @@ export default class Landing extends Component{
             )
         })
 
+        const lowerTextFieldValue =
+            intermediateTextFieldValue[0] === rangeValue[0]
+            ? rangeValue[0]
+            : intermediateTextFieldValue[0];
+
+        const upperTextFieldValue =
+            intermediateTextFieldValue[1] === rangeValue[1]
+            ? rangeValue[1]
+            : intermediateTextFieldValue[1];
+
         return (
             <Page
                 fullWidth
@@ -383,6 +459,42 @@ export default class Landing extends Component{
                     />
                 </Card>
                 <Card>
+
+                <RangeSlider
+                    output
+                    label="Money spent is between"
+                    value={rangeValue}
+                    prefix={prefix}
+                    min={min}
+                    max={max}
+                    step={step}
+                    onChange={(rangeValue) => this.handleRangeSliderChange(rangeValue)}
+                />
+                <Stack distribution="equalSpacing" spacing="extraLoose">
+                <TextField
+                    label="Min money spent"
+                    type="number"
+                    value={`${lowerTextFieldValue}`}
+                    prefix={prefix}
+                    min={min}
+                    max={max}
+                    step={step}
+                    onChange={(lowerTextFieldValue) => this.handleLowerTextFieldChange(lowerTextFieldValue)}
+                    onBlur={this.handleLowerTextFieldBlur}
+                />
+                <TextField
+                    label="Max money spent"
+                    type="number"
+                    value={`${upperTextFieldValue}`}
+                    prefix={prefix}
+                    min={min}
+                    max={max}
+                    step={step}
+                    onChange={(value) => this.handleUpperTextFieldChange(value)}
+                    onBlur={this.handleUpperTextFieldBlur}
+                />
+                </Stack>
+
                     <DataTable
                         columnContentTypes={[
                             'text',

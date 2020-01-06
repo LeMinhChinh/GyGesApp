@@ -76,6 +76,7 @@ class ShopController extends Controller
     public function filterajax(Request $request, Shop $shop)
     {
         $data = $request->data;
+        $page = $request->page;
         $s = $shop->getCurrentShop();
 
         $name = $data ? ($data['name'] ? $data['name'] : null) : null;
@@ -83,7 +84,7 @@ class ShopController extends Controller
         $tagwith = $data ? ($data['tagwith'] ? $data['tagwith'] : null) : null;
 
         if($data){
-            $filter = $shop->filterDataProduct($s->id, $name, $price, $tagwith);
+            $filter = $shop->filterDataProduct($s->id, $name, $price, $tagwith, $page);
         }
         return response()->json([
             'data' => $filter

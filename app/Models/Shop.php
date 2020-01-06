@@ -96,7 +96,6 @@ class Shop extends Model
                     ->where('s.id',$id)
                     ->groupby('cp.product_id')
                     ->paginate(2, ['*'], 'page', $page);
-                    // ->get();
         return $data;
     }
 
@@ -113,7 +112,7 @@ class Shop extends Model
         return $data;
     }
 
-    public function filterDataProduct($id, $name,$price, $tagwith)
+    public function filterDataProduct($id, $name,$price, $tagwith, $page)
     {
 
         $data = DB::table('shops AS s')
@@ -136,7 +135,7 @@ class Shop extends Model
                             $data = $data->where('p.price','<=',$price[1]);
                         }
                     }
-                    $data = $data->get();
+                    $data = $data->paginate(2, ['*'], 'page', $page);
         return $data;
     }
 }
