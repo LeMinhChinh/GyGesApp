@@ -38005,7 +38005,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".setting_wl .Polaris-Collapsible{\n    height: auto;\n    font-size: 14px;\n}\n\n.bgcRadioButton{\n    height: 50px;\n    background-color: rgb(238, 73, 31);\n    margin: -10px 10px;\n    font-size: 1.4rem;\n    width: 200px;\n    color: #fff;\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.bgcRadioButton span,\n.RadioButton span\n{\n    padding: 0 5px;\n}\n\n.RadioButton{\n    height: 50px;\n    margin: -10px 10px;\n    font-size:1.4rem;\n    width: 200px;\n    color: rgb(238, 73, 31);\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.color{\n    width: 60px;\n    height: 36px;\n    border: 1px solid #c9c9c9;\n}\n\n#PolarisTextField1Label,#PolarisTextField2Label{\n    font-size:1.4rem;\n}\n\n.sortColor{\n    position: absolute;\n    z-index: 99;\n}\n\n.posiColor{\n    position: relative;\n    z-index: 99;\n    margin-bottom: 45px;\n}\n\n.switch {\n    position: relative;\n    display: inline-block;\n    width: 70px;\n    height: 34px;\n    margin: 7px 15px\n}\n\n.switch input {\nopacity: 0;\nwidth: 0;\nheight: 0;\n}\n\n.slider {\nposition: absolute;\ncursor: pointer;\ntop: 0;\nleft: 0;\nright: 0;\nbottom: 0;\nbackground-color: #ccc;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\n.slider:before {\nposition: absolute;\ncontent: \"\";\nheight: 26px;\nwidth: 26px;\nleft: 8px;\nbottom: 4px;\nbackground-color: white;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\ninput:checked + .slider {\nbackground-color: rgb(107, 233, 34);\n}\n\ninput:focus + .slider {\nbox-shadow: 0 0 1px rgb(107, 233, 34);\n}\n\ninput:checked + .slider:before {\n-webkit-transform: translateX(26px);\ntransform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\nborder-radius: 34px;\n}\n\n.slider.round:before {\nborder-radius: 50%;\n}\n.title{\n    font-size:1.4rem;\n    color:black;\n    margin: 0;\n}\n.divSwitch{\n    height: 50px;\n    border: 1px solid #c9c9c9;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-align: center;\n            align-items: center;\n}\n\n.settingDisplay{\n    border: 1px solid #c9c9c9;\n    border-radius: 5px;\n}\n.contentDisplay{\n    padding: 15px 15px;\n}\n.upColor{\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n\nh2.Polaris-Heading{\n    font-size:16px;\n}\n\n.Polaris-Layout__AnnotationDescription p{\n    font-size: 13px;\n}\n", ""]);
+exports.push([module.i, ".setting_wl .Polaris-Collapsible{\n    height: auto;\n    font-size: 14px;\n}\n\n.bgcRadioButton{\n    height: 50px;\n    background-color: rgb(238, 73, 31);\n    margin: -10px 10px;\n    font-size: 1.4rem;\n    width: 200px;\n    color: #fff;\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.bgcRadioButton span,\n.RadioButton span\n{\n    padding: 0 5px;\n}\n\n.RadioButton{\n    height: 50px;\n    margin: -10px 10px;\n    font-size:1.4rem;\n    width: 200px;\n    color: rgb(238, 73, 31);\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.color{\n    width: 60px;\n    height: 36px;\n    border: 1px solid #c9c9c9;\n}\n\n#PolarisTextField1Label,#PolarisTextField2Label{\n    font-size:1.4rem;\n}\n\n.sortColor{\n    position: absolute;\n    z-index: 99;\n}\n\n.posiColor{\n    position: relative;\n    z-index: 99;\n    margin-bottom: 45px;\n}\n\n.switch {\n    position: relative;\n    display: inline-block;\n    width: 70px;\n    height: 34px;\n    margin: 7px 15px\n}\n\n.switch input {\nopacity: 0;\nwidth: 0;\nheight: 0;\n}\n\n.slider {\nposition: absolute;\ncursor: pointer;\ntop: 0;\nleft: 0;\nright: 0;\nbottom: 0;\nbackground-color: #ccc;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\n.slider:before {\nposition: absolute;\ncontent: \"\";\nheight: 26px;\nwidth: 26px;\nleft: 8px;\nbottom: 4px;\nbackground-color: white;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\ninput:checked + .slider {\nbackground-color: rgb(107, 233, 34);\n}\n\ninput:focus + .slider {\nbox-shadow: 0 0 1px rgb(107, 233, 34);\n}\n\ninput:checked + .slider:before {\n-webkit-transform: translateX(26px);\ntransform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\nborder-radius: 34px;\n}\n\n.slider.round:before {\nborder-radius: 50%;\n}\n.title{\n    font-size:1.4rem;\n    color:black;\n    margin: 0;\n}\n.divSwitch{\n    height: 50px;\n    border: 1px solid #c9c9c9;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-align: center;\n            align-items: center;\n}\n\n.settingDisplay{\n    border: 1px solid #c9c9c9;\n    border-radius: 5px;\n}\n.contentDisplay{\n    padding: 15px 15px;\n}\n.upColor{\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n\nh2.Polaris-Heading{\n    font-size:16px;\n}\n\n.Polaris-Layout__AnnotationDescription p{\n    font-size: 13px;\n}\n\nbutton.Polaris-Button.Polaris-Button--fullWidth{\n    width: 200px;\n}\n", ""]);
 
 // exports
 
@@ -38043,7 +38043,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\nul.pagination{\n    font-size: 14px;\n    margin: 20px 38%;\n    border-radius: 4px;\n}\nul.pagination li{\n    padding: 5px 15px;\n    border: 1px solid #c9c9c9;\n    display: inline;\n}\n\nul.pagination li.active{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active:hover{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active a{\n    color: #fff;\n}\n\nul.pagination a{\n    color: #337ab7;\n}\n\nul.pagination a:hover{\n   text-decoration: none;\n}\n\nul.pagination li:hover{\n    background-color: #eee;\n}\n", ""]);
+exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\nul.pagination{\n    font-size: 14px;\n    margin: 20px 38%;\n    border-radius: 4px;\n}\nul.pagination li{\n    padding: 5px 15px;\n    border: 1px solid #c9c9c9;\n    display: inline;\n}\n\nul.pagination li.active{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active:hover{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active a{\n    color: #fff;\n}\n\nul.pagination a{\n    color: #337ab7;\n}\n\nul.pagination a:hover{\n   text-decoration: none;\n}\n\nul.pagination li:hover{\n    background-color: #eee;\n}\nbutton.Polaris-Button{\n    width: 80px;\n}\n", ""]);
 
 // exports
 
@@ -91969,22 +91969,7 @@ function (_Component) {
         searchResultsVisible: searchActive,
         searchField: searchFieldMarkup,
         onNavigationToggle: this.toggleState('showMobileNavigation')
-      }); // const pageMarkup = isLoading ? loadingPageMarkup : actualPageMarkup;
-      // const loadingPageMarkup = (
-      //     <SkeletonPage>
-      //         <Layout>
-      //             <Layout.Section>
-      //                 <Card sectioned>
-      //                     <TextContainer>
-      //                         <SkeletonDisplayText size="small"/>
-      //                         <SkeletonBodyText lines={9}/>
-      //                     </TextContainer>
-      //                 </Card>
-      //             </Layout.Section>
-      //         </Layout>
-      //     </SkeletonPage>
-      // );
-
+      });
       var pageMarkup = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         path: window.Laravel.relativePath + '/dashboard',
         component: _Dashboard__WEBPACK_IMPORTED_MODULE_7__["default"]
@@ -92118,7 +92103,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var initialValue = [2000, 4000];
+var initialValue = [0, 5000];
 var min = 0;
 var max = 5000;
 var prefix = '$';
@@ -92202,6 +92187,7 @@ function (_Component) {
 
       var self = _assertThisInitialized(_this);
 
+      var page = _this.state.activePage;
       var newState = self.state;
       newState[key] = value;
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
@@ -92235,38 +92221,89 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleRangeSliderChange", function (value) {
+      var page = _this.state.activePage;
+      if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
+      var timeOutId = setTimeout(function () {
+        _this.loadPage(page);
+      }, 2000);
+
       _this.setState({
         rangeValue: value,
-        intermediateTextFieldValue: value
+        intermediateTextFieldValue: value,
+        timeOutId: timeOutId
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleLowerTextFieldChange", function (value) {
+      var page = _this.state.activePage;
+      if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
+      var timeOutId = setTimeout(function () {
+        _this.loadPage(page);
+      }, 2000);
+
       _this.setState({
         intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
           return index === 0 ? parseInt(value, 10) : item;
-        })
+        }),
+        timeOutId: timeOutId
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleUpperTextFieldChange", function (value) {
+      var page = _this.state.activePage;
+      if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
+      var timeOutId = setTimeout(function () {
+        _this.loadPage(page);
+      }, 2000);
+
       _this.setState({
         intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
           return index === 1 ? parseInt(value, 10) : item;
-        })
+        }),
+        timeOutId: timeOutId
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleLowerTextFieldBlur", function (value) {
+    _defineProperty(_assertThisInitialized(_this), "handleLowerTextFieldBlur", function () {
       _this.setState({
-        rangeValue: [parseInt(_this.state.rangeValue[1], 10), _this.state.intermediateTextFieldValue[0]]
+        rangeValue: [parseInt(_this.state.intermediateTextFieldValue[0], 10), _this.state.rangeValue[1]]
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleUpperTextFieldBlur", function (value) {
+    _defineProperty(_assertThisInitialized(_this), "handleUpperTextFieldBlur", function () {
       _this.setState({
         rangeValue: [_this.state.rangeValue[0], parseInt(_this.state.intermediateTextFieldValue[1], 10)]
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleEnterKeyPress", function (event) {
+      var newValue = _this.state.intermediateTextFieldValue;
+      var oldValue = _this.state.rangeValue;
+      var page = _this.state.activePage;
+
+      if (event.keyCode === _shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Key"].Enter && newValue !== oldValue) {
+        if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
+        var timeOutId = setTimeout(function () {
+          _this.loadPage(page);
+        }, 2000);
+
+        _this.setState({
+          rangeValue: newValue,
+          timeOutId: timeOutId
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSearch", function (key, value) {
+      var _this$setState;
+
+      var page = _this.state.activePage;
+      if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
+      var timeOutId = setTimeout(function () {
+        _this.loadPage(page);
+      }, 1000);
+
+      _this.setState((_this$setState = {}, _defineProperty(_this$setState, key, value), _defineProperty(_this$setState, "timeOutId", timeOutId), _this$setState));
     });
 
     _this.state = {
@@ -92288,11 +92325,6 @@ function (_Component) {
       rangeValue: initialValue,
       intermediateTextFieldValue: initialValue
     };
-    _this.setSelected = _this.setSelected.bind(_assertThisInitialized(_this));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleRemove = _this.handleRemove.bind(_assertThisInitialized(_this));
-    _this.handleFiltersClearAll = _this.handleFiltersClearAll.bind(_assertThisInitialized(_this));
-    _this.handleFilter = _this.handleFilter.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -92308,7 +92340,23 @@ function (_Component) {
     value: function loadPage(page) {
       var _this2 = this;
 
-      fetch('http://localhost:8888/api/getCustomer?page=' + page).then(function (response) {
+      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      fetch('http://localhost:8888/api/getCustomer?page=' + page, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text-plain, */*",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          rangeValue: this.state.rangeValue,
+          name: this.state.availability,
+          price: this.state.productType,
+          tagwith: this.state.taggedWith,
+          queryValue: this.state.queryValue
+        })
+      }).then(function (response) {
         return response.json();
       }).then(function (response) {
         var datas = response.count.data;
@@ -92402,7 +92450,7 @@ function (_Component) {
             return _this3.handleChange('taggedWith', value);
           }
         }),
-        shortcut: true
+        shortcut: false
       }, {
         key: 'availability',
         label: 'Name',
@@ -92431,7 +92479,7 @@ function (_Component) {
           },
           allowMultiple: true
         }),
-        shortcut: true
+        shortcut: false
       }, {
         key: 'productType',
         label: 'Price range',
@@ -92510,29 +92558,6 @@ function (_Component) {
         },
         disclosure: true
       }, "Filter");
-      var filterControl = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Filters"], {
-        queryValue: queryValue,
-        filters: filters,
-        appliedFilters: appliedFilters,
-        onQueryChange: function onQueryChange(queryValue) {
-          return _this3.handleChange('queryValue', queryValue);
-        },
-        onQueryClear: function onQueryClear() {
-          return _this3.handleRemove('queryValue');
-        },
-        onClearAll: this.handleFiltersClearAll
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
-        active: popoverActive,
-        activator: activator,
-        onClose: this.togglePopoverActive
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["OptionList"], {
-        title: "Choose Customer",
-        onChange: function onChange(selected) {
-          return _this3.setSelected(selected);
-        },
-        options: op,
-        selected: selected
-      }))));
       var rows = sortedRows.map(function (value) {
         return [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "name_pr"
@@ -92551,25 +92576,31 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], {
         fullWidth: true,
         title: "Wishlist"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["ResourceList"], {
-        items: items,
-        renderItem: renderItem,
-        sortValue: sortValue,
-        sortOptions: [{
-          label: 'Sort Product',
-          value: ''
-        }, {
-          label: 'Sort Count ASC',
-          value: 'ASC'
-        }, {
-          label: 'Sort Count DESC',
-          value: 'DESC'
-        }],
-        onSortChange: function onSortChange(sortValue) {
-          return _this3.handleChange('sortValue', sortValue);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"].Section, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Filters"], {
+        queryValue: queryValue,
+        filters: filters,
+        appliedFilters: appliedFilters,
+        onQueryChange: function onQueryChange(queryValue) {
+          return _this3.handleSearch('queryValue', queryValue);
         },
-        filterControl: filterControl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RangeSlider"], {
+        onQueryClear: function onQueryClear() {
+          return _this3.handleRemove('queryValue');
+        },
+        onClearAll: this.handleFiltersClearAll
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
+        active: popoverActive,
+        activator: activator,
+        onClose: this.togglePopoverActive
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["OptionList"], {
+        title: "Choose Customer",
+        onChange: function onChange(selected) {
+          return _this3.setSelected(selected);
+        },
+        options: op,
+        selected: selected
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"].Section, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onKeyDown: this.handleEnterKeyPress
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RangeSlider"], {
         output: true,
         label: "Money spent is between",
         value: rangeValue,
@@ -92591,8 +92622,8 @@ function (_Component) {
         min: min,
         max: max,
         step: step,
-        onChange: function onChange(lowerTextFieldValue) {
-          return _this3.handleLowerTextFieldChange(lowerTextFieldValue);
+        onChange: function onChange(value) {
+          return _this3.handleLowerTextFieldChange(value);
         },
         onBlur: this.handleLowerTextFieldBlur
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextField"], {
@@ -92607,7 +92638,7 @@ function (_Component) {
           return _this3.handleUpperTextFieldChange(value);
         },
         onBlur: this.handleUpperTextFieldBlur
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["DataTable"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["DataTable"], {
         columnContentTypes: ['text', 'text', 'numeric', 'numeric'],
         headings: ['Product', 'Handle', 'Price', 'Count'],
         rows: rows,
@@ -92627,6 +92658,24 @@ function (_Component) {
         onChange: function onChange(activePage) {
           return _this3.handlePageChange(activePage);
         }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["ResourceList"], {
+        items: items,
+        renderItem: renderItem,
+        sortValue: sortValue,
+        sortOptions: [{
+          label: 'Sort Product',
+          value: ''
+        }, {
+          label: 'Sort Count ASC',
+          value: 'ASC'
+        }, {
+          label: 'Sort Count DESC',
+          value: 'DESC'
+        }],
+        onSortChange: function onSortChange(sortValue) {
+          return _this3.handleChange('sortValue', sortValue);
+        } // filterControl={filterControl}
+
       })));
 
       function renderItem(item) {

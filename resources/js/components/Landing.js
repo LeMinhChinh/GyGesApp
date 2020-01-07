@@ -2,26 +2,25 @@ import React, { Component } from 'react'
 import {
     Card,
     ResourceList,
-    Avatar,
     ResourceItem,
     TextStyle,
     Filters,
     TextField,
     Button,
-    Layout,
     Popover,
     OptionList,
     Page,
     DataTable,
     ChoiceList,
     RangeSlider,
-    Stack
+    Stack,
+    Key
 } from '@shopify/polaris'
 import '../wishlist.css'
 import CurrencyFormat from 'react-currency-format';
 import Pagination from "react-js-pagination";
 
-const initialValue = [2000, 4000];
+const initialValue = [0, 5000];
 const min = 0;
 const max = 5000;
 const prefix = '$';
@@ -49,11 +48,6 @@ export default class Landing extends Component{
             rangeValue: initialValue,
             intermediateTextFieldValue: initialValue
         }
-        this.setSelected = this.setSelected.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleRemove = this.handleRemove.bind(this)
-        this.handleFiltersClearAll = this.handleFiltersClearAll.bind(this)
-        this.handleFilter = this.handleFilter.bind(this)
     }
 
     componentDidMount(){
@@ -63,7 +57,23 @@ export default class Landing extends Component{
     }
 
     loadPage(page){
-        fetch('http://localhost:8888/api/getCustomer?page='+page)
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        fetch('http://localhost:8888/api/getCustomer?page='+page,{
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json, text-plain, */*",
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRF-TOKEN": token
+            },
+            body: JSON.stringify({
+                rangeValue: this.state.rangeValue,
+                name: this.state.availability,
+                price: this.state.productType,
+                tagwith: this.state.taggedWith,
+                queryValue: this.state.queryValue
+            })
+        })
         .then((response) => response.json())
         .then((response) => {
             let datas = response.count.data
@@ -175,6 +185,7 @@ export default class Landing extends Component{
 
     handleChange = (key, value) => {
         var self = this;
+        var page = this.state.activePage
         var newState = self.state;
         newState[key] = value;
         if(this.state.timeOutId)
@@ -212,50 +223,107 @@ export default class Landing extends Component{
     }
 
     handlePageChange = (activePage) => {
-        this.setState({activePage});
+        this.setState({activePage})
         this.loadPage(activePage)
     }
 
     handleRangeSliderChange = (value) => {
+        var page = this.state.activePage
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+        var timeOutId = setTimeout(() => {
+            this.loadPage(page)
+        }, 2000);
+
         this.setState({
             rangeValue: value,
-            intermediateTextFieldValue: value
+            intermediateTextFieldValue: value,
+            timeOutId: timeOutId
         })
     }
 
     handleLowerTextFieldChange = (value) => {
+        var page = this.state.activePage
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+        var timeOutId = setTimeout(() => {
+            this.loadPage(page)
+        }, 2000);
+
 		this.setState({
 			intermediateTextFieldValue: this.state.intermediateTextFieldValue.map(
 				(item, index) => (index === 0 ? parseInt(value, 10) : item)
-			)
+            ),
+            timeOutId: timeOutId
 		});
 	};
 
 	handleUpperTextFieldChange = (value) => {
+        var page = this.state.activePage
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+        var timeOutId = setTimeout(() => {
+            this.loadPage(page)
+        }, 2000);
+
 		this.setState({
 			intermediateTextFieldValue: this.state.intermediateTextFieldValue.map(
 				(item, index) => (index === 1 ? parseInt(value, 10) : item)
-			)
+            ),
+            timeOutId: timeOutId
 		});
     };
 
-    handleLowerTextFieldBlur = (value) => {
+    handleLowerTextFieldBlur = () => {
 		this.setState({
 			rangeValue: [
-				parseInt(this.state.rangeValue[1], 10),
-				this.state.intermediateTextFieldValue[0]
-			]
+                parseInt(this.state.intermediateTextFieldValue[0],10),
+                this.state.rangeValue[1]
+            ]
 		});
 	};
 
-	handleUpperTextFieldBlur = (value) => {
+	handleUpperTextFieldBlur = () => {
 		this.setState({
 			rangeValue: [
 				this.state.rangeValue[0],
 				parseInt(this.state.intermediateTextFieldValue[1], 10)
-			]
+            ]
 		});
-	};
+    };
+
+    handleEnterKeyPress = (event) => {
+		let newValue = this.state.intermediateTextFieldValue;
+        let oldValue = this.state.rangeValue;
+        var page = this.state.activePage
+		if (event.keyCode === Key.Enter && newValue !== oldValue) {
+            if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+            var timeOutId = setTimeout(() => {
+                this.loadPage(page)
+            }, 2000);
+			this.setState({
+                rangeValue: newValue,
+                timeOutId: timeOutId
+			});
+		}
+    };
+
+    handleSearch = (key,value) => {
+        var page = this.state.activePage
+
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+        var timeOutId = setTimeout(() => {
+            this.loadPage(page)
+        }, 1000);
+        this.setState({[key]: value, timeOutId: timeOutId})
+    }
 
     render(){
         const{
@@ -297,7 +365,7 @@ export default class Landing extends Component{
                     onChange={(value) => this.handleChange('taggedWith',value)}
                 />
               ),
-              shortcut: true,
+              shortcut: false,
             },
             {
                 key: 'availability',
@@ -318,7 +386,7 @@ export default class Landing extends Component{
                     allowMultiple
                   />
                 ),
-                shortcut: true,
+                shortcut: false,
               },
               {
                 key: 'productType',
@@ -389,34 +457,6 @@ export default class Landing extends Component{
               Filter
             </Button>
         );
-        const filterControl = (
-            <Filters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={(queryValue) => this.handleChange('queryValue',queryValue)}
-              onQueryClear={() => this.handleRemove('queryValue')}
-              onClearAll={this.handleFiltersClearAll}
-            >
-                <div>
-                    <Popover
-                        active={popoverActive}
-                        activator={activator}
-                        onClose={this.togglePopoverActive}
-                    >
-                        <OptionList
-                        title="Choose Customer"
-                        onChange={(selected) => this.setSelected(selected)}
-                        options={
-                            op
-                        }
-                        selected={selected}
-                        />
-                    </Popover>
-                </div>
-
-            </Filters>
-        );
 
         const rows = sortedRows.map((value) => {
             return (
@@ -445,56 +485,76 @@ export default class Landing extends Component{
                 title="Wishlist"
             >
                 <Card>
-                    <ResourceList
-                        items={items}
-                        renderItem={renderItem}
-                        sortValue={sortValue}
-                        sortOptions={[
-                            {label: 'Sort Product', value: ''},
-                            {label: 'Sort Count ASC', value: 'ASC'},
-                            {label: 'Sort Count DESC', value: 'DESC'}
-                        ]}
-                        onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
-                        filterControl={filterControl}
-                    />
-                </Card>
-                <Card>
-
-                <RangeSlider
-                    output
-                    label="Money spent is between"
-                    value={rangeValue}
-                    prefix={prefix}
-                    min={min}
-                    max={max}
-                    step={step}
-                    onChange={(rangeValue) => this.handleRangeSliderChange(rangeValue)}
-                />
-                <Stack distribution="equalSpacing" spacing="extraLoose">
-                <TextField
-                    label="Min money spent"
-                    type="number"
-                    value={`${lowerTextFieldValue}`}
-                    prefix={prefix}
-                    min={min}
-                    max={max}
-                    step={step}
-                    onChange={(lowerTextFieldValue) => this.handleLowerTextFieldChange(lowerTextFieldValue)}
-                    onBlur={this.handleLowerTextFieldBlur}
-                />
-                <TextField
-                    label="Max money spent"
-                    type="number"
-                    value={`${upperTextFieldValue}`}
-                    prefix={prefix}
-                    min={min}
-                    max={max}
-                    step={step}
-                    onChange={(value) => this.handleUpperTextFieldChange(value)}
-                    onBlur={this.handleUpperTextFieldBlur}
-                />
-                </Stack>
-
+                    <Card.Section>
+                        <Filters
+                            queryValue={queryValue}
+                            filters={filters}
+                            appliedFilters={appliedFilters}
+                            onQueryChange={(queryValue) => this.handleSearch('queryValue',queryValue)}
+                            onQueryClear={() => this.handleRemove('queryValue')}
+                            onClearAll={this.handleFiltersClearAll}
+                            >
+                                {/* <div>
+                                    <Button onClick={this.handleSearch}>
+                                    Search
+                                    </Button>
+                                </div> */}
+                                <div>
+                                    <Popover
+                                        active={popoverActive}
+                                        activator={activator}
+                                        onClose={this.togglePopoverActive}
+                                    >
+                                        <OptionList
+                                        title="Choose Customer"
+                                        onChange={(selected) => this.setSelected(selected)}
+                                        options={
+                                            op
+                                        }
+                                        selected={selected}
+                                        />
+                                    </Popover>
+                                </div>
+                        </Filters>
+                    </Card.Section>
+                    <Card.Section>
+                        <div onKeyDown={this.handleEnterKeyPress}>
+                            <RangeSlider
+                                output
+                                label="Money spent is between"
+                                value={rangeValue}
+                                prefix={prefix}
+                                min={min}
+                                max={max}
+                                step={step}
+                                onChange={(rangeValue) => this.handleRangeSliderChange(rangeValue)}
+                            />
+                            <Stack distribution="equalSpacing" spacing="extraLoose">
+                            <TextField
+                                label="Min money spent"
+                                type="number"
+                                value={`${lowerTextFieldValue}`}
+                                prefix={prefix}
+                                min={min}
+                                max={max}
+                                step={step}
+                                onChange={(value) => this.handleLowerTextFieldChange(value)}
+                                onBlur={this.handleLowerTextFieldBlur}
+                            />
+                            <TextField
+                                label="Max money spent"
+                                type="number"
+                                value={`${upperTextFieldValue}`}
+                                prefix={prefix}
+                                min={min}
+                                max={max}
+                                step={step}
+                                onChange={(value) => this.handleUpperTextFieldChange(value)}
+                                onBlur={this.handleUpperTextFieldBlur}
+                            />
+                            </Stack>
+                        </div>
+                    </Card.Section>
                     <DataTable
                         columnContentTypes={[
                             'text',
@@ -524,6 +584,20 @@ export default class Landing extends Component{
                         totalItemsCount={this.state.totalItems}
                         // pageRangeDisplayed={5}
                         onChange={(activePage) => this.handlePageChange(activePage)}
+                    />
+                </Card>
+                <Card>
+                    <ResourceList
+                        items={items}
+                        renderItem={renderItem}
+                        sortValue={sortValue}
+                        sortOptions={[
+                            {label: 'Sort Product', value: ''},
+                            {label: 'Sort Count ASC', value: 'ASC'},
+                            {label: 'Sort Count DESC', value: 'DESC'}
+                        ]}
+                        onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
+                        // filterControl={filterControl}
                     />
                 </Card>
             </Page>

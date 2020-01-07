@@ -21,9 +21,27 @@ class ShopController extends Controller
     public function getCustomer(Request $request, Shop $shop)
     {
         $page = $request->page;
+        $rangeValue = $request->rangeValue;
+
+        $name = $request->name ? $request->name : null;
+        $price = $request->price ? $request->price : null;
+        $tagwith = $request->tagwith ? $request->tagwith : null;
+        $queryValue = $request->queryValue ? $request->queryValue : null;
+
         $s = $shop->getCurrentShop();
-        $sortCount = $shop->getCountProduct($s->id, $page);
         $idCus = $shop->getIdCustomerByIdShop($s->id);
+
+        if($name != null && $price != null && $tagwith != null){
+            $sortCount = $shop->filterDataProduct($s->id, $name, $price, $tagwith, $page);
+        }
+
+        if($rangeValue) {
+            $sortCount = $shop->getCountProduct($s->id,$rangeValue[0],$rangeValue[1], $page);
+        }
+
+        if($queryValue){
+            $sortCount = $shop->getQueryValue($s->id,$queryValue,$page);
+        }
 
         return response()->json([
             'idCus' => $idCus,

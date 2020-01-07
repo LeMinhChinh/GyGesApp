@@ -95,7 +95,6 @@ export default class Setting extends Component{
         var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         let {shop} = this.state
 
-
         fetch('http://localhost:8888/api/saveSettings',{
             method: 'POST',
             headers: {

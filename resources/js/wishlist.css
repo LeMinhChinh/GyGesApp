@@ -68,3 +68,6 @@ ul.pagination a:hover{
 ul.pagination li:hover{
     background-color: #eee;
 }
+button.Polaris-Button{
+    width: 80px;
+}

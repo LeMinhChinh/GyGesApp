@@ -40,7 +40,7 @@ Route::group([
 ], function () {
     Route::get('getProducts','ShopController@getProducts');
     Route::post('filterProducts','ShopController@filterProducts');
-    Route::get('getCustomer','ShopController@getCustomer');
+    Route::post('getCustomer','ShopController@getCustomer');
     Route::get('getWishlist','ShopController@getWishlist');
     Route::post('sortCountProduct','ShopController@sortCountProduct');
     Route::post('filterajax','ShopController@filterajax');

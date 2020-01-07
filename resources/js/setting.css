@@ -147,3 +147,7 @@ h2.Polaris-Heading{
 .Polaris-Layout__AnnotationDescription p{
     font-size: 13px;
 }
+
+button.Polaris-Button.Polaris-Button--fullWidth{
+    width: 200px;
+}

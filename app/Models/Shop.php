@@ -87,15 +87,16 @@ class Shop extends Model
         return $data;
     }
 
-    public function getCountProduct($id, $page)
+    public function getCountProduct($id,$p1, $p2, $page)
     {
         $data = DB::table('shops AS s')
                     ->join('products AS p','p.shop_id','=','s.id')
                     ->join('customer_product as cp','cp.product_id','=','p.id_product')
                     ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
-                    ->where('s.id',$id)
                     ->groupby('cp.product_id')
-                    ->paginate(2, ['*'], 'page', $page);
+                    ->where('s.id',$id)
+                    ->whereBetween('p.price',[$p1, $p2])
+                    ->paginate(4, ['*'], 'page', $page);
         return $data;
     }
 
@@ -109,6 +110,19 @@ class Shop extends Model
                     ->groupby('cp.product_id')
                     ->orderby('count_id',$key)
                     ->get();
+        return $data;
+    }
+
+    public function getQueryValue($id, $query,$page)
+    {
+        $data = DB::table('shops AS s')
+                    ->join('products AS p','p.shop_id','=','s.id')
+                    ->join('customer_product as cp','cp.product_id','=','p.id_product')
+                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->groupby('cp.product_id')
+                    ->where('s.id',$id)
+                    ->where('p.name','like','%'.$query.'%')
+                    ->paginate(4, ['*'], 'page', $page);
         return $data;
     }
 
@@ -135,7 +149,7 @@ class Shop extends Model
                             $data = $data->where('p.price','<=',$price[1]);
                         }
                     }
-                    $data = $data->paginate(2, ['*'], 'page', $page);
+                    $data = $data->paginate(4, ['*'], 'page', $page);
         return $data;
     }
 }

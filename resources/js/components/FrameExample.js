@@ -153,23 +153,6 @@ export default class FrameExample extends Component{
             />
         );
 
-        // const pageMarkup = isLoading ? loadingPageMarkup : actualPageMarkup;
-
-        // const loadingPageMarkup = (
-        //     <SkeletonPage>
-        //         <Layout>
-        //             <Layout.Section>
-        //                 <Card sectioned>
-        //                     <TextContainer>
-        //                         <SkeletonDisplayText size="small"/>
-        //                         <SkeletonBodyText lines={9}/>
-        //                     </TextContainer>
-        //                 </Card>
-        //             </Layout.Section>
-        //         </Layout>
-        //     </SkeletonPage>
-        // );
-
         const pageMarkup = (
             <Switch>
                 <Route path={window.Laravel.relativePath + '/dashboard'} component={Dashboard} />
