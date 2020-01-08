@@ -148,6 +148,11 @@ class ProductController extends Controller
         ]);
     }
 
+    public function removeWishlist(Request $request)
+    {
+        dd($request->all());
+    }
+
     /**
      * Update the specified resource in storage.
      *

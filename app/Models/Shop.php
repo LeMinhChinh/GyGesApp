@@ -87,6 +87,16 @@ class Shop extends Model
         return $data;
     }
 
+    public function getSetting($urlShop)
+    {
+        $data = DB::table('shops AS s')
+                    ->select('st.setting')
+                    ->join('setting AS st','st.id_shop','=','s.id')
+                    ->where('s.url',$urlShop)
+                    ->get();
+        return $data[0]->setting;
+    }
+
     public function getCountProduct($id,$p1, $p2, $page)
     {
         $data = DB::table('shops AS s')

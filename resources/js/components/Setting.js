@@ -128,11 +128,11 @@ export default class Setting extends Component{
             activeColor3,
         } = this.state
 
-        const rd1 = <div className="bgcRadioButton"><i className="far fa-heart"></i><span>ADD TO WISHLIST</span></div>
-        const rd2 = <div className="bgcRadioButton"><span>ADD TO WISHLIST</span></div>
-        const rd3 = <div className="RadioButton"><i className="far fa-heart"></i><span>ADD TO WISHLIST</span></div>
-        const rd4 = <div className="RadioButton"><span>ADD TO WISHLIST</span></div>
-        const rd5 = <div className="RadioButton"><i className="far fa-heart"></i><span style={{ color:'#fff' }}>ADD TO WISHLIST</span></div>
+        const rd1 = <div className="bgcRadioButton"><i className="far fa-heart"></i><span>ADD TO CART</span></div>
+        const rd2 = <div className="bgcRadioButton"><span>ADD TO CART</span></div>
+        const rd3 = <div className="RadioButton"><i className="far fa-heart"></i><span>ADD TO CART</span></div>
+        const rd4 = <div className="RadioButton"><span>ADD TO CART</span></div>
+        const rd5 = <div className="RadioButton"><i className="far fa-heart"></i><span style={{ color:'#fff' }}>ADD TO CART</span></div>
         const divColor1 = <div className="color" onClick={() => this.handleToogle(!activeColor1, 'activeColor1')}><div
             style={{
                 width: '25px',
@@ -187,33 +187,33 @@ export default class Setting extends Component{
                                         <FormLayout.Group>
                                             <RadioButton
                                                 label={rd1}
-                                                checked={data.value === 'rd1' }
-                                                onChange={() => this.handleChange('rd1','value')}
+                                                checked={data.value === '<div class="bgcRadioButton" style="background-color:'+data.valueColor+'"><a><i class="fa fa-heart"></i><span>ADD TO CART</span></a></div>' }
+                                                onChange={() => this.handleChange('<div class="bgcRadioButton" style="background-color:'+data.valueColor+'"><a><i class="fa fa-heart"></i><span>ADD TO CART</span></a></div>','value')}
                                             />
                                             <RadioButton
                                             label={rd2}
-                                            checked={data.value === 'rd2'}
-                                            onChange={() => this.handleChange('rd2','value')}
+                                            checked={data.value === '<div class="bgcRadioButton" style="background-color:'+data.valueColor+'"><a><span>ADD TO CART</span></a></div>'}
+                                            onChange={() => this.handleChange('<div class="bgcRadioButton" style="background-color:'+data.valueColor+'"><a><span>ADD TO CART</span></a></div>','value')}
 
                                             />
                                         </FormLayout.Group>
                                         <FormLayout.Group>
                                             <RadioButton
                                                 label={rd3}
-                                                checked={data.value === 'rd3'}
-                                                onChange={() => this.handleChange('rd3','value')}
+                                                checked={data.value === '<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><i className="fa fa-heart"></i><span>ADD TO CART</span></a></div>'}
+                                                onChange={() => this.handleChange('<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><i className="fa fa-heart"></i><span>ADD TO CART</span></a></div>','value')}
                                             />
                                             <RadioButton
                                             label={rd4}
-                                            checked={data.value === 'rd4'}
-                                            onChange={() => this.handleChange('rd4','value')}
+                                            checked={data.value === '<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><span>ADD TO CART</span></a></div>'}
+                                            onChange={() => this.handleChange('<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><span>ADD TO CART</span></a></div>','value')}
                                             />
                                         </FormLayout.Group>
                                         <FormLayout.Group>
                                             <RadioButton
                                                 label={rd5}
-                                                checked={data.value === 'rd5'}
-                                                onChange={() => this.handleChange('rd5','value')}
+                                                checked={data.value === '<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>'}
+                                                onChange={() => this.handleChange('<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>','value')}
                                             />
                                         </FormLayout.Group>
                                         <div>

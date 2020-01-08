@@ -92869,18 +92869,18 @@ function (_Component) {
         className: "bgcRadioButton"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-heart"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO WISHLIST"));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"));
       var rd2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bgcRadioButton"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO WISHLIST"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"));
       var rd3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "RadioButton"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-heart"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO WISHLIST"));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"));
       var rd4 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "RadioButton"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO WISHLIST"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"));
       var rd5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "RadioButton"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -92889,7 +92889,7 @@ function (_Component) {
         style: {
           color: '#fff'
         }
-      }, "ADD TO WISHLIST"));
+      }, "ADD TO CART"));
       var divColor1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "color",
         onClick: function onClick() {
@@ -92962,33 +92962,33 @@ function (_Component) {
         id: "basic-collapsible"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Wishlist Button Type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["FormLayout"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RadioButton"], {
         label: rd1,
-        checked: data.value === 'rd1',
+        checked: data.value === '<div class="bgcRadioButton" style="background-color:' + data.valueColor + '"><a><i class="fa fa-heart"></i><span>ADD TO CART</span></a></div>',
         onChange: function onChange() {
-          return _this.handleChange('rd1', 'value');
+          return _this.handleChange('<div class="bgcRadioButton" style="background-color:' + data.valueColor + '"><a><i class="fa fa-heart"></i><span>ADD TO CART</span></a></div>', 'value');
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RadioButton"], {
         label: rd2,
-        checked: data.value === 'rd2',
+        checked: data.value === '<div class="bgcRadioButton" style="background-color:' + data.valueColor + '"><a><span>ADD TO CART</span></a></div>',
         onChange: function onChange() {
-          return _this.handleChange('rd2', 'value');
+          return _this.handleChange('<div class="bgcRadioButton" style="background-color:' + data.valueColor + '"><a><span>ADD TO CART</span></a></div>', 'value');
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["FormLayout"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RadioButton"], {
         label: rd3,
-        checked: data.value === 'rd3',
+        checked: data.value === '<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><i className="fa fa-heart"></i><span>ADD TO CART</span></a></div>',
         onChange: function onChange() {
-          return _this.handleChange('rd3', 'value');
+          return _this.handleChange('<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><i className="fa fa-heart"></i><span>ADD TO CART</span></a></div>', 'value');
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RadioButton"], {
         label: rd4,
-        checked: data.value === 'rd4',
+        checked: data.value === '<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><span>ADD TO CART</span></a></div>',
         onChange: function onChange() {
-          return _this.handleChange('rd4', 'value');
+          return _this.handleChange('<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><span>ADD TO CART</span></a></div>', 'value');
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["FormLayout"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["RadioButton"], {
         label: rd5,
-        checked: data.value === 'rd5',
+        checked: data.value === '<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>',
         onChange: function onChange() {
-          return _this.handleChange('rd5', 'value');
+          return _this.handleChange('<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>', 'value');
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextField"], {
         label: "Pick a color of the button/icon before user has added to their Wishlist",

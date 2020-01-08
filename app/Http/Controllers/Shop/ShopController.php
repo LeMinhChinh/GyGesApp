@@ -71,9 +71,11 @@ class ShopController extends Controller
         $idCus = $request->customerId;
 
         $wishlist = $shop->getDataWishlist($url, $idCus);
+        $setting = $shop->getSetting($url);
 
         return response()->json([
-            'wishlist' => $wishlist
+            'wishlist' => $wishlist,
+            'setting' => $setting
         ]);
     }
 
