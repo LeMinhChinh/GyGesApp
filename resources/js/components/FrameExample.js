@@ -27,20 +27,8 @@ import {
     SkeletonDisplayText
 } from '@shopify/polaris';
 import {
-    EmbedMinor,
     ArrowLeftMinor,
     HomeMajorMonotone,
-    CalendarMajorMonotone,
-    ProductsMajorMonotone,
-    NoteMajorMonotone,
-    ProfileMajorMonotone,
-    BillingStatementDollarMajorMonotone,
-    SettingsMajorMonotone,
-    ChatMajorMonotone,
-    CircleDisabledMajorMonotone,
-    LocationMajorMonotone,
-    EmailMajorMonotone,
-    FormsMajorMonotone,
     OrdersMajorTwotone,
     ConversationMinor
 } from "@shopify/polaris-icons";

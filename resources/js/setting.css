@@ -6,7 +6,7 @@
 .bgcRadioButton{
     height: 50px;
     background-color: rgb(238, 73, 31);
-    margin: -10px 10px;
+    /* margin: -10px 10px; */
     font-size: 1.4rem;
     width: 200px;
     color: #fff;

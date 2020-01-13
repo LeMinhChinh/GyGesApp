@@ -13,6 +13,7 @@ import {
     RadioButton,
     Select,
     TextStyle,
+    ChoiceList,
 } from '@shopify/polaris'
 import { SketchPicker } from 'react-color'
 import '../setting.css'
@@ -52,21 +53,12 @@ export default class Setting extends Component{
                 status_image: false,
                 status_price: false,
                 status_avai: false,
-                status_action: false
+                status_action: false,
+                select: "icon_txtbg"
             },
             shop: [],
             dtSetting: []
         }
-    }
-
-    handleChange = (value, key) => {
-        let {data} = this.state
-        data[key] = value
-        this.setState({data})
-    }
-
-    handleToogle = (value, key) => {
-        this.setState({[key]: value})
     }
 
     componentDidMount = () => {
@@ -88,6 +80,17 @@ export default class Setting extends Component{
                 data:settings
             })
         });
+    }
+
+    handleChange = (value, key) => {
+        console.log(value)
+        let {data} = this.state
+        data[key] = value
+        this.setState({data})
+    }
+
+    handleToogle = (value, key) => {
+        this.setState({[key]: value})
     }
 
     handleSubmit = () => {
@@ -114,7 +117,6 @@ export default class Setting extends Component{
                 alert('Success')
             }
         })
-
     }
 
     render = () => {
@@ -125,7 +127,7 @@ export default class Setting extends Component{
             status,
             activeColor1,
             activeColor2,
-            activeColor3,
+            activeColor3
         } = this.state
 
         const rd1 = <div className="bgcRadioButton"><i className="far fa-heart"></i><span>ADD TO CART</span></div>
@@ -162,6 +164,7 @@ export default class Setting extends Component{
             {label: 'Bottom Left', value: 'bt_left'},
             {label: 'Bottom Center', value: 'bt_center'},
         ];
+
         return (
             <AppProvider>
                 <Page
@@ -216,6 +219,33 @@ export default class Setting extends Component{
                                                 onChange={() => this.handleChange('<div class="RadioButton" style="background-color:'+data.valueColor+'"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>','value')}
                                             />
                                         </FormLayout.Group>
+                                        <FormLayout.Group>
+                                            <ChoiceList
+                                                title="Wishlist buton type"
+                                                choices={[
+                                                    {
+                                                        label: <div className="bgcRadioButton" style={{ backgroundColor: data.valueColor, color: data.valueColor2}}><a><i className="fa fa-heart"></i><span>ADD TO CART</span></a></div>,
+                                                        value: 'icon_txtbg'
+                                                    },
+                                                    {
+                                                        label: <div className="bgcRadioButton" style={{ backgroundColor: data.valueColor, color: data.valueColor2 }}><a><span>ADD TO CART</span></a></div>,
+                                                        value: 'txt_bg' },
+                                                    {
+                                                        label: <div className="RadioButton" style={{ color: data.valueColor2 }}><a><i className="fa fa-heart"></i><span>ADD TO CART</span></a></div>,
+                                                        value: 'icon_txt'
+                                                    },
+                                                    {
+                                                        label: <div className="RadioButton"  style={{ color: data.valueColor2 }}><a><span>ADD TO CART</span></a></div>,
+                                                        value: 'txt' },
+                                                    {
+                                                        label: <div className="RadioButton"><a><i className="fa fa-heart" style={{ color: data.valueColor2 }}></i></a></div>,
+                                                        value: 'icon'
+                                                    },
+                                                ]}
+                                                selected={data.select}
+                                                onChange={(value) => this.handleChange(value,'select')}
+                                            />
+                                        </FormLayout.Group>
                                         <div>
                                             <div>
                                                 <div>
@@ -230,7 +260,7 @@ export default class Setting extends Component{
                                                     <div className="sortColor">
                                                     <SketchPicker
                                                         color={data.valueColor}
-                                                        onChange={(color) => this.handleChange(color.hex, 'valueColor')}
+                                                        onChange={(color) => this.handleChange(color.hex,'valueColor')}
                                                     />
                                                     </div>
                                                 </div> : null}

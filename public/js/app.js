@@ -80290,7 +80290,6 @@ function (_Component) {
 
       var self = _assertThisInitialized(_this);
 
-      var page = _this.state.activePage;
       var newState = self.state;
       newState[key] = value;
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);

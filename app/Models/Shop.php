@@ -75,7 +75,7 @@ class Shop extends Model
         return $data;
     }
 
-    public function getDataWishlist($urlShop, $idCus)
+    public function getDataWishlist($urlShop, $idCus,$page)
     {
         $data = DB::table('shops AS s')
                     ->select('s.*','cp.customer_id','p.id AS id_pr','p.name','p.price','p.id_product','p.image')
@@ -83,7 +83,7 @@ class Shop extends Model
                     ->join('customer_product AS cp','cp.product_id','=','p.id_product')
                     ->where('s.url',$urlShop)
                     ->where('cp.customer_id',$idCus)
-                    ->get();
+                    ->paginate(4, ['*'], 'page', $page);
         return $data;
     }
 

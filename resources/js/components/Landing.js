@@ -185,7 +185,6 @@ export default class Landing extends Component{
 
     handleChange = (key, value) => {
         var self = this;
-        var page = this.state.activePage
         var newState = self.state;
         newState[key] = value;
         if(this.state.timeOutId)

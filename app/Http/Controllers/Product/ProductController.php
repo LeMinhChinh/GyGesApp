@@ -133,18 +133,19 @@ class ProductController extends Controller
 
         $data_product = CustomerProduct::where('product_id',$idPro)->get();
         $product = Product::where('id_product',$idPro)->first();
-        if(!empty($data_product)){
+        if(isset($data_product) && count($data_product) == 0){
             $product->delete();
         }
 
         $data_cus = CustomerProduct::where('customer_id',$cusId)->get();
         $customer = Customer::where('id_customer',$cusId)->first();
-        if(!empty($data_cus)){
+        if(isset($data_cus) && count($data_cus) == 0){
             $customer->delete();
         }
 
         return response()->json([
-            'status' => true
+            'status' => true,
+            'idPr' => $idPro
         ]);
     }
 

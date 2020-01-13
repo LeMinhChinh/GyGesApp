@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\CustomerProduct;
+
 class ShopController extends Controller
 {
     public function getProducts(Request $request,Shop $shop){
@@ -69,8 +70,18 @@ class ShopController extends Controller
     {
         $url = $request->shopUrl;
         $idCus = $request->customerId;
+        $page = $request->page;
+        $config = array(
+            'ShopUrl' => $url,
+            'ApiKey' => '40dc710e896fbfe26caa80f6744e8f11',
+            'Password' => '500b7ee9953b52e5a35ba8bda189d647',
+        );
+        $shopify = new \PHPShopify\ShopifySDK($config);
+        $products = $shopify->Product->get();
+        $customers = $shopify->Customer($idCus);
+        dd($products, $customers);
 
-        $wishlist = $shop->getDataWishlist($url, $idCus);
+        $wishlist = $shop->getDataWishlist($url, $idCus, $page);
         $setting = $shop->getSetting($url);
 
         return response()->json([

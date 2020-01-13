@@ -38005,7 +38005,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".setting_wl .Polaris-Collapsible{\n    height: auto;\n    font-size: 14px;\n}\n\n.bgcRadioButton{\n    height: 50px;\n    background-color: rgb(238, 73, 31);\n    margin: -10px 10px;\n    font-size: 1.4rem;\n    width: 200px;\n    color: #fff;\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.bgcRadioButton span,\n.RadioButton span\n{\n    padding: 0 5px;\n}\n\n.RadioButton{\n    height: 50px;\n    margin: -10px 10px;\n    font-size:1.4rem;\n    width: 200px;\n    color: rgb(238, 73, 31);\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.color{\n    width: 60px;\n    height: 36px;\n    border: 1px solid #c9c9c9;\n}\n\n#PolarisTextField1Label,#PolarisTextField2Label{\n    font-size:1.4rem;\n}\n\n.sortColor{\n    position: absolute;\n    z-index: 99;\n}\n\n.posiColor{\n    position: relative;\n    z-index: 99;\n    margin-bottom: 45px;\n}\n\n.switch {\n    position: relative;\n    display: inline-block;\n    width: 70px;\n    height: 34px;\n    margin: 7px 15px\n}\n\n.switch input {\nopacity: 0;\nwidth: 0;\nheight: 0;\n}\n\n.slider {\nposition: absolute;\ncursor: pointer;\ntop: 0;\nleft: 0;\nright: 0;\nbottom: 0;\nbackground-color: #ccc;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\n.slider:before {\nposition: absolute;\ncontent: \"\";\nheight: 26px;\nwidth: 26px;\nleft: 8px;\nbottom: 4px;\nbackground-color: white;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\ninput:checked + .slider {\nbackground-color: rgb(107, 233, 34);\n}\n\ninput:focus + .slider {\nbox-shadow: 0 0 1px rgb(107, 233, 34);\n}\n\ninput:checked + .slider:before {\n-webkit-transform: translateX(26px);\ntransform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\nborder-radius: 34px;\n}\n\n.slider.round:before {\nborder-radius: 50%;\n}\n.title{\n    font-size:1.4rem;\n    color:black;\n    margin: 0;\n}\n.divSwitch{\n    height: 50px;\n    border: 1px solid #c9c9c9;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-align: center;\n            align-items: center;\n}\n\n.settingDisplay{\n    border: 1px solid #c9c9c9;\n    border-radius: 5px;\n}\n.contentDisplay{\n    padding: 15px 15px;\n}\n.upColor{\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n\nh2.Polaris-Heading{\n    font-size:16px;\n}\n\n.Polaris-Layout__AnnotationDescription p{\n    font-size: 13px;\n}\n\nbutton.Polaris-Button.Polaris-Button--fullWidth{\n    width: 200px;\n}\n", ""]);
+exports.push([module.i, ".setting_wl .Polaris-Collapsible{\n    height: auto;\n    font-size: 14px;\n}\n\n.bgcRadioButton{\n    height: 50px;\n    background-color: rgb(238, 73, 31);\n    /* margin: -10px 10px; */\n    font-size: 1.4rem;\n    width: 200px;\n    color: #fff;\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.bgcRadioButton span,\n.RadioButton span\n{\n    padding: 0 5px;\n}\n\n.RadioButton{\n    height: 50px;\n    margin: -10px 10px;\n    font-size:1.4rem;\n    width: 200px;\n    color: rgb(238, 73, 31);\n    -webkit-box-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n\n.color{\n    width: 60px;\n    height: 36px;\n    border: 1px solid #c9c9c9;\n}\n\n#PolarisTextField1Label,#PolarisTextField2Label{\n    font-size:1.4rem;\n}\n\n.sortColor{\n    position: absolute;\n    z-index: 99;\n}\n\n.posiColor{\n    position: relative;\n    z-index: 99;\n    margin-bottom: 45px;\n}\n\n.switch {\n    position: relative;\n    display: inline-block;\n    width: 70px;\n    height: 34px;\n    margin: 7px 15px\n}\n\n.switch input {\nopacity: 0;\nwidth: 0;\nheight: 0;\n}\n\n.slider {\nposition: absolute;\ncursor: pointer;\ntop: 0;\nleft: 0;\nright: 0;\nbottom: 0;\nbackground-color: #ccc;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\n.slider:before {\nposition: absolute;\ncontent: \"\";\nheight: 26px;\nwidth: 26px;\nleft: 8px;\nbottom: 4px;\nbackground-color: white;\n-webkit-transition: .4s;\ntransition: .4s;\n}\n\ninput:checked + .slider {\nbackground-color: rgb(107, 233, 34);\n}\n\ninput:focus + .slider {\nbox-shadow: 0 0 1px rgb(107, 233, 34);\n}\n\ninput:checked + .slider:before {\n-webkit-transform: translateX(26px);\ntransform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\nborder-radius: 34px;\n}\n\n.slider.round:before {\nborder-radius: 50%;\n}\n.title{\n    font-size:1.4rem;\n    color:black;\n    margin: 0;\n}\n.divSwitch{\n    height: 50px;\n    border: 1px solid #c9c9c9;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-align: center;\n            align-items: center;\n}\n\n.settingDisplay{\n    border: 1px solid #c9c9c9;\n    border-radius: 5px;\n}\n.contentDisplay{\n    padding: 15px 15px;\n}\n.upColor{\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n\nh2.Polaris-Heading{\n    font-size:16px;\n}\n\n.Polaris-Layout__AnnotationDescription p{\n    font-size: 13px;\n}\n\nbutton.Polaris-Button.Polaris-Button--fullWidth{\n    width: 200px;\n}\n", ""]);
 
 // exports
 
@@ -83518,7 +83518,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92187,7 +92187,6 @@ function (_Component) {
 
       var self = _assertThisInitialized(_this);
 
-      var page = _this.state.activePage;
       var newState = self.state;
       newState[key] = value;
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
@@ -92798,19 +92797,6 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Setting).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (value, key) {
-      var data = _this.state.data;
-      data[key] = value;
-
-      _this.setState({
-        data: data
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleToogle", function (value, key) {
-      _this.setState(_defineProperty({}, key, value));
-    });
-
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       var self = _assertThisInitialized(_this);
 
@@ -92829,6 +92815,20 @@ function (_Component) {
           data: settings
         });
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (value, key) {
+      console.log(value);
+      var data = _this.state.data;
+      data[key] = value;
+
+      _this.setState({
+        data: data
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleToogle", function (value, key) {
+      _this.setState(_defineProperty({}, key, value));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function () {
@@ -92989,6 +92989,61 @@ function (_Component) {
         checked: data.value === '<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>',
         onChange: function onChange() {
           return _this.handleChange('<div class="RadioButton" style="background-color:' + data.valueColor + '"><a><i class="fa fa-heart"></i><span style="color:#fff">ADD TO CART</span></a></div>', 'value');
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["FormLayout"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["ChoiceList"], {
+        title: "Wishlist buton type",
+        choices: [{
+          label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "bgcRadioButton",
+            style: {
+              backgroundColor: data.valueColor,
+              color: data.valueColor2
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-heart"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"))),
+          value: 'icon_txtbg'
+        }, {
+          label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "bgcRadioButton",
+            style: {
+              backgroundColor: data.valueColor,
+              color: data.valueColor2
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"))),
+          value: 'txt_bg'
+        }, {
+          label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "RadioButton",
+            style: {
+              color: data.valueColor2
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-heart"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"))),
+          value: 'icon_txt'
+        }, {
+          label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "RadioButton",
+            style: {
+              color: data.valueColor2
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ADD TO CART"))),
+          value: 'txt'
+        }, {
+          label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "RadioButton"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-heart",
+            style: {
+              color: data.valueColor2
+            }
+          }))),
+          value: 'icon'
+        }],
+        selected: data.select,
+        onChange: function onChange(value) {
+          return _this.handleChange(value, 'select');
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextField"], {
         label: "Pick a color of the button/icon before user has added to their Wishlist",
@@ -93306,7 +93361,8 @@ function (_Component) {
         status_image: false,
         status_price: false,
         status_avai: false,
-        status_action: false
+        status_action: false,
+        select: "icon_txtbg"
       },
       shop: [],
       dtSetting: []
