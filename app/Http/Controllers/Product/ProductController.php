@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Shop;
 use App\Models\CustomerProduct;
 use Illuminate\Support\Facades\Validator;
+use Log;
 
 class ProductController extends Controller
 {
@@ -128,30 +129,29 @@ class ProductController extends Controller
             ]);
         }
 
-        $cus_pro = CustomerProduct::where('customer_id',$cusId)->where('product_id',$idPro)->first();
-        $cus_pro->delete();
+        // Log::info($cusId);
+        // Log::info($idPro);
+
+        $cus_pro = CustomerProduct::where('customer_id',$cusId)->where('product_id',$idPro)->delete();
 
         $data_product = CustomerProduct::where('product_id',$idPro)->get();
-        $product = Product::where('id_product',$idPro)->first();
         if(isset($data_product) && count($data_product) == 0){
-            $product->delete();
+            $product = Product::where('id_product',$idPro)->first();
+            if($product)
+                $product->delete();
         }
 
         $data_cus = CustomerProduct::where('customer_id',$cusId)->get();
-        $customer = Customer::where('id_customer',$cusId)->first();
         if(isset($data_cus) && count($data_cus) == 0){
-            $customer->delete();
+            $customer = Customer::where('id_customer',$cusId)->first();
+            if($customer)
+                $customer->delete();
         }
 
         return response()->json([
             'status' => true,
             'idPr' => $idPro
         ]);
-    }
-
-    public function removeWishlist(Request $request)
-    {
-        dd($request->all());
     }
 
     /**

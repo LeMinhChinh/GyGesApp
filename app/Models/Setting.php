@@ -9,7 +9,7 @@ class Setting extends Model
 {
     protected $table = 'setting';
 
-    public function getAllDataSetting($id)
+    public function getDataSetting($id)
     {
         $data = DB::table('setting AS s')
                     ->select('s.*')

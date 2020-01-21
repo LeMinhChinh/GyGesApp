@@ -37964,7 +37964,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\nul.pagination{\n    font-size: 14px;\n    margin: 20px 38%;\n    border-radius: 4px;\n}\nul.pagination li{\n    padding: 5px 15px;\n    border: 1px solid #c9c9c9;\n    display: inline;\n}\n\nul.pagination li.active{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active:hover{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active a{\n    color: #fff;\n}\n\nul.pagination a{\n    color: #337ab7;\n}\n\nul.pagination a:hover{\n   text-decoration: none;\n}\n\nul.pagination li:hover{\n    background-color: #eee;\n}\nbutton.Polaris-Button{\n    width: 80px;\n}\n", ""]);
+exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\nul.pagination{\n    font-size: 14px;\n    margin: 20px 38%;\n    border-radius: 4px;\n}\nul.pagination li{\n    padding: 5px 15px;\n    border: 1px solid #c9c9c9;\n    display: inline;\n}\n\nul.pagination li.active{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active:hover{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active a{\n    color: #fff;\n}\n\nul.pagination a{\n    color: #337ab7;\n}\n\nul.pagination a:hover{\n   text-decoration: none;\n}\n\nul.pagination li:hover{\n    background-color: #eee;\n}\nbutton.Polaris-Button{\n    width: 80px;\n}\n\nspan.Polaris-Button__Text{\n    font-size: 13px;\n}\n", ""]);
 
 // exports
 
@@ -73772,7 +73772,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80233,17 +80233,19 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSort", function (index, direction) {
-      var sorted = _this.sortCurrency(_this.state.sortedRows, index, direction);
+      var sorted = _this.sortCurrency(_this.state.specs, index, direction);
 
       _this.setState({
-        'sortedRows': sorted
+        'specs': sorted
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "sortCurrency", function (rows, index, direction) {
       return _toConsumableArray(rows).sort(function (rowA, rowB) {
-        var amountA = parseFloat(rowA[index].toString().substring(0, 1));
-        var amountB = parseFloat(rowB[index].toString().substring(0, 1));
+        // const amountA = parseFloat(rowA[index].toString().substring(0,1));
+        // const amountB = parseFloat(rowB[index].toString().substring(0,1));
+        var amountA = parseFloat(rowA[index]);
+        var amountB = parseFloat(rowB[index]);
         return direction === 'descending' ? amountB - amountA : amountA - amountB; // return direction === 'descending' ? 1 : -1; =>sort string
       });
     });
@@ -80276,11 +80278,15 @@ function (_Component) {
         var setData = datas.map(function (item) {
           return [item.name, item.id_product, item.price, item.count_id, item.image];
         });
+        var specs = response.product.map(function (vals) {
+          return [vals.title, vals.handle, vals.variants[0].price, vals.count, vals.images[0].src];
+        });
         self.setState({
           sortedRows: setData,
           data: datas,
           totalItems: total,
-          itemInPage: item
+          itemInPage: item,
+          specs: specs
         });
       });
     });
@@ -80314,6 +80320,18 @@ function (_Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleFiltersClearAll", function () {
+      var page = _this.state.activePage;
+
+      _this.setState({
+        availability: "",
+        productType: "",
+        taggedWith: ""
+      });
+
+      _this.loadPage(page);
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handlePageChange", function (activePage) {
       _this.setState({
         activePage: activePage
@@ -80327,7 +80345,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         _this.loadPage(page);
-      }, 2000);
+      }, 1000);
 
       _this.setState({
         rangeValue: value,
@@ -80341,7 +80359,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         _this.loadPage(page);
-      }, 2000);
+      }, 1000);
 
       _this.setState({
         intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
@@ -80356,7 +80374,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         _this.loadPage(page);
-      }, 2000);
+      }, 1000);
 
       _this.setState({
         intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
@@ -80387,7 +80405,7 @@ function (_Component) {
         if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
         var timeOutId = setTimeout(function () {
           _this.loadPage(page);
-        }, 2000);
+        }, 1000);
 
         _this.setState({
           rangeValue: newValue,
@@ -80417,7 +80435,7 @@ function (_Component) {
       selected: [],
       popoverActive: false,
       idCustomer: [],
-      sortedRows: [],
+      // sortedRows: [],
       availability: "",
       productType: "",
       activePage: 1,
@@ -80425,7 +80443,8 @@ function (_Component) {
       itemInPage: "",
       timeOutId: null,
       rangeValue: initialValue,
-      intermediateTextFieldValue: initialValue
+      intermediateTextFieldValue: initialValue,
+      specs: []
     };
     return _this;
   }
@@ -80443,7 +80462,7 @@ function (_Component) {
       var _this2 = this;
 
       var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      fetch('http://localhost:8888/api/getCustomer?page=' + page, {
+      fetch('http://localhost:8888/api/loadPage?page=' + page, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -80461,19 +80480,32 @@ function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (response) {
-        var datas = response.count.data;
+        // let datas = response.count.data
         var total = response.count.total;
-        var item = response.count.per_page;
-        var counted = datas.map(function (item) {
-          return [item.name, item.id_product, item.price, item.count_id, item.image];
+        var item = response.count.per_page; // let counted = datas.map((item) => {
+        //     return [
+        //         item.name,
+        //         item.id_product,
+        //         item.price,
+        //         item.count_id,
+        //         item.image,
+        //     ]
+        // })
+
+        var specs = response.product.map(function (vals) {
+          return [vals.title, vals.handle, vals.variants[0].price, vals.count, vals.images[0].src];
+        });
+        var dt = response.product.map(function (vals) {
+          return [vals.title, vals.handle, vals.variants[0].price, vals.images[0].src, vals.count];
         });
 
         _this2.setState({
           idCustomer: response.idCus,
-          data: datas,
-          sortedRows: counted,
+          data: dt,
+          // sortedRows: counted,
           totalItems: total,
-          itemInPage: item
+          itemInPage: item,
+          specs: specs
         });
       });
     }
@@ -80496,21 +80528,13 @@ function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (response) {
+        var datas = response.product.map(function (item) {
+          return [item.title, item.handle, item.variants[0].price, item.images[0].src];
+        });
         self.setState({
-          data: response.filterProduct
+          data: datas
         });
       });
-    }
-  }, {
-    key: "handleFiltersClearAll",
-    value: function handleFiltersClearAll() {
-      var page = this.state.activePage;
-      this.setState({
-        availability: "",
-        productType: "",
-        taggedWith: ""
-      });
-      this.loadPage(page);
     }
   }, {
     key: "render",
@@ -80525,20 +80549,18 @@ function (_Component) {
           selected = _this$state.selected,
           popoverActive = _this$state.popoverActive,
           idCustomer = _this$state.idCustomer,
-          sortedRows = _this$state.sortedRows,
           availability = _this$state.availability,
           productType = _this$state.productType,
           rangeValue = _this$state.rangeValue,
-          intermediateTextFieldValue = _this$state.intermediateTextFieldValue;
-      var items = data.map(function (item, index) {
+          intermediateTextFieldValue = _this$state.intermediateTextFieldValue,
+          specs = _this$state.specs;
+      var items = data.map(function (item) {
         return {
-          id: index,
-          id_product: item.id_product,
-          name: item.name,
-          price: item.price,
-          image: item.image,
-          id_cus: item.customer_id,
-          count: item.count_id
+          name: item[0],
+          handle: item[1],
+          price: item[2],
+          image: item[3],
+          count: item[4]
         };
       });
       var filters = [{
@@ -80660,7 +80682,7 @@ function (_Component) {
         },
         disclosure: true
       }, "Filter");
-      var rows = sortedRows.map(function (value) {
+      var rows = specs.map(function (value) {
         return [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "name_pr"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -80676,7 +80698,6 @@ function (_Component) {
       var lowerTextFieldValue = intermediateTextFieldValue[0] === rangeValue[0] ? rangeValue[0] : intermediateTextFieldValue[0];
       var upperTextFieldValue = intermediateTextFieldValue[1] === rangeValue[1] ? rangeValue[1] : intermediateTextFieldValue[1];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], {
-        fullWidth: true,
         title: "Wishlist"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"].Section, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Filters"], {
         queryValue: queryValue,
@@ -80688,7 +80709,9 @@ function (_Component) {
         onQueryClear: function onQueryClear() {
           return _this3.handleRemove('queryValue');
         },
-        onClearAll: this.handleFiltersClearAll
+        onClearAll: function onClearAll() {
+          return _this3.handleFiltersClearAll();
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
         active: popoverActive,
         activator: activator,
@@ -80763,29 +80786,21 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["ResourceList"], {
         items: items,
         renderItem: renderItem,
-        sortValue: sortValue,
-        sortOptions: [{
-          label: 'Sort Product',
-          value: ''
-        }, {
-          label: 'Sort Count ASC',
-          value: 'ASC'
-        }, {
-          label: 'Sort Count DESC',
-          value: 'DESC'
-        }],
-        onSortChange: function onSortChange(sortValue) {
-          return _this3.handleChange('sortValue', sortValue);
-        } // filterControl={filterControl}
+        sortValue: sortValue // sortOptions={[
+        //     {label: 'Sort Product', value: ''},
+        //     {label: 'Sort Count ASC', value: 'ASC'},
+        //     {label: 'Sort Count DESC', value: 'DESC'}
+        // ]}
+        // onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
+        // filterControl={filterControl}
 
       })));
 
       function renderItem(item) {
-        var id_product = item.id_product,
-            name = item.name,
+        var name = item.name,
+            handle = item.handle,
             price = item.price,
             image = item.image,
-            id_cus = item.id_cus,
             count = item.count;
         var media = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: image,
@@ -80801,7 +80816,7 @@ function (_Component) {
           variation: "strong"
         }, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoP"
-        }, "Id Product: ", id_product), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Handle: ", handle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoP"
         }, "Price: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CurrencyFormat, {
           value: price,

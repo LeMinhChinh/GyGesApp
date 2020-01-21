@@ -38012,6 +38012,25 @@ exports.push([module.i, ".setting_wl .Polaris-Collapsible{\n    height: auto;\n 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/settingtheme.css":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/settingtheme.css ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".btnGroup .Polaris-ButtonGroup{\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/todo.css":
 /*!***************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/todo.css ***!
@@ -38043,7 +38062,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\nul.pagination{\n    font-size: 14px;\n    margin: 20px 38%;\n    border-radius: 4px;\n}\nul.pagination li{\n    padding: 5px 15px;\n    border: 1px solid #c9c9c9;\n    display: inline;\n}\n\nul.pagination li.active{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active:hover{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active a{\n    color: #fff;\n}\n\nul.pagination a{\n    color: #337ab7;\n}\n\nul.pagination a:hover{\n   text-decoration: none;\n}\n\nul.pagination li:hover{\n    background-color: #eee;\n}\nbutton.Polaris-Button{\n    width: 80px;\n}\n", ""]);
+exports.push([module.i, ".infoP{\n    font-size:1.4rem;\n    padding: 5px 0;\n}\n\n.img_pr{\n    width: 50px;\n    height: auto;\n}\n.Polaris-ResourceList__HeaderTitleWrapper{\n    font-size: 1.4rem;\n}\nli.Polaris-OptionList-Option{\n    font-size: 1.2rem\n}\n.Polaris-DataTable__Table{\n    font-size: 1.4rem;\n}\n.name_pr{\n    color:#007ace;\n}\n.Polaris-DataTable__Cell--header {\n    font-weight: 600;\n}\n\n.Polaris-DataTable__Heading:focus, .Polaris-DataTable__Heading:hover{\n    color:  black;\n    text-decoration: none;\n}\n\nbutton.Polaris-DataTable__Heading{\n    font-weight: 600;\n    color: black;\n}\nul.pagination{\n    font-size: 14px;\n    margin: 20px 38%;\n    border-radius: 4px;\n}\nul.pagination li{\n    padding: 5px 15px;\n    border: 1px solid #c9c9c9;\n    display: inline;\n}\n\nul.pagination li.active{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active:hover{\n    background-color: #337ab7;\n    border-color: #337ab7\n}\n\nul.pagination li.active a{\n    color: #fff;\n}\n\nul.pagination a{\n    color: #337ab7;\n}\n\nul.pagination a:hover{\n   text-decoration: none;\n}\n\nul.pagination li:hover{\n    background-color: #eee;\n}\nbutton.Polaris-Button{\n    width: 80px;\n}\n\nspan.Polaris-Button__Text{\n    font-size: 13px;\n}\n", ""]);
 
 // exports
 
@@ -83518,7 +83537,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91588,220 +91607,44 @@ var Dashboard =
 function (_Component) {
   _inherits(Dashboard, _Component);
 
-  function Dashboard() {
-    var _getPrototypeOf2;
-
+  function Dashboard(props) {
     var _this;
 
     _classCallCheck(this, Dashboard);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Dashboard)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      fetch('http://localhost:8888/api/restAPI').then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        var products = response.product;
+        var data = products.map(function (item) {
+          return [item.id, item.handle, item.title, item.variants, item.images];
+        });
 
-    _defineProperty(_assertThisInitialized(_this), "render", function () {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-expand navbar-dark bg-dark static-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "navbar-brand mr-1",
-        href: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-user"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-link btn-sm text-white order-1 order-sm-0",
-        id: "sidebarToggle",
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-bars"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        placeholder: "Search for...",
-        "aria-label": "Search",
-        "aria-describedby": "basic-addon2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary",
-        type: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-search"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-nav ml-auto ml-md-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item dropdown no-arrow mx-1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link dropdown-toggle",
-        href: "#",
-        id: "alertsDropdown",
-        role: "button",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-bell fa-fw"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "badge badge-danger"
-      }, "9+")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu dropdown-menu-right",
-        "aria-labelledby": "alertsDropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Another action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-divider"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Something else here"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item dropdown no-arrow mx-1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link dropdown-toggle",
-        href: "#",
-        id: "messagesDropdown",
-        role: "button",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-envelope fa-fw"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "badge badge-danger"
-      }, "7")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu dropdown-menu-right",
-        "aria-labelledby": "messagesDropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Another action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-divider"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Something else here"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item dropdown no-arrow"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link dropdown-toggle",
-        href: "#",
-        id: "userDropdown",
-        role: "button",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-user-circle fa-fw"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu dropdown-menu-right",
-        "aria-labelledby": "userDropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Settings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Activity Log"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-divider"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "dropdown-item",
-        href: "#",
-        "data-toggle": "modal",
-        "data-target": "#logoutModal"
-      }, "Logout"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "sidebar navbar-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fw fa-home"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Dashboard"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: "",
-        id: "pagesDropdown",
-        role: "button",
-        "data-toggle": "dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fw fa-tv"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Product"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fw fa-file-invoice"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Wishlist"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fw fa-users"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Users"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fw fas fa-hand-point-left"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Back page")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "content-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-        className: "sticky-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container my-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "copyright text-center my-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Copyright \xA9 Your Website 2019")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modal fade",
-        id: "logoutModal",
-        tabIndex: "-1",
-        role: "dialog",
-        "aria-labelledby": "exampleModalLabel",
-        "aria-hidden": "true"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modal-dialog",
-        role: "document"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modal-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modal-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "modal-title",
-        id: "exampleModalLabel"
-      }, "Ready to Leave?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "close",
-        type: "button",
-        "data-dismiss": "modal",
-        "aria-label": "Close"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "aria-hidden": "true"
-      }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modal-body"
-      }, "Select \"Logout\" below if you are ready to end your current session."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modal-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-secondary",
-        type: "button",
-        "data-dismiss": "modal"
-      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary",
-        type: "submit"
-      }, "Logout")))))));
+        _this.setState({
+          product: data
+        });
+      });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "render", function () {
+      var product = _this.state.product;
+      console.log(product);
+      var item = product.map(function (index, item) {
+        return {
+          id: index,
+          ids: item.id,
+          title: item.title
+        };
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "React JS");
+    });
+
+    _this.state = {
+      product: []
+    };
     return _this;
   }
 
@@ -91831,8 +91674,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Setting__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Setting */ "./resources/js/components/Setting.js");
 /* harmony import */ var _Landing__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Landing */ "./resources/js/components/Landing.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var _shopify_polaris_locales_en_json__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @shopify/polaris/locales/en.json */ "./node_modules/@shopify/polaris/locales/en.json");
-var _shopify_polaris_locales_en_json__WEBPACK_IMPORTED_MODULE_8___namespace = /*#__PURE__*/__webpack_require__.t(/*! @shopify/polaris/locales/en.json */ "./node_modules/@shopify/polaris/locales/en.json", 1);
+/* harmony import */ var _SettingTheme__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SettingTheme */ "./resources/js/components/SettingTheme.js");
+/* harmony import */ var _shopify_polaris_locales_en_json__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @shopify/polaris/locales/en.json */ "./node_modules/@shopify/polaris/locales/en.json");
+var _shopify_polaris_locales_en_json__WEBPACK_IMPORTED_MODULE_9___namespace = /*#__PURE__*/__webpack_require__.t(/*! @shopify/polaris/locales/en.json */ "./node_modules/@shopify/polaris/locales/en.json", 1);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -91852,6 +91696,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -91979,6 +91824,9 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         path: window.Laravel.relativePath + '/wl_setting',
         component: _Setting__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        path: window.Laravel.relativePath + '/setting_theme',
+        component: _SettingTheme__WEBPACK_IMPORTED_MODULE_8__["default"]
       }));
       var navigationMarkup = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Navigation"], {
         location: "/"
@@ -92008,6 +91856,12 @@ function (_Component) {
           onClick: function onClick() {
             return _this2.handleRouter(window.Laravel.relativePath + '/wl_setting');
           }
+        }, {
+          label: 'Setting Theme',
+          icon: _shopify_polaris_icons__WEBPACK_IMPORTED_MODULE_2__["OrdersMajorTwotone"],
+          onClick: function onClick() {
+            return _this2.handleRouter(window.Laravel.relativePath + '/setting_theme');
+          }
         }],
         action: {
           icon: _shopify_polaris_icons__WEBPACK_IMPORTED_MODULE_2__["ConversationMinor"],
@@ -92034,7 +91888,7 @@ function (_Component) {
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["AppProvider"], {
         theme: theme,
-        i18n: _shopify_polaris_locales_en_json__WEBPACK_IMPORTED_MODULE_8__
+        i18n: _shopify_polaris_locales_en_json__WEBPACK_IMPORTED_MODULE_9__
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Frame"], {
         topBar: topBarMarkup,
         navigation: navigationMarkup,
@@ -92130,17 +91984,19 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSort", function (index, direction) {
-      var sorted = _this.sortCurrency(_this.state.sortedRows, index, direction);
+      var sorted = _this.sortCurrency(_this.state.specs, index, direction);
 
       _this.setState({
-        'sortedRows': sorted
+        'specs': sorted
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "sortCurrency", function (rows, index, direction) {
       return _toConsumableArray(rows).sort(function (rowA, rowB) {
-        var amountA = parseFloat(rowA[index].toString().substring(0, 1));
-        var amountB = parseFloat(rowB[index].toString().substring(0, 1));
+        // const amountA = parseFloat(rowA[index].toString().substring(0,1));
+        // const amountB = parseFloat(rowB[index].toString().substring(0,1));
+        var amountA = parseFloat(rowA[index]);
+        var amountB = parseFloat(rowB[index]);
         return direction === 'descending' ? amountB - amountA : amountA - amountB; // return direction === 'descending' ? 1 : -1; =>sort string
       });
     });
@@ -92173,11 +92029,15 @@ function (_Component) {
         var setData = datas.map(function (item) {
           return [item.name, item.id_product, item.price, item.count_id, item.image];
         });
+        var specs = response.product.map(function (vals) {
+          return [vals.title, vals.handle, vals.variants[0].price, vals.count, vals.images[0].src];
+        });
         self.setState({
           sortedRows: setData,
           data: datas,
           totalItems: total,
-          itemInPage: item
+          itemInPage: item,
+          specs: specs
         });
       });
     });
@@ -92211,6 +92071,18 @@ function (_Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleFiltersClearAll", function () {
+      var page = _this.state.activePage;
+
+      _this.setState({
+        availability: "",
+        productType: "",
+        taggedWith: ""
+      });
+
+      _this.loadPage(page);
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handlePageChange", function (activePage) {
       _this.setState({
         activePage: activePage
@@ -92224,7 +92096,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         _this.loadPage(page);
-      }, 2000);
+      }, 1000);
 
       _this.setState({
         rangeValue: value,
@@ -92238,7 +92110,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         _this.loadPage(page);
-      }, 2000);
+      }, 1000);
 
       _this.setState({
         intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
@@ -92253,7 +92125,7 @@ function (_Component) {
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
       var timeOutId = setTimeout(function () {
         _this.loadPage(page);
-      }, 2000);
+      }, 1000);
 
       _this.setState({
         intermediateTextFieldValue: _this.state.intermediateTextFieldValue.map(function (item, index) {
@@ -92284,7 +92156,7 @@ function (_Component) {
         if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
         var timeOutId = setTimeout(function () {
           _this.loadPage(page);
-        }, 2000);
+        }, 1000);
 
         _this.setState({
           rangeValue: newValue,
@@ -92314,7 +92186,7 @@ function (_Component) {
       selected: [],
       popoverActive: false,
       idCustomer: [],
-      sortedRows: [],
+      // sortedRows: [],
       availability: "",
       productType: "",
       activePage: 1,
@@ -92322,7 +92194,8 @@ function (_Component) {
       itemInPage: "",
       timeOutId: null,
       rangeValue: initialValue,
-      intermediateTextFieldValue: initialValue
+      intermediateTextFieldValue: initialValue,
+      specs: []
     };
     return _this;
   }
@@ -92340,7 +92213,7 @@ function (_Component) {
       var _this2 = this;
 
       var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      fetch('http://localhost:8888/api/getCustomer?page=' + page, {
+      fetch('http://localhost:8888/api/loadPage?page=' + page, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -92358,19 +92231,32 @@ function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (response) {
-        var datas = response.count.data;
+        // let datas = response.count.data
         var total = response.count.total;
-        var item = response.count.per_page;
-        var counted = datas.map(function (item) {
-          return [item.name, item.id_product, item.price, item.count_id, item.image];
+        var item = response.count.per_page; // let counted = datas.map((item) => {
+        //     return [
+        //         item.name,
+        //         item.id_product,
+        //         item.price,
+        //         item.count_id,
+        //         item.image,
+        //     ]
+        // })
+
+        var specs = response.product.map(function (vals) {
+          return [vals.title, vals.handle, vals.variants[0].price, vals.count, vals.images[0].src];
+        });
+        var dt = response.product.map(function (vals) {
+          return [vals.title, vals.handle, vals.variants[0].price, vals.images[0].src, vals.count];
         });
 
         _this2.setState({
           idCustomer: response.idCus,
-          data: datas,
-          sortedRows: counted,
+          data: dt,
+          // sortedRows: counted,
           totalItems: total,
-          itemInPage: item
+          itemInPage: item,
+          specs: specs
         });
       });
     }
@@ -92393,21 +92279,13 @@ function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (response) {
+        var datas = response.product.map(function (item) {
+          return [item.title, item.handle, item.variants[0].price, item.images[0].src];
+        });
         self.setState({
-          data: response.filterProduct
+          data: datas
         });
       });
-    }
-  }, {
-    key: "handleFiltersClearAll",
-    value: function handleFiltersClearAll() {
-      var page = this.state.activePage;
-      this.setState({
-        availability: "",
-        productType: "",
-        taggedWith: ""
-      });
-      this.loadPage(page);
     }
   }, {
     key: "render",
@@ -92422,20 +92300,18 @@ function (_Component) {
           selected = _this$state.selected,
           popoverActive = _this$state.popoverActive,
           idCustomer = _this$state.idCustomer,
-          sortedRows = _this$state.sortedRows,
           availability = _this$state.availability,
           productType = _this$state.productType,
           rangeValue = _this$state.rangeValue,
-          intermediateTextFieldValue = _this$state.intermediateTextFieldValue;
-      var items = data.map(function (item, index) {
+          intermediateTextFieldValue = _this$state.intermediateTextFieldValue,
+          specs = _this$state.specs;
+      var items = data.map(function (item) {
         return {
-          id: index,
-          id_product: item.id_product,
-          name: item.name,
-          price: item.price,
-          image: item.image,
-          id_cus: item.customer_id,
-          count: item.count_id
+          name: item[0],
+          handle: item[1],
+          price: item[2],
+          image: item[3],
+          count: item[4]
         };
       });
       var filters = [{
@@ -92557,7 +92433,7 @@ function (_Component) {
         },
         disclosure: true
       }, "Filter");
-      var rows = sortedRows.map(function (value) {
+      var rows = specs.map(function (value) {
         return [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "name_pr"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -92573,7 +92449,6 @@ function (_Component) {
       var lowerTextFieldValue = intermediateTextFieldValue[0] === rangeValue[0] ? rangeValue[0] : intermediateTextFieldValue[0];
       var upperTextFieldValue = intermediateTextFieldValue[1] === rangeValue[1] ? rangeValue[1] : intermediateTextFieldValue[1];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], {
-        fullWidth: true,
         title: "Wishlist"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"].Section, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Filters"], {
         queryValue: queryValue,
@@ -92585,7 +92460,9 @@ function (_Component) {
         onQueryClear: function onQueryClear() {
           return _this3.handleRemove('queryValue');
         },
-        onClearAll: this.handleFiltersClearAll
+        onClearAll: function onClearAll() {
+          return _this3.handleFiltersClearAll();
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
         active: popoverActive,
         activator: activator,
@@ -92660,29 +92537,21 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["ResourceList"], {
         items: items,
         renderItem: renderItem,
-        sortValue: sortValue,
-        sortOptions: [{
-          label: 'Sort Product',
-          value: ''
-        }, {
-          label: 'Sort Count ASC',
-          value: 'ASC'
-        }, {
-          label: 'Sort Count DESC',
-          value: 'DESC'
-        }],
-        onSortChange: function onSortChange(sortValue) {
-          return _this3.handleChange('sortValue', sortValue);
-        } // filterControl={filterControl}
+        sortValue: sortValue // sortOptions={[
+        //     {label: 'Sort Product', value: ''},
+        //     {label: 'Sort Count ASC', value: 'ASC'},
+        //     {label: 'Sort Count DESC', value: 'DESC'}
+        // ]}
+        // onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
+        // filterControl={filterControl}
 
       })));
 
       function renderItem(item) {
-        var id_product = item.id_product,
-            name = item.name,
+        var name = item.name,
+            handle = item.handle,
             price = item.price,
             image = item.image,
-            id_cus = item.id_cus,
             count = item.count;
         var media = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: image,
@@ -92698,7 +92567,7 @@ function (_Component) {
           variation: "strong"
         }, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoP"
-        }, "Id Product: ", id_product), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Handle: ", handle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoP"
         }, "Price: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CurrencyFormat, {
           value: price,
@@ -92940,11 +92809,13 @@ function (_Component) {
         value: 'bt_center'
       }];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["AppProvider"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], {
-        fullWidth: true,
         title: "Setting"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "posiColor"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"].AnnotatedSection, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"].AnnotatedSection, {
+        title: "Translation",
+        description: "Shopify and your customers will use this information to contact you."
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "setting_wl"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], {
         sectioned: true
@@ -93377,6 +93248,225 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/SettingTheme.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/SettingTheme.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SettingTheme; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _shopify_polaris__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @shopify/polaris */ "./node_modules/@shopify/polaris/index.es.js");
+/* harmony import */ var _settingtheme_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settingtheme.css */ "./resources/js/settingtheme.css");
+/* harmony import */ var _settingtheme_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_settingtheme_css__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var SettingTheme =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SettingTheme, _Component);
+
+  function SettingTheme(props) {
+    var _this;
+
+    _classCallCheck(this, SettingTheme);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SettingTheme).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (value) {
+      _this.setState({
+        selected: parseInt(value)
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "install", function () {
+      var self = _assertThisInitialized(_this);
+
+      var ids = _this.state.selected;
+      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      self.setState({
+        install: true
+      });
+      fetch('http://localhost:8888/api/installTheme', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text-plain, */*",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          idTheme: ids
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        if (response.success == "Theme not found") {
+          alert("Theme not found");
+        }
+
+        if (response.success == "fail") {
+          alert("Theme not found");
+        }
+
+        self.setState({
+          install: false
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "uninstall", function () {
+      var self = _assertThisInitialized(_this);
+
+      var ids = _this.state.selected;
+      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      self.setState({
+        uninstall: true
+      });
+      fetch('http://localhost:8888/api/uninstallTheme', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text-plain, */*",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          idTheme: ids
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        if (response.success == "Theme not found") {
+          alert("Theme not found");
+        }
+
+        if (response.success == "fail") {
+          alert("Theme not found");
+        }
+
+        self.setState({
+          uninstall: false
+        });
+      });
+    });
+
+    _this.state = {
+      selected: "Select Theme",
+      theme: [],
+      ids: "",
+      install: false,
+      uninstall: false
+    };
+    return _this;
+  }
+
+  _createClass(SettingTheme, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var self = this;
+      fetch('http://localhost:8888/api/getApiKey').then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        self.setState({
+          theme: response.theme
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          selected = _this$state.selected,
+          theme = _this$state.theme,
+          ids = _this$state.ids,
+          install = _this$state.install,
+          uninstall = _this$state.uninstall;
+      var themes = theme.map(function (item) {
+        return {
+          label: item.name,
+          value: item.id
+        };
+      });
+      var options = [{
+        value: "Select Theme",
+        label: "Theme"
+      }].concat(_toConsumableArray(themes));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], {
+        title: "Setting Theme"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"].AnnotatedSection, {
+        title: "Translation",
+        description: "Shopify and your customers will use this information to contact you."
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        sectioned: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["FormLayout"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Select"], {
+        label: "Select Theme",
+        options: options,
+        onChange: function onChange(selected) {
+          return _this2.handleChange(selected);
+        },
+        value: selected
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "btnGroup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["ButtonGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        onClick: function onClick() {
+          return _this2.uninstall();
+        },
+        loading: uninstall,
+        destructive: true
+      }, "Uninstall"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        onClick: function onClick() {
+          return _this2.install();
+        },
+        loading: install,
+        primary: true
+      }, "Install"))))))));
+    }
+  }]);
+
+  return SettingTheme;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/history.js":
 /*!*********************************!*\
   !*** ./resources/js/history.js ***!
@@ -93401,6 +93491,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./setting.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/setting.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/settingtheme.css":
+/*!***************************************!*\
+  !*** ./resources/js/settingtheme.css ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./settingtheme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/settingtheme.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

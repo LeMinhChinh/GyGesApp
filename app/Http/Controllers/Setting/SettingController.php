@@ -22,7 +22,7 @@ class SettingController extends Controller
     public function getSettings(Request $request,Setting $st,Shop $s)
     {
         $id_shop = $s->getCurrentShop();
-        $dtSetting = $st->getAllDataSetting($id_shop->id);
+        $dtSetting = $st->getDataSetting($id_shop->id);
 
         return \response()->json([
             'dtSetting' => $dtSetting
@@ -34,7 +34,7 @@ class SettingController extends Controller
         $data = $request->data;
         $data = \json_encode($data);
         $id_shop =  $request->idShop;
-        $dtSetting = $st->getAllDataSetting($id_shop);
+        $dtSetting = $st->getDataSetting($id_shop);
         if($dtSetting) {
             $dtUpdate = [
                 'setting' => $data
@@ -54,6 +54,7 @@ class SettingController extends Controller
             ]);
         }
     }
+
     /**
      * Store a newly created resource in storage.
      *

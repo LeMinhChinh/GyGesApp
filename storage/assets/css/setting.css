@@ -1,0 +1,159 @@
+.setting_wl .Polaris-Collapsible{
+    height: auto;
+    font-size: 14px;
+}
+
+.bgcRadioButton{
+    height: 50px;
+    background-color: rgb(238, 73, 31);
+/*     margin: -10px 10px; */
+    font-size: 1.4rem;
+    width: 200px;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  	font-size: 16px;
+}
+
+.bgcRadioButton span,
+.RadioButton span
+{
+    padding: 0 5px;
+}
+
+.RadioButton{
+    height: 50px;
+    margin: -10px 10px;
+    font-size:1.4rem;
+    width: 200px;
+    color: rgb(238, 73, 31);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.color1{
+    width: 60px;
+    height: 36px;
+    border: 1px solid #c9c9c9;
+}
+
+#PolarisTextField1Label,#PolarisTextField2Label{
+    font-size:1.4rem;
+}
+
+.sortColor{
+    position: absolute;
+    z-index: 99;
+}
+
+.posiColor{
+    position: relative;
+    z-index: 99;
+    margin-bottom: 45px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+    margin: 7px 15px
+}
+
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 8px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: rgb(107, 233, 34);
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px rgb(107, 233, 34);
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+.title{
+    font-size:1.4rem;
+    color:black;
+    margin: 0;
+}
+.divSwitch{
+    height: 50px;
+    border: 1px solid #c9c9c9;
+    display: flex;
+    align-items: center;
+}
+
+.settingDisplay{
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+}
+.contentDisplay{
+    padding: 15px 15px;
+}
+.upColor{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+h2.Polaris-Heading{
+    font-size:16px;
+}
+
+.Polaris-Layout__AnnotationDescription p{
+    font-size: 13px;
+}
+
+button.Polaris-Button.Polaris-Button--fullWidth{
+    width: 200px;
+}
+a.wl_remove i.fa.fa-times {
+    color: #f81400;
+    font-size: 50px;
+    padding: 0 50px;
+}

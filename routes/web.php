@@ -41,10 +41,16 @@ Route::group([
 ], function () {
     Route::get('getProducts','ShopController@getProducts');
     Route::post('filterProducts','ShopController@filterProducts');
-    Route::post('getCustomer','ShopController@getCustomer');
+    Route::post('loadPage','ShopController@loadPage');
     Route::get('getWishlist','ShopController@getWishlist');
     Route::post('sortCountProduct','ShopController@sortCountProduct');
     Route::post('filterajax','ShopController@filterajax');
+    Route::get('restAPI','ShopController@restAPI');
+    Route::get('getApiKey','ShopController@getTheme');
+    Route::post('installTheme','ShopController@installTheme');
+    Route::get('installCssFile/{ids}~{url}~{api}~{password}','ShopController@installCssFile');
+    Route::get('installJsFile/{ids}~{url}~{api}~{password}','ShopController@installJsFile');
+    Route::post('uninstallTheme','ShopController@uninstallTheme');
 });
 
 Route::group([

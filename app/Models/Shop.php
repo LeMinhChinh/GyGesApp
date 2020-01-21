@@ -57,14 +57,6 @@ class Shop extends Model
         return $data;
     }
 
-    public function getIdShop()
-    {
-        $data = DB::table('shops AS s')
-                    ->select('s.*')
-                    ->get();
-        return $data;
-    }
-
     public function getIdCustomerByIdShop($id)
     {
         $data = DB::table('shops AS s')
@@ -102,7 +94,7 @@ class Shop extends Model
         $data = DB::table('shops AS s')
                     ->join('products AS p','p.shop_id','=','s.id')
                     ->join('customer_product as cp','cp.product_id','=','p.id_product')
-                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->select(DB::raw('COUNT(product_id) as count_id,p.id_product'))
                     ->groupby('cp.product_id')
                     ->where('s.id',$id)
                     ->whereBetween('p.price',[$p1, $p2])
@@ -128,7 +120,7 @@ class Shop extends Model
         $data = DB::table('shops AS s')
                     ->join('products AS p','p.shop_id','=','s.id')
                     ->join('customer_product as cp','cp.product_id','=','p.id_product')
-                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->select(DB::raw('COUNT(product_id) as count_id ,p.id_product'))
                     ->groupby('cp.product_id')
                     ->where('s.id',$id)
                     ->where('p.name','like','%'.$query.'%')
@@ -142,7 +134,7 @@ class Shop extends Model
         $data = DB::table('shops AS s')
                     ->join('products AS p','p.shop_id','=','s.id')
                     ->join('customer_product as cp','cp.product_id','=','p.id_product')
-                    ->select(DB::raw('COUNT(product_id) as count_id ,p.name,p.price,p.id_product,p.image'))
+                    ->select(DB::raw('COUNT(product_id) as count_id ,p.id_product'))
                     ->where('s.id',$id)
                     ->groupby('cp.product_id');
                     if($tagwith){
@@ -160,6 +152,16 @@ class Shop extends Model
                         }
                     }
                     $data = $data->paginate(4, ['*'], 'page', $page);
+        return $data;
+    }
+
+    public function getDataTest($id)
+    {
+        $data = DB::table('shops AS s')
+                    ->join('products AS p','p.shop_id','=','s.id')
+                    ->select('p.id_product')
+                    ->where('p.shop_id',$id)
+                    ->get();
         return $data;
     }
 }

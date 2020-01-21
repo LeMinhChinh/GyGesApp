@@ -168,12 +168,14 @@ export default class Setting extends Component{
         return (
             <AppProvider>
                 <Page
-                    fullWidth
                     title="Setting"
                 >
                     <div className="posiColor">
                     <Layout>
-                        <Layout.AnnotatedSection>
+                        <Layout.AnnotatedSection
+                            title="Translation"
+                            description="Shopify and your customers will use this information to contact you."
+                        >
                             <div className="setting_wl">
                                 <Card sectioned>
                                     <Stack vertical>

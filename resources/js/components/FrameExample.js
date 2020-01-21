@@ -37,6 +37,7 @@ import history from '../history';
 import Setting from './Setting';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
+import SettingTheme from './SettingTheme';
 import en from '@shopify/polaris/locales/en.json';
 
 export default class FrameExample extends Component{
@@ -146,6 +147,7 @@ export default class FrameExample extends Component{
                 <Route path={window.Laravel.relativePath + '/dashboard'} component={Dashboard} />
                 <Route path={window.Laravel.relativePath + '/wl_view'} component={Landing}/>
                 <Route path={window.Laravel.relativePath + '/wl_setting'} component={Setting}/>
+                <Route path={window.Laravel.relativePath + '/setting_theme'} component={SettingTheme}/>
             </Switch>
         );
 
@@ -177,6 +179,11 @@ export default class FrameExample extends Component{
                         label: 'Setting',
                         icon: OrdersMajorTwotone,
                         onClick: () => this.handleRouter(window.Laravel.relativePath + '/wl_setting'),
+                    },
+                    {
+                        label: 'Setting Theme',
+                        icon: OrdersMajorTwotone,
+                        onClick: () => this.handleRouter(window.Laravel.relativePath + '/setting_theme'),
                     }
                 ]}
                 action={{

@@ -71,3 +71,7 @@ ul.pagination li:hover{
 button.Polaris-Button{
     width: 80px;
 }
+
+span.Polaris-Button__Text{
+    font-size: 13px;
+}

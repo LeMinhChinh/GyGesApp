@@ -38,7 +38,7 @@ export default class Landing extends Component{
             selected: [],
             popoverActive: false,
             idCustomer: [],
-            sortedRows: [],
+            // sortedRows: [],
             availability: "",
             productType: "",
             activePage: 1,
@@ -46,7 +46,8 @@ export default class Landing extends Component{
             itemInPage: "",
             timeOutId: null,
             rangeValue: initialValue,
-            intermediateTextFieldValue: initialValue
+            intermediateTextFieldValue: initialValue,
+            specs: []
         }
     }
 
@@ -58,7 +59,7 @@ export default class Landing extends Component{
 
     loadPage(page){
         var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        fetch('http://localhost:8888/api/getCustomer?page='+page,{
+        fetch('http://localhost:8888/api/loadPage?page='+page,{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -76,24 +77,43 @@ export default class Landing extends Component{
         })
         .then((response) => response.json())
         .then((response) => {
-            let datas = response.count.data
+            // let datas = response.count.data
             let total = response.count.total
             let item = response.count.per_page
-            let counted = datas.map((item) => {
+            // let counted = datas.map((item) => {
+            //     return [
+            //         item.name,
+            //         item.id_product,
+            //         item.price,
+            //         item.count_id,
+            //         item.image,
+            //     ]
+            // })
+            let specs = response.product.map((vals) => {
                 return [
-                    item.name,
-                    item.id_product,
-                    item.price,
-                    item.count_id,
-                    item.image,
+                    vals.title,
+                    vals.handle,
+                    vals.variants[0].price,
+                    vals.count,
+                    vals.images[0].src,
+                ]
+            })
+            let dt = response.product.map((vals) => {
+                return [
+                    vals.title,
+                    vals.handle,
+                    vals.variants[0].price,
+                    vals.images[0].src,
+                    vals.count,
                 ]
             })
             this.setState({
                 idCustomer: response.idCus,
-                data: datas,
-                sortedRows: counted,
+                data: dt,
+                // sortedRows: counted,
                 totalItems: total,
-                itemInPage: item
+                itemInPage: item,
+                specs: specs
             })
         });
     }
@@ -115,8 +135,16 @@ export default class Landing extends Component{
         })
         .then((response) => response.json())
         .then(function(response) {
+            let datas = response.product.map((item) => {
+                return [
+                    item.title,
+                    item.handle,
+                    item.variants[0].price,
+                    item.images[0].src
+                ]
+            })
             self.setState({
-                data: response.filterProduct
+                data: datas
             })
         })
     }
@@ -126,15 +154,18 @@ export default class Landing extends Component{
         this.setState({popoverActive: !popoverActive})
     }
 
+
     handleSort = (index, direction) => {
-        let sorted = this.sortCurrency(this.state.sortedRows, index, direction)
-        this.setState({'sortedRows': sorted});
+        let sorted = this.sortCurrency(this.state.specs, index, direction)
+        this.setState({'specs': sorted});
     }
 
     sortCurrency = (rows, index, direction) => {
         return [...rows].sort((rowA, rowB) => {
-            const amountA = parseFloat((rowA[index].toString().substring(0,1)));
-            const amountB = parseFloat((rowB[index].toString().substring(0,1)));
+            // const amountA = parseFloat(rowA[index].toString().substring(0,1));
+            // const amountB = parseFloat(rowB[index].toString().substring(0,1));
+            const amountA = parseFloat((rowA[index]))
+            const amountB = parseFloat(rowB[index])
 
             return direction === 'descending' ? amountB - amountA : amountA - amountB;
             // return direction === 'descending' ? 1 : -1; =>sort string
@@ -174,11 +205,21 @@ export default class Landing extends Component{
                     item.image,
                 ]
             })
+            let specs = response.product.map((vals) => {
+                return [
+                    vals.title,
+                    vals.handle,
+                    vals.variants[0].price,
+                    vals.count,
+                    vals.images[0].src,
+                ]
+            })
             self.setState({
                 sortedRows: setData,
                 data: datas,
                 totalItems: total,
-                itemInPage: item
+                itemInPage: item,
+                specs: specs
             })
         })
     }
@@ -211,7 +252,7 @@ export default class Landing extends Component{
         }
     }
 
-    handleFiltersClearAll(){
+    handleFiltersClearAll = () => {
         var page = this.state.activePage
         this.setState({
             availability: "",
@@ -233,7 +274,7 @@ export default class Landing extends Component{
 
         var timeOutId = setTimeout(() => {
             this.loadPage(page)
-        }, 2000);
+        }, 1000);
 
         this.setState({
             rangeValue: value,
@@ -249,7 +290,7 @@ export default class Landing extends Component{
 
         var timeOutId = setTimeout(() => {
             this.loadPage(page)
-        }, 2000);
+        }, 1000);
 
 		this.setState({
 			intermediateTextFieldValue: this.state.intermediateTextFieldValue.map(
@@ -266,7 +307,7 @@ export default class Landing extends Component{
 
         var timeOutId = setTimeout(() => {
             this.loadPage(page)
-        }, 2000);
+        }, 1000);
 
 		this.setState({
 			intermediateTextFieldValue: this.state.intermediateTextFieldValue.map(
@@ -304,7 +345,7 @@ export default class Landing extends Component{
 
             var timeOutId = setTimeout(() => {
                 this.loadPage(page)
-            }, 2000);
+            }, 1000);
 			this.setState({
                 rangeValue: newValue,
                 timeOutId: timeOutId
@@ -333,22 +374,21 @@ export default class Landing extends Component{
             selected,
             popoverActive,
             idCustomer,
-            sortedRows,
+            // sortedRows,
             availability,
             productType,
             rangeValue,
-            intermediateTextFieldValue
+            intermediateTextFieldValue,
+            specs
         }=this.state
 
-        const items = data.map((item, index) => {
+        const items = data.map((item) => {
           return {
-                id: index,
-                id_product: item.id_product,
-                name:item.name,
-                price: item.price,
-                image: item.image,
-                id_cus: item.customer_id,
-                count: item.count_id
+                name: item[0],
+                handle: item[1],
+                price: item[2],
+                image: item[3],
+                count: item[4],
             }
         })
 
@@ -417,6 +457,7 @@ export default class Landing extends Component{
                 label: value
             }
         });
+
         let op = [
             {
                 value: "",
@@ -457,7 +498,7 @@ export default class Landing extends Component{
             </Button>
         );
 
-        const rows = sortedRows.map((value) => {
+        const rows = specs.map((value) => {
             return (
                 [
                     <p className="name_pr"><img src={value[4]} className="img_pr"></img>{value[0]}</p>,
@@ -480,7 +521,6 @@ export default class Landing extends Component{
 
         return (
             <Page
-                fullWidth
                 title="Wishlist"
             >
                 <Card>
@@ -491,13 +531,8 @@ export default class Landing extends Component{
                             appliedFilters={appliedFilters}
                             onQueryChange={(queryValue) => this.handleSearch('queryValue',queryValue)}
                             onQueryClear={() => this.handleRemove('queryValue')}
-                            onClearAll={this.handleFiltersClearAll}
+                            onClearAll={() => this.handleFiltersClearAll()}
                             >
-                                {/* <div>
-                                    <Button onClick={this.handleSearch}>
-                                    Search
-                                    </Button>
-                                </div> */}
                                 <div>
                                     <Popover
                                         active={popoverActive}
@@ -590,12 +625,12 @@ export default class Landing extends Component{
                         items={items}
                         renderItem={renderItem}
                         sortValue={sortValue}
-                        sortOptions={[
-                            {label: 'Sort Product', value: ''},
-                            {label: 'Sort Count ASC', value: 'ASC'},
-                            {label: 'Sort Count DESC', value: 'DESC'}
-                        ]}
-                        onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
+                        // sortOptions={[
+                        //     {label: 'Sort Product', value: ''},
+                        //     {label: 'Sort Count ASC', value: 'ASC'},
+                        //     {label: 'Sort Count DESC', value: 'DESC'}
+                        // ]}
+                        // onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
                         // filterControl={filterControl}
                     />
                 </Card>
@@ -603,7 +638,7 @@ export default class Landing extends Component{
         );
 
         function renderItem(item) {
-            const { id_product, name, price, image, id_cus, count} = item;
+            const {name, handle, price, image,count} = item
             const media = <div><img src={image} className="img_pr" /></div>
             var CurrencyFormat = require('react-currency-format');
             return (
@@ -614,7 +649,7 @@ export default class Landing extends Component{
                 <h3>
                   <TextStyle variation="strong">{name}</TextStyle>
                 </h3>
-                <div className="infoP">Id Product: {id_product}</div>
+                <div className="infoP">Handle: {handle}</div>
                 <div className="infoP">Price: <CurrencyFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
                 {count && (
                     <div className="infoP">Count: {count}</div>
