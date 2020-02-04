@@ -22,44 +22,12 @@ class ShopController extends Controller
         ]) ;
     }
 
-    public function loadPage(Request $request, Shop $shop)
+    public function restApi($data, $url, $api, $password)
     {
-        $page = $request->page;
-        $rangeValue = $request->rangeValue;
-
-        $name = $request->name ? $request->name : null;
-        $price = $request->price ? $request->price : null;
-        $tagwith = $request->tagwith ? $request->tagwith : null;
-        $queryValue = $request->queryValue ? $request->queryValue : null;
-
-        $s = $shop->getCurrentShop();
-        $idCus = $shop->getIdCustomerByIdShop($s->id);
-
-        $api = env('APIKEY');
-        $password = env('PASSWORD');
-
-        if($name != null && $price != null && $tagwith != null){
-            $sortCount = $shop->filterDataProduct($s->id, $name, $price, $tagwith, $page);
-        }
-
-        if($rangeValue) {
-            $sortCount = $shop->getCountProduct($s->id,$rangeValue[0],$rangeValue[1], $page);
-        }
-
-        if($queryValue){
-            $sortCount = $shop->getQueryValue($s->id,$queryValue,$page);
-        }
-
-        if(!count($sortCount)){
-            return response()->json([
-                'status' => false
-            ]);
-        }
-
         $str = '';
         $handle = array();
         $count = array();
-        foreach ($sortCount as $value) {
+        foreach ($data as $value) {
             $values = $value->id_product;
             $c = $value->count_id;
             $value = array_push($handle, $values);
@@ -67,7 +35,7 @@ class ShopController extends Controller
         }
         $str = implode(',',$handle);
         $config = array(
-            'ShopUrl' => $s->url,
+            'ShopUrl' => $url,
             'ApiKey' => $api,
             'Password' => $password,
         );
@@ -82,6 +50,89 @@ class ShopController extends Controller
             $countP = $count[$key];
             $product['count'] = $countP;
             $products[$key] = $product;
+        }
+    }
+
+    public function loadPage(Request $request, Shop $shop)
+    {
+        // dd($request->all());
+        $page = $request->page;
+        $rangeValue = $request->rangeValue;
+
+        $name = $request->name ? $request->name : null;
+        $price = $request->price ? $request->price : null;
+        $tagwith = $request->tagwith ? $request->tagwith : null;
+        $queryValue = $request->queryValue ? $request->queryValue : null;
+
+        $pageSort = $request->pageSort;
+
+        $selected = $request->selected;
+
+        $s = $shop->getCurrentShop();
+        $idCus = $shop->getIdCustomerByIdShop($s->id);
+
+        $api = env('APIKEY');
+        $password = env('PASSWORD');
+
+        // if($name != null && $price != null && $tagwith != null){
+        //     $sortCount = $shop->filterDataProduct($s->id, $name, $price, $tagwith, $page);
+        // }
+
+        // if($rangeValue) {
+        //     $sortCount = $shop->getCountProduct($s->id,$rangeValue[0],$rangeValue[1], $page);
+        // }
+
+        // if($queryValue){
+        //     $sortCount = $shop->getQueryValue($s->id,$queryValue,$page);
+        // }
+
+        // if($pageSort){
+        //     $sortCount = $shop->getDataSort($s->id,$pageSort,$page);
+        // }
+
+        // if($selected[0] != NULL){
+        //     $sortCount = $shop->getDataCustomer($s->id, $selected[0], $page);
+        // }
+
+        $sortCount = $shop->getData($s->id, $name, $price, $tagwith, $rangeValue[0], $rangeValue[1], $queryValue, $pageSort, $selected[0], $page);
+
+        if(!count($sortCount)){
+            return response()->json([
+                'status' => false
+            ]);
+        }
+
+        $str = '';
+        $handle = array();
+        $count = array();
+        foreach ($sortCount as $value) {
+            $values = $value->id_product;
+            if(isset($value->count_id)){
+                $c = $value->count_id;
+                $cId = array_push($count, $c);
+            }
+
+            $value = array_push($handle, $values);
+        }
+        $str = implode(',',$handle);
+        $config = array(
+            'ShopUrl' => $s->url,
+            'ApiKey' => $api,
+            'Password' => $password,
+        );
+        $shopify = new \PHPShopify\ShopifySDK($config);
+
+        $params = array(
+            'handle' => $str,
+            'fields' => 'handle,images,title,variants'
+        );
+        $products = $shopify->Product()->get($params);
+        if(count($count) > 0){
+            foreach($products as $key => $product) {
+                $countP = $count[$key];
+                $product['count'] = $countP;
+                $products[$key] = $product;
+            }
         }
 
         return response()->json([
@@ -209,7 +260,7 @@ class ShopController extends Controller
         ]);
     }
 
-    public function restAPI(Request $request, Shop $shop)
+    public function testAPI(Request $request, Shop $shop)
     {
         $s = $shop->getCurrentShop();
         $api = env('APIKEY');
@@ -252,8 +303,11 @@ class ShopController extends Controller
 
         $theme = $shopify->Theme()->get();
 
+        $themeId = Shop::where('url', $s->url)->pluck('theme_id')->first();
+
         return response()->json([
             'theme' => $theme,
+            'themeid' => $themeId
         ]);
     }
 
@@ -273,49 +327,31 @@ class ShopController extends Controller
         $shopify = new \PHPShopify\ShopifySDK($config);
 
         // check Theme
-        if(!$ids) return response()->json(['success' => 'fail']);
-        if(!\is_numeric($ids)) return response()->json(['success' => 'Theme not found']);
+        if(!$ids || $ids == 0) return response()->json(['status' => 'Error']);
 
-        // create or update snippet/globo.formbuilder.scripts.liquid
-        $isCustomizedScriptsFile = false;
-        $script = view('front-script')->render();
+        // update Theme to database
+        $update = Shop::where('url',$s->url)->update(['theme_id' => $ids]);
 
-        try {
-            $currentFormScripts = $shopify->Theme($themeId)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'snippets/globo.formbuilder.scripts.liquid'
-                )
-            ));
-            if(strpos($currentFormScripts['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedScriptsFile = true;
-            }
-        } catch (\Throwable $th) {
-
-        }
-        if(!$isCustomizedScriptsFile){
-            // Create or Update
-            $shopify->Theme($ids)->Asset->put(array(
-                "key" => "snippets/globo.formbuilder.scripts.liquid",
-                "value" => $script,
-            ));
-        }
 
         // Include globo.formbuilder.scripts to theme
         $hasInsertInclude = false;
 
-        $currentThemeLiquid = $shopify->Theme($ids)->Asset->get(array(
-            "asset" => array(
-                "key" => 'layout/theme.liquid'
-            )
-        ));
+        try {
+            $currentThemeLiquid = $shopify->Theme($ids)->Asset->get(array(
+                "asset" => array(
+                    "key" => 'layout/theme.liquid'
+                )
+            ));
+            if(isset($currentThemeLiquid['asset']['value']) && strpos( $currentThemeLiquid['asset']['value'], "{% include 'globo.formbuilder.scripts' %}") !== false){
+                $hasInsertInclude = true;
+            }
+        } catch (\Throwable $th) {
 
-        if(\strpos($currentThemeLiquid['asset']['value'],"{% include 'globo.formbuilder.scripts' %}")){
-            $hasInsertInclude = true;
         }
 
-        if(!$hasInsertInclude && $currentThemeLiquid){
+        if(!$hasInsertInclude){
             $newInserted = $currentThemeLiquid['asset']['value'];
-            $newInserted = str_replace('{{ content_for_header }}',"{{ content_for_header }}\n{% include 'globo.formbuilder.scripts' %}",$newInserted);
+            $newInserted = str_replace("{% include 'globo.theme.scripts' %}","{% include 'globo.theme.scripts' %}\n{% include 'globo.formbuilder.scripts' %}",$newInserted);
             try {
                 $shopify->Theme($ids)->Asset->put(array(
                     "key" => "layout/theme.liquid",
@@ -325,34 +361,42 @@ class ShopController extends Controller
             }
         }
 
-        $this->installJsFile($ids,$s->url,$api,$password);
-        $this->installCssFile($ids,$s->url,$api,$password);
+        // create or update snippet/globo.formbuilder.scripts.liquid
+        $isCustomizedScriptsFile = false;
+        $script = view('front-script')->render();
+        try {
+            $currentFormScripts = $shopify->Theme($ids)->Asset->get(array(
+                "asset" => array(
+                    "key" => 'snippets/globo.formbuilder.scripts.liquid'
+                )
+            ));
+            if(isset($currentFormScripts['asset']['value']) && strpos($currentFormScripts['asset']['value'],'***CUSTOMIZED FILE***') !== false){
+                $isCustomizedScriptsFile = true;
+            }
+        } catch (\Throwable $th) {
+
+        }
+
+        if(!$isCustomizedScriptsFile){
+            // Create or Update
+            $shopify->Theme($ids)->Asset->put(array(
+                "key" => "snippets/globo.formbuilder.scripts.liquid",
+                "value" => $script,
+            ));
+        }
+
+        $this->installJsFile($ids,$shopify);
+        $this->installCssFile($ids,$shopify);
 
         return response()->json([
-            'success' => 'success',
+            'status' => 'success',
             'ids' => $ids
         ]);
     }
 
-    public function installCssFile($ids,$url,$api,$password)
+    public function installCssFile($ids,$shopify)
     {
-        // connect shopify
-        $config = array(
-            'ShopUrl' => $url,
-            'ApiKey' => $api,
-            'Password' => $password,
-        );
-        $shopify = new \PHPShopify\ShopifySDK($config);
-
-        $cssStyle = Storage::disk('assets')->get('css/style.css');
-        $cssRespons320 = Storage::disk('assets')->get('css/respons-320.css');
-        $cssRespons375 = Storage::disk('assets')->get('css/respons-375.css');
-        $cssRespons768 = Storage::disk('assets')->get('css/respons-768.css');
-        $cssRespons1024 = Storage::disk('assets')->get('css/respons-1024.css');
-        $cssRespons1920 = Storage::disk('assets')->get('css/respons-1920.css');
         $cssSetting = Storage::disk('assets')->get('css/setting.css');
-        $cssBootstrap = Storage::disk('assets')->get('css/bootstrap.min.css');
-        $cssFont = Storage::disk('assets')->get('css/fontawesome.min.css');
 
         // create or update asset/globo.formbuilder.css
         $isCustomizedCssFile = false;
@@ -360,10 +404,10 @@ class ShopController extends Controller
         try {
             $currentFormCss = $shopify->Theme($ids)->Asset->get(array(
                 "asset" => array(
-                    "key" => 'assets/globo.formbuilder.css'
+                    "key" => 'assets/globo.wishlist.css'
                 )
             ));
-            if(strpos($currentFormCss['asset']['value'],'***CUSTOMIZED FILE***')){
+            if(isset($currentFormCss['asset']['value']) && strpos($currentFormCss['asset']['value'],'***CUSTOMIZED FILE***') !== false){
                 $isCustomizedCssFile = true;
             }
         } catch (\Throwable $th) {
@@ -373,51 +417,16 @@ class ShopController extends Controller
         if(!$isCustomizedCssFile){
             // Create or Update
             $shopify->Theme($ids)->Asset->put(array(
-                "key" => "assets/globo.formbuilder.css",
-                "value" => $cssStyle."\r\n".$cssSetting."\r\n".$cssRespons320."\r\n".$cssRespons375."\r\n".$cssRespons768."\r\n".$cssRespons1024."\r\n".$cssRespons1920
-            ));
-        }
-
-        // create or update asset/globo.formbuilder.lib.css
-        $isCustomizedCssLib = false;
-
-        try {
-            $currentFormCssLib = $shopify->Theme($ids)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.lib.css'
-                )
-            ));
-            if(strpos($currentFormCssLib['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedCssLib = true;
-            }
-        } catch (\Throwable $th) {
-
-        }
-
-        if(!$isCustomizedCssLib){
-            // Create or Update
-            $shopify->Theme($ids)->Asset->put(array(
-                "key" => "assets/globo.formbuilder.lib.css",
-                "value" => $cssBootstrap."\r\n".$cssFont
+                "key" => "assets/globo.wishlist.css",
+                "value" => $cssSetting
             ));
         }
     }
 
-    public function installJsFile($ids,$url,$api,$password)
+    public function installJsFile($ids,$shopify)
     {
-         // connect shopify
-         $config = array(
-            'ShopUrl' => $url,
-            'ApiKey' => $api,
-            'Password' => $password,
-        );
-        $shopify = new \PHPShopify\ShopifySDK($config);
-
-        $jsResponsive = Storage::disk('assets')->get('js/reponsive.js');
         $jsWishlist = Storage::disk('assets')->get('js/wishlist.js');
         $jsPagination = Storage::disk('assets')->get('js/jquery.twbsPagination.min.js');
-        $jsBootstrap = Storage::disk('assets')->get('js/bootstrap.min.js');
-        $jsJquery = Storage::disk('assets')->get('js/jquery-3.4.1.min.js');
 
         // create or update asset/globo.formbuilder.js
         $isCustomizedJsFile = false;
@@ -425,10 +434,10 @@ class ShopController extends Controller
         try {
             $currentFormJs = $shopify->Theme($ids)->Asset->get(array(
                 "asset" => array(
-                    "key" => 'assets/globo.formbuilder.js'
+                    "key" => 'assets/globo.wishlist.js'
                 )
             ));
-            if(strpos($currentFormJs['asset']['value'],'***CUSTOMIZED FILE***')){
+            if(isset($currentFormJs['asset']['value']) && strpos($currentFormJs['asset']['value'],'***CUSTOMIZED FILE***') !== false){
                 $isCustomizedJsFile = true;
             }
         } catch (\Throwable $th) {
@@ -438,56 +447,8 @@ class ShopController extends Controller
         if(!$isCustomizedJsFile){
             // Create or Update
             $shopify->Theme($ids)->Asset->put(array(
-                "key" => "assets/globo.formbuilder.js",
-                "value" => $jsResponsive."\r\n".$jsWishlist
-            ));
-        }
-
-        // create or update asset/globo.formbuilder.pagination.js
-        $isCustomizedJsPagination = false;
-
-        try {
-            $currentFormJsPagination = $shopify->Theme($ids)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.pagination.js'
-                )
-            ));
-            if(strpos($currentFormJsPagination['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedJsPagination = true;
-            }
-        } catch (\Throwable $th) {
-
-        }
-
-        if(!$isCustomizedJsPagination){
-            // Create or Update
-            $shopify->Theme($ids)->Asset->put(array(
-                "key" => "assets/globo.formbuilder.pagination.js",
-                "value" => $jsPagination
-            ));
-        }
-
-        // create or update asset/globo.formbuilder.lib.js
-        $isCustomizedJsLib = false;
-
-        try {
-            $currentFormJsLib = $shopify->Theme($ids)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.lib.js'
-                )
-            ));
-            if(strpos($currentFormJsLib['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedJsLib = true;
-            }
-        } catch (\Throwable $th) {
-
-        }
-
-        if(!$isCustomizedJsLib){
-            // Create or Update
-            $shopify->Theme($ids)->Asset->put(array(
-                "key" => "assets/globo.formbuilder.lib.js",
-                "value" => $jsJquery."\r\n".$jsBootstrap
+                "key" => "assets/globo.wishlist.js",
+                "value" => $jsPagination."\r\n".$jsWishlist
             ));
         }
     }
@@ -507,8 +468,10 @@ class ShopController extends Controller
         );
         $shopify = new \PHPShopify\ShopifySDK($config);
 
-        if(!$ids) return response()->json(['success' => 'fail']);
-        if(!\is_numeric($ids)) return response()->json(['success' => 'Theme not found']);
+        if(!$ids || $ids == 0) return response()->json(['status' => 'Error']);
+
+        // update Theme to database
+        $update = Shop::where('url',$s->url)->update(['theme_id' => 0]);
 
         $isCustomizedScriptsFile = false;
 
@@ -527,7 +490,7 @@ class ShopController extends Controller
         ));
         if($currentThemeLiquid){
             $newInserted = $currentThemeLiquid['asset']['value'];
-            $newInserted = str_replace("{{ content_for_header }}\n{% include 'globo.formbuilder.scripts' %}",'{{ content_for_header }}',$newInserted);
+            $newInserted = str_replace("{% include 'globo.theme.scripts' %}\n{% include 'globo.formbuilder.scripts' %}","{% include 'globo.theme.scripts' %}",$newInserted);
             try {
                 $shopify->Theme($ids)->Asset->put(array(
                     "key" => "layout/theme.liquid",
@@ -537,14 +500,14 @@ class ShopController extends Controller
             }
         }
 
-        // Delete CssFile
+        // Delete scripts.liquid
         try {
             $currentFormScriptsFile = $shopify->Theme($ids)->Asset->get(array(
                 "asset" => array(
                     "key" => 'snippets/globo.formbuilder.scripts.liquid'
                 )
             ));
-            if(strpos($currentFormScriptsFile['asset']['value'],'***CUSTOMIZED FILE***')){
+            if(isset($currentFormScriptsFile['asset']['value']) && strpos($currentFormScriptsFile['asset']['value'],'***CUSTOMIZED FILE***') !== false){
                 $isCustomizedScriptsFile = true;
             }
 
@@ -563,10 +526,10 @@ class ShopController extends Controller
         try {
             $currentFormCssFile = $shopify->Theme($ids)->Asset->get(array(
                 "asset" => array(
-                    "key" => 'assets/globo.formbuilder.css'
+                    "key" => 'assets/globo.wishlist.css'
                 )
             ));
-            if(strpos($currentFormCss['asset']['value'],'***CUSTOMIZED FILE***')){
+            if(isset($currentFormCssFile['asset']['value']) && strpos($currentFormCss['asset']['value'],'***CUSTOMIZED FILE***') !== false){
                 $isCustomizedCssFile = true;
             }
 
@@ -576,29 +539,7 @@ class ShopController extends Controller
         if(!$isCustomizedCssFile){
             $shopify->Theme($ids)->Asset->delete(array(
                 "asset" => array(
-                    "key" => 'assets/globo.formbuilder.css'
-                )
-            ));
-        }
-
-        // Delete CssFile.Lib
-        try {
-            $currentFormCssLib = $shopify->Theme($ids)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.lib.css'
-                )
-            ));
-            if(strpos($currentFormCss['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedCssLib = true;
-            }
-
-        } catch (\Throwable $th) {
-
-        }
-        if(!$isCustomizedCssLib){
-            $shopify->Theme($ids)->Asset->delete(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.lib.css'
+                    "key" => 'assets/globo.wishlist.css'
                 )
             ));
         }
@@ -607,10 +548,10 @@ class ShopController extends Controller
         try {
             $currentFormJsFile = $shopify->Theme($ids)->Asset->get(array(
                 "asset" => array(
-                    "key" => 'assets/globo.formbuilder.js'
+                    "key" => 'assets/globo.wishlist.js'
                 )
             ));
-            if(strpos($currentFormJsFile['asset']['value'],'***CUSTOMIZED FILE***')){
+            if(isset($currentFormJsFile['asset']['value']) && strpos($currentFormJsFile['asset']['value'],'***CUSTOMIZED FILE***') !== false){
                 $isCustomizedCssFile = true;
             }
 
@@ -620,57 +561,13 @@ class ShopController extends Controller
         if(!$isCustomizedCssFile){
             $shopify->Theme($ids)->Asset->delete(array(
                 "asset" => array(
-                    "key" => 'assets/globo.formbuilder.js'
-                )
-            ));
-        }
-
-        // Delete JsFile.Lib
-        try {
-            $currentFormJsLib = $shopify->Theme($ids)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.lib.js'
-                )
-            ));
-            if(strpos($currentFormJsLib['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedJsLib = true;
-            }
-
-        } catch (\Throwable $th) {
-
-        }
-        if(!$isCustomizedJsLib){
-            $shopify->Theme($ids)->Asset->delete(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.lib.js'
-                )
-            ));
-        }
-
-        // Delete JsFile.Pagination
-        try {
-            $currentFormJsPagination = $shopify->Theme($ids)->Asset->get(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.pagination.js'
-                )
-            ));
-            if(strpos($currentFormJsPagination['asset']['value'],'***CUSTOMIZED FILE***')){
-                $isCustomizedJsPagination = true;
-            }
-
-        } catch (\Throwable $th) {
-
-        }
-        if(!$isCustomizedJsPagination){
-            $shopify->Theme($ids)->Asset->delete(array(
-                "asset" => array(
-                    "key" => 'assets/globo.formbuilder.pagination.js'
+                    "key" => 'assets/globo.wishlist.js'
                 )
             ));
         }
 
         return response()->json([
-            "success" => "success",
+            "status" => "success",
             "ids" => $ids
         ]);
     }

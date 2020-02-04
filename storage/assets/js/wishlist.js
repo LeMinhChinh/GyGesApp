@@ -44,7 +44,7 @@ function addToWL(self,id,title,price,images){
     }
   }
 
-  function loadPage(page)
+function loadPage(page)
   {
     $.ajax({
       url: 'http://localhost:8888/api/getWishlist',
@@ -263,4 +263,14 @@ function addToWL(self,id,title,price,images){
         })
       });
     }
+    $('body').on('click','.showby input[type="radio"]',function() {
+        if($(this).attr('value') == "list"){
+            $('#list').show();
+            $('#grid').hide();
+        }
+        if($(this).attr('value') == "grid"){
+            $('#list').hide();
+            $('#grid').show();
+        }
+    });
   });

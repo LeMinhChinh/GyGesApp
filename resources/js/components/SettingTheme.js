@@ -10,12 +10,13 @@ import {
     ButtonGroup
 } from '@shopify/polaris'
 import '../settingtheme.css'
+import Axios from 'axios';
 
 export default class SettingTheme extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            selected: "Select Theme",
+            selected: "",
             theme: [],
             ids: "",
             install: false,
@@ -26,13 +27,14 @@ export default class SettingTheme extends Component{
     componentDidMount(){
         var self = this
 
-        fetch('http://localhost:8888/api/getApiKey')
-        .then((response) => response.json())
-        .then((response) => {
+        Axios.get(`http://localhost:8888/api/getApiKey`)
+        .then(res => {
             self.setState({
-                theme: response.theme
+                theme: res.data.theme,
+                selected: parseInt(res.data.themeid)
             })
-        });
+        })
+        .catch(error => console.log(error))
     }
 
     handleChange = (value) =>{
@@ -43,68 +45,46 @@ export default class SettingTheme extends Component{
 
     install = () => {
         var self = this
-        var ids = this.state.selected
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         self.setState({install: true})
-        fetch('http://localhost:8888/api/installTheme',{
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json, text-plain, */*",
-                "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": token
-            },
-            body: JSON.stringify({
-                idTheme: ids
-            })
+        Axios.post(`http://localhost:8888/api/installTheme`,{
+            idTheme: this.state.selected
         })
-        .then((response) => response.json())
-        .then((response) => {
-            if(response.success == "Theme not found"){
+        .then(res => {
+            if(res.data.status == "Error"){
                 alert("Theme not found")
             }
 
-            if(response.success == "fail"){
-                alert("Theme not found")
+            if(res.data.status == "success"){
+                alert("Install theme success")
             }
 
             self.setState({
                 install: false
             })
-        });
+        })
+        .catch(error => console.log(error))
     }
 
     uninstall = () => {
         var self = this
-        var ids = this.state.selected
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        self.setState({uninstall: true})
-        fetch('http://localhost:8888/api/uninstallTheme',{
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json, text-plain, */*",
-                "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": token
-            },
-            body: JSON.stringify({
-                idTheme: ids
-            })
+        self.setState({uninstall:true})
+        Axios.post(`http://localhost:8888/api/uninstallTheme`,{
+            idTheme: this.state.selected
         })
-        .then((response) => response.json())
-        .then((response) => {
-            if(response.success == "Theme not found"){
+        .then(res => {
+            if(res.data.status == "Error"){
                 alert("Theme not found")
             }
 
-            if(response.success == "fail"){
-                alert("Theme not found")
+            if(res.data.status == "success"){
+                alert("Uninstall theme success")
             }
 
             self.setState({
                 uninstall: false
             })
-        });
+        })
+        .catch(error => console.log(error))
     }
 
     render(){
@@ -125,7 +105,7 @@ export default class SettingTheme extends Component{
 
         const options = [
             {
-                value: "Select Theme",
+                value: "0",
                 label: "Theme",
             },
             ...themes

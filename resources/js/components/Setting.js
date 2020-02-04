@@ -114,7 +114,7 @@ export default class Setting extends Component{
         .then((response) => response.json())
         .then(function(response){
             if(response.success){
-                alert('Success')
+                alert('Setting success')
             }
         })
     }

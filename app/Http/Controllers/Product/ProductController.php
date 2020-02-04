@@ -129,9 +129,6 @@ class ProductController extends Controller
             ]);
         }
 
-        // Log::info($cusId);
-        // Log::info($idPro);
-
         $cus_pro = CustomerProduct::where('customer_id',$cusId)->where('product_id',$idPro)->delete();
 
         $data_product = CustomerProduct::where('product_id',$idPro)->get();

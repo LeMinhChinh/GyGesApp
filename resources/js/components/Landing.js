@@ -19,6 +19,7 @@ import {
 import '../wishlist.css'
 import CurrencyFormat from 'react-currency-format';
 import Pagination from "react-js-pagination";
+import Axios from 'axios';
 
 const initialValue = [0, 5000];
 const min = 0;
@@ -35,10 +36,9 @@ export default class Landing extends Component{
             taggedWith: "",
             sortValue: "",
             data: [],
-            selected: [],
+            selected: "",
             popoverActive: false,
             idCustomer: [],
-            // sortedRows: [],
             availability: "",
             productType: "",
             activePage: 1,
@@ -47,7 +47,8 @@ export default class Landing extends Component{
             timeOutId: null,
             rangeValue: initialValue,
             intermediateTextFieldValue: initialValue,
-            specs: []
+            specs: [],
+            pageSort: ""
         }
     }
 
@@ -58,38 +59,19 @@ export default class Landing extends Component{
     }
 
     loadPage(page){
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        fetch('http://localhost:8888/api/loadPage?page='+page,{
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json, text-plain, */*",
-                "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": token
-            },
-            body: JSON.stringify({
-                rangeValue: this.state.rangeValue,
-                name: this.state.availability,
-                price: this.state.productType,
-                tagwith: this.state.taggedWith,
-                queryValue: this.state.queryValue
-            })
+        Axios.post(`http://localhost:8888/api/loadPage?page=`+page,{
+            rangeValue: this.state.rangeValue,
+            name: this.state.availability,
+            price: this.state.productType,
+            tagwith: this.state.taggedWith,
+            queryValue: this.state.queryValue,
+            pageSort: this.state.pageSort,
+            selected: this.state.selected
         })
-        .then((response) => response.json())
-        .then((response) => {
-            // let datas = response.count.data
-            let total = response.count.total
-            let item = response.count.per_page
-            // let counted = datas.map((item) => {
-            //     return [
-            //         item.name,
-            //         item.id_product,
-            //         item.price,
-            //         item.count_id,
-            //         item.image,
-            //     ]
-            // })
-            let specs = response.product.map((vals) => {
+        .then(res => {
+            let total = res.data.count.total
+            let item = res.data.count.per_page
+            let specs = res.data.product.map((vals) => {
                 return [
                     vals.title,
                     vals.handle,
@@ -98,7 +80,7 @@ export default class Landing extends Component{
                     vals.images[0].src,
                 ]
             })
-            let dt = response.product.map((vals) => {
+            let dt = res.data.product.map((vals) => {
                 return [
                     vals.title,
                     vals.handle,
@@ -108,45 +90,26 @@ export default class Landing extends Component{
                 ]
             })
             this.setState({
-                idCustomer: response.idCus,
+                idCustomer: res.data.idCus,
                 data: dt,
-                // sortedRows: counted,
                 totalItems: total,
                 itemInPage: item,
                 specs: specs
             })
-        });
+        })
+        .catch(error => console.log(error));
     }
 
-    setSelected(selected){
-        var self = this
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        fetch('http://localhost:8888/api/filterProducts',{
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json, text-plain, */*",
-            "X-Requested-With": "XMLHttpRequest",
-            "X-CSRF-TOKEN": token
-        },
-        body: JSON.stringify({
-            idCus: selected
-        })
-        })
-        .then((response) => response.json())
-        .then(function(response) {
-            let datas = response.product.map((item) => {
-                return [
-                    item.title,
-                    item.handle,
-                    item.variants[0].price,
-                    item.images[0].src
-                ]
-            })
-            self.setState({
-                data: datas
-            })
-        })
+    setSelected = (selected) => {
+        var page = this.state.activePage
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
+
+        var timeOutId = setTimeout(() => {
+            this.loadPage(page)
+        }, 1000);
+
+        this.setState({selected, timeOutId: timeOutId})
     }
 
     togglePopoverActive = () => {
@@ -154,48 +117,31 @@ export default class Landing extends Component{
         this.setState({popoverActive: !popoverActive})
     }
 
+    handleSort = (index, direction) =>{
+        var page = this.state.activePage
+        if(this.state.timeOutId)
+            clearTimeout(this.state.timeOutId);
 
-    handleSort = (index, direction) => {
-        let sorted = this.sortCurrency(this.state.specs, index, direction)
-        this.setState({'specs': sorted});
+        var timeOutId = setTimeout(() => {
+            this.loadPage(page)
+        }, 1000);
+
+        this.setState({pageSort: direction, timeOutId: timeOutId})
     }
 
-    sortCurrency = (rows, index, direction) => {
-        return [...rows].sort((rowA, rowB) => {
-            // const amountA = parseFloat(rowA[index].toString().substring(0,1));
-            // const amountB = parseFloat(rowB[index].toString().substring(0,1));
-            const amountA = parseFloat((rowA[index]))
-            const amountB = parseFloat(rowB[index])
-
-            return direction === 'descending' ? amountB - amountA : amountA - amountB;
-            // return direction === 'descending' ? 1 : -1; =>sort string
-        });
-    }
-
-    handleFilter = (newState) => {
+    handleFilter = (newState) =>{
         var self = this
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        fetch('http://localhost:8888/api/filterajax',{
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json, text-plain, */*",
-            "X-Requested-With": "XMLHttpRequest",
-            "X-CSRF-TOKEN": token
-        },
-        body: JSON.stringify({
+        Axios.post(`http://localhost:8888/api/filterajax`,{
             data: {
                 'name': newState.availability,
                 'price' : newState.productType,
                 'tagwith' : newState.taggedWith
             }
         })
-        })
-        .then((response) => response.json())
-        .then(function(response){
-            let datas = response.data.data
-            let total = response.data.total
-            let item = response.data.per_page
+        .then(res => {
+            let datas = res.data.data.data
+            let total = res.data.data.total
+            let item = res.data.data.per_page
             let setData = datas.map((item) => {
                 return [
                     item.name,
@@ -205,7 +151,7 @@ export default class Landing extends Component{
                     item.image,
                 ]
             })
-            let specs = response.product.map((vals) => {
+            let specs = res.data.product.map((vals) => {
                 return [
                     vals.title,
                     vals.handle,
@@ -222,6 +168,7 @@ export default class Landing extends Component{
                 specs: specs
             })
         })
+        .catch(error => console.log(error));
     }
 
     handleChange = (key, value) => {
@@ -245,11 +192,12 @@ export default class Landing extends Component{
         var page = this.state.activePage
         newState[key] = "";
         self.setState({[key] : ""})
-        if(newState == ""){
-            self.loadPage(page)
-        }else{
-            self.handleFilter(newState)
-        }
+        // if(newState == ""){
+        //     self.loadPage(page)
+        // }else{
+        //     self.handleFilter(newState)
+        // }
+        self.loadPage(page)
     }
 
     handleFiltersClearAll = () => {
@@ -374,23 +322,23 @@ export default class Landing extends Component{
             selected,
             popoverActive,
             idCustomer,
-            // sortedRows,
             availability,
             productType,
             rangeValue,
             intermediateTextFieldValue,
-            specs
+            specs,
+            pageSort
         }=this.state
 
-        const items = data.map((item) => {
-          return {
-                name: item[0],
-                handle: item[1],
-                price: item[2],
-                image: item[3],
-                count: item[4],
-            }
-        })
+        // const items = data.map((item) => {
+        //   return {
+        //         name: item[0],
+        //         handle: item[1],
+        //         price: item[2],
+        //         image: item[3],
+        //         count: item[4],
+        //     }
+        // })
 
         const filters = [
             {
@@ -493,8 +441,9 @@ export default class Landing extends Component{
         }
 
         const activator = (
-            <Button onClick={() => this.togglePopoverActive()} disclosure>
-              Filter
+            <Button onClick={() => this.togglePopoverActive()} >
+            {/* disclosure */}
+                Customer
             </Button>
         );
 
@@ -604,7 +553,7 @@ export default class Landing extends Component{
                         ]}
                         rows={rows}
                         sortable={[true,true,true,true]}
-                        defaultSortDirection= "none"
+                        defaultSortDirection = "none"
                         initialSortColumnIndex={3}
                         onSort={this.handleSort}
                     />
@@ -620,7 +569,7 @@ export default class Landing extends Component{
                         onChange={(activePage) => this.handlePageChange(activePage)}
                     />
                 </Card>
-                <Card>
+                {/* <Card>
                     <ResourceList
                         items={items}
                         renderItem={renderItem}
@@ -631,32 +580,31 @@ export default class Landing extends Component{
                         //     {label: 'Sort Count DESC', value: 'DESC'}
                         // ]}
                         // onSortChange={(sortValue) =>  this.handleChange('sortValue',sortValue) }
-                        // filterControl={filterControl}
                     />
-                </Card>
+                </Card> */}
             </Page>
         );
 
-        function renderItem(item) {
-            const {name, handle, price, image,count} = item
-            const media = <div><img src={image} className="img_pr" /></div>
-            var CurrencyFormat = require('react-currency-format');
-            return (
-              <ResourceItem
-                media={media}
-                persistActions
-              >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
-                <div className="infoP">Handle: {handle}</div>
-                <div className="infoP">Price: <CurrencyFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
-                {count && (
-                    <div className="infoP">Count: {count}</div>
-                )}
-              </ResourceItem>
-            );
-        }
+        // function renderItem(item) {
+        //     const {name, handle, price, image,count} = item
+        //     const media = <div><img src={image} className="img_pr" /></div>
+        //     var CurrencyFormat = require('react-currency-format');
+        //     return (
+        //       <ResourceItem
+        //         media={media}
+        //         persistActions
+        //       >
+        //         <h3>
+        //           <TextStyle variation="strong">{name}</TextStyle>
+        //         </h3>
+        //         <div className="infoP">Handle: {handle}</div>
+        //         <div className="infoP">Price: <CurrencyFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+        //         {count && (
+        //             <div className="infoP">Count: {count}</div>
+        //         )}
+        //       </ResourceItem>
+        //     );
+        // }
 
         function disambiguateLabel(key, value) {
             switch (key) {
