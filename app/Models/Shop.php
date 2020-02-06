@@ -70,12 +70,12 @@ class Shop extends Model
     public function getDataWishlist($urlShop, $idCus,$page)
     {
         $data = DB::table('shops AS s')
-                    ->select('s.*','cp.customer_id','p.id AS id_pr','p.name','p.price','p.id_product','p.image')
+                    ->select('p.id_product')
                     ->join('products AS p','p.shop_id','=','s.id')
                     ->join('customer_product AS cp','cp.product_id','=','p.id_product')
                     ->where('s.url',$urlShop)
                     ->where('cp.customer_id',$idCus)
-                    ->paginate(4, ['*'], 'page', $page);
+                    ->paginate(2, ['*'], 'page', $page);
         return $data;
     }
 
@@ -231,15 +231,6 @@ class Shop extends Model
                         $data = $data->where('cp.customer_id',$idCus);
                     }
                     $data = $data->paginate(4, ['*'], 'page', $page);
-        return $data;
-    }
-
-    public function updateThemeId($url, $dt)
-    {
-        $data = DB::table('shop AS s')
-                ->where('s.url',$url)
-                ->update($dt);
-                dd($data);
         return $data;
     }
 }

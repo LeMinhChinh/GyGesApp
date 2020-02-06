@@ -22,37 +22,6 @@ class ShopController extends Controller
         ]) ;
     }
 
-    public function restApi($data, $url, $api, $password)
-    {
-        $str = '';
-        $handle = array();
-        $count = array();
-        foreach ($data as $value) {
-            $values = $value->id_product;
-            $c = $value->count_id;
-            $value = array_push($handle, $values);
-            $cId = array_push($count, $c);
-        }
-        $str = implode(',',$handle);
-        $config = array(
-            'ShopUrl' => $url,
-            'ApiKey' => $api,
-            'Password' => $password,
-        );
-        $shopify = new \PHPShopify\ShopifySDK($config);
-
-        $params = array(
-            'handle' => $str,
-            'fields' => 'handle,images,title,variants'
-        );
-        $products = $shopify->Product()->get($params);
-        foreach($products as $key => $product) {
-            $countP = $count[$key];
-            $product['count'] = $countP;
-            $products[$key] = $product;
-        }
-    }
-
     public function loadPage(Request $request, Shop $shop)
     {
         // dd($request->all());
@@ -68,8 +37,9 @@ class ShopController extends Controller
 
         $selected = $request->selected;
 
-        $s = $shop->getCurrentShop();
-        $idCus = $shop->getIdCustomerByIdShop($s->id);
+        $url = Shop::where('url','https://globolevel1.myshopify.com')->pluck('url')->first();
+        $idS = Shop::where('url','https://globolevel1.myshopify.com')->pluck('id')->first();
+        $idCus = $shop->getIdCustomerByIdShop($idS);
 
         $api = env('APIKEY');
         $password = env('PASSWORD');
@@ -94,7 +64,7 @@ class ShopController extends Controller
         //     $sortCount = $shop->getDataCustomer($s->id, $selected[0], $page);
         // }
 
-        $sortCount = $shop->getData($s->id, $name, $price, $tagwith, $rangeValue[0], $rangeValue[1], $queryValue, $pageSort, $selected[0], $page);
+        $sortCount = $shop->getData($idS, $name, $price, $tagwith, $rangeValue[0], $rangeValue[1], $queryValue, $pageSort, $selected[0], $page);
 
         if(!count($sortCount)){
             return response()->json([
@@ -116,7 +86,7 @@ class ShopController extends Controller
         }
         $str = implode(',',$handle);
         $config = array(
-            'ShopUrl' => $s->url,
+            'ShopUrl' => $url,
             'ApiKey' => $api,
             'Password' => $password,
         );
@@ -290,12 +260,12 @@ class ShopController extends Controller
 
     public function getTheme(Request $request, Shop $shop)
     {
-        $s = $shop->getCurrentShop();
+        $url = Shop::where('url','https://globolevel1.myshopify.com')->pluck('url')->first();
         $api = env('APIKEY');
         $password = env('PASSWORD');
 
         $config = array(
-            'ShopUrl' => $s->url,
+            'ShopUrl' => $url,
             'ApiKey' => $api,
             'Password' => $password,
         );
@@ -303,7 +273,7 @@ class ShopController extends Controller
 
         $theme = $shopify->Theme()->get();
 
-        $themeId = Shop::where('url', $s->url)->pluck('theme_id')->first();
+        $themeId = Shop::where('url', $url)->pluck('theme_id')->first();
 
         return response()->json([
             'theme' => $theme,
@@ -314,13 +284,13 @@ class ShopController extends Controller
     public function installTheme(Request $request, Shop $shop)
     {
         $ids = $request->idTheme;
-        $s = $shop->getCurrentShop();
+        $url = Shop::where('url','https://globolevel1.myshopify.com')->pluck('url')->first();
         $api = env('APIKEY');
         $password = env('PASSWORD');
 
         // connect shopify
         $config = array(
-            'ShopUrl' => $s->url,
+            'ShopUrl' => $url,
             'ApiKey' => $api,
             'Password' => $password,
         );
@@ -330,8 +300,10 @@ class ShopController extends Controller
         if(!$ids || $ids == 0) return response()->json(['status' => 'Error']);
 
         // update Theme to database
-        $update = Shop::where('url',$s->url)->update(['theme_id' => $ids]);
-
+        $themeID = Shop::where('url',$url)->pluck('theme_id')->first();
+        if(isset($themeID)){
+            $update = Shop::where('url',$url)->update(['theme_id' => $ids]);
+        }
 
         // Include globo.formbuilder.scripts to theme
         $hasInsertInclude = false;
@@ -378,7 +350,6 @@ class ShopController extends Controller
         }
 
         if(!$isCustomizedScriptsFile){
-            // Create or Update
             $shopify->Theme($ids)->Asset->put(array(
                 "key" => "snippets/globo.formbuilder.scripts.liquid",
                 "value" => $script,
@@ -389,14 +360,14 @@ class ShopController extends Controller
         $this->installCssFile($ids,$shopify);
 
         return response()->json([
-            'status' => 'success',
-            'ids' => $ids
+            'status' => 'success'
         ]);
     }
 
     public function installCssFile($ids,$shopify)
     {
-        $cssSetting = Storage::disk('assets')->get('css/setting.css');
+        // config path Storage: config->filesystems.php
+        $cssWishlist = Storage::disk('assets')->get('css/setting.css');
 
         // create or update asset/globo.formbuilder.css
         $isCustomizedCssFile = false;
@@ -415,10 +386,9 @@ class ShopController extends Controller
         }
 
         if(!$isCustomizedCssFile){
-            // Create or Update
             $shopify->Theme($ids)->Asset->put(array(
                 "key" => "assets/globo.wishlist.css",
-                "value" => $cssSetting
+                "value" => $cssWishlist
             ));
         }
     }
@@ -426,7 +396,6 @@ class ShopController extends Controller
     public function installJsFile($ids,$shopify)
     {
         $jsWishlist = Storage::disk('assets')->get('js/wishlist.js');
-        $jsPagination = Storage::disk('assets')->get('js/jquery.twbsPagination.min.js');
 
         // create or update asset/globo.formbuilder.js
         $isCustomizedJsFile = false;
@@ -445,10 +414,9 @@ class ShopController extends Controller
         }
 
         if(!$isCustomizedJsFile){
-            // Create or Update
             $shopify->Theme($ids)->Asset->put(array(
                 "key" => "assets/globo.wishlist.js",
-                "value" => $jsPagination."\r\n".$jsWishlist
+                "value" => $jsWishlist
             ));
         }
     }
@@ -456,13 +424,13 @@ class ShopController extends Controller
     public function uninstallTheme(Request $request, Shop $shop)
     {
         $ids = $request->idTheme;
-        $s = $shop->getCurrentShop();
+        $url = Shop::where('url','https://globolevel1.myshopify.com')->pluck('url')->first();
         $api = env('APIKEY');
         $password = env('PASSWORD');
 
         // connect shopify
         $config = array(
-            'ShopUrl' => $s->url,
+            'ShopUrl' => $url,
             'ApiKey' => $api,
             'Password' => $password,
         );
@@ -471,7 +439,10 @@ class ShopController extends Controller
         if(!$ids || $ids == 0) return response()->json(['status' => 'Error']);
 
         // update Theme to database
-        $update = Shop::where('url',$s->url)->update(['theme_id' => 0]);
+        $themeID = Shop::where('url',$url)->pluck('theme_id')->first();
+        if(isset($themeID)){
+            $update = Shop::where('url',$url)->update(['theme_id' => 0]);
+        }
 
         $isCustomizedScriptsFile = false;
 
@@ -567,8 +538,7 @@ class ShopController extends Controller
         }
 
         return response()->json([
-            "status" => "success",
-            "ids" => $ids
+            "status" => "success"
         ]);
     }
 
@@ -613,8 +583,7 @@ class ShopController extends Controller
             'status' => true,
             'wishlist' => $wishlist,
             'setting' => $setting,
-            'dtProduct' => $products,
-            // 'handle' => $handle
+            'dtProduct' => $products
         ]);
     }
 }

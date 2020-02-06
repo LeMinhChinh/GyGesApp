@@ -12,7 +12,7 @@ export default class Dashboard extends Component{
     }
 
     componentDidMount = () => {
-        fetch('http://localhost:8888/api/restAPI')
+        fetch('http://localhost:8888/api/testAPI')
         .then((response) => response.json())
         .then((response) => {
             let products = response.product
@@ -35,7 +35,6 @@ export default class Dashboard extends Component{
         const {
             product
         } = this.state
-        console.log(product)
 
         const item = product.map((index, item) => {
             return {
@@ -46,7 +45,7 @@ export default class Dashboard extends Component{
         })
 
         return (
-            <p>React JS</p>
+            <p style={{ margin: '0px' }}>React JS</p>
         )
     }
 }

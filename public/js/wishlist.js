@@ -93428,7 +93428,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch('http://localhost:8888/api/restAPI').then(function (response) {
+      fetch('http://localhost:8888/api/testAPI').then(function (response) {
         return response.json();
       }).then(function (response) {
         var products = response.product;
@@ -93444,7 +93444,6 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "render", function () {
       var product = _this.state.product;
-      console.log(product);
       var item = product.map(function (index, item) {
         return {
           id: index,
@@ -93452,7 +93451,11 @@ function (_Component) {
           title: item.title
         };
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "React JS");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          margin: '0px'
+        }
+      }, "React JS");
     });
 
     _this.state = {

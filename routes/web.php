@@ -48,13 +48,10 @@ Route::group([
     Route::get('testAPI','ShopController@testAPI');
     Route::get('getApiKey','ShopController@getTheme');
     Route::post('installTheme','ShopController@installTheme');
-    // Route::get('installCssFile/{ids}~{url}~{api}~{password}','ShopController@installCssFile');
-    // Route::get('installJsFile/{ids}~{url}~{api}~{password}','ShopController@installJsFile');
     Route::get('installCssFile/{ids}~{shopify}','ShopController@installCssFile');
     Route::get('installJsFile/{ids}~{shopify}','ShopController@installJsFile');
     Route::post('uninstallTheme','ShopController@uninstallTheme');
     Route::post('sortCount','ShopController@sortCount');
-    Route::post('restApi/{data}~{url}~{api}~{password}','ShopController@restApi');
 });
 
 Route::group([

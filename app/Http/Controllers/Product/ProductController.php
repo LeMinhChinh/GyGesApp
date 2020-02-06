@@ -62,6 +62,10 @@ class ProductController extends Controller
         $product = CustomerProduct::firstOrCreate(
             ['customer_id' => $customId, 'product_id' => $id]
         );
+
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -146,7 +150,7 @@ class ProductController extends Controller
         }
 
         return response()->json([
-            'status' => true,
+            'status' => 'success',
             'idPr' => $idPro
         ]);
     }
