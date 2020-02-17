@@ -82040,6 +82040,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Landing).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_this), "_isMounted", false);
+
     _defineProperty(_assertThisInitialized(_this), "setSelected", function (selected) {
       var page = _this.state.activePage;
       if (_this.state.timeOutId) clearTimeout(_this.state.timeOutId);
@@ -82267,8 +82269,17 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var self = this;
-      var page = this.state.activePage;
-      self.loadPage(page);
+      self._isMounted = true;
+
+      if (self._isMounted) {
+        var page = this.state.activePage;
+        self.loadPage(page);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._isMounted = false;
     }
   }, {
     key: "loadPage",
@@ -82540,10 +82551,10 @@ function (_Component) {
         initialSortColumnIndex: 3,
         onSort: this.handleSort
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_4___default.a, {
-        prevPageText: "prev",
-        nextPageText: "next",
-        firstPageText: "first",
-        lastPageText: "last",
+        prevPageText: "<",
+        nextPageText: ">",
+        firstPageText: "<<<",
+        lastPageText: ">>>",
         activePage: this.state.activePage,
         itemsCountPerPage: this.state.itemInPage,
         totalItemsCount: this.state.totalItems // pageRangeDisplayed={5}

@@ -28,6 +28,7 @@ const prefix = '$';
 const step = 20;
 
 export default class Landing extends Component{
+    _isMounted = false;
     constructor(props){
         super(props);
         this.state = {
@@ -54,8 +55,15 @@ export default class Landing extends Component{
 
     componentDidMount(){
         var self = this
-        var page = this.state.activePage
-        self.loadPage(page)
+        self._isMounted = true;
+        if (self._isMounted) {
+            var page = this.state.activePage
+            self.loadPage(page)
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     loadPage(page){
@@ -558,10 +566,10 @@ export default class Landing extends Component{
                         onSort={this.handleSort}
                     />
                     <Pagination
-                        prevPageText='prev'
-                        nextPageText='next'
-                        firstPageText='first'
-                        lastPageText='last'
+                        prevPageText='<'
+                        nextPageText='>'
+                        firstPageText='<<<'
+                        lastPageText='>>>'
                         activePage={this.state.activePage}
                         itemsCountPerPage={this.state.itemInPage}
                         totalItemsCount={this.state.totalItems}

@@ -31,7 +31,7 @@ Route::group([
     Route::apiResource('product','ProductController');
     Route::get('product_check','ProductController@check');
     Route::get('wl_delete','ProductController@deleteProduct');
-    Route::get('removeWishlist','ProductController@removeWishlist');
+    // Route::post('addCookieProduct','ProductController@addCookieProduct');
 });
 
 Route::group([

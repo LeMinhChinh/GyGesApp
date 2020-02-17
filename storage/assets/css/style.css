@@ -773,15 +773,6 @@ ol.carousel-indicators li {
     margin-bottom: 0;
 }
 
-.wishlist-selected i{
-	color:red;
-}
-
-.wishlist-selected:hover i{
-	color:red;
-  	background-color:white;
-}
-
 .wl-product{
     margin: 0 20px;
 }

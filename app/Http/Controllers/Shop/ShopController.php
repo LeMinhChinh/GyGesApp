@@ -299,14 +299,71 @@ class ShopController extends Controller
         // check Theme
         if(!$ids || $ids == 0) return response()->json(['status' => 'Error']);
 
+        // create or update pages
+        try {
+            $pageWishlist = $shopify->Page->get(array(
+                "handle" => "wishlist"
+            ));
+        } catch (\Throwable $th) {
+
+        }
+
+        $body = "<div id=\"globo_wishlist\"></div>";
+        if(!empty($pageWishlist)){
+            try {
+                $shopify->Page($pageWishlist[0]['id'])->put(array(
+                    "body_html" => $body
+                ));
+            } catch (\Throwable $th) {
+            }
+        }else{
+            try {
+                $shopify->Page()->post(array(
+                    "title" => 'Wishlist',
+                    "body_html" => $body,
+                    "handle" => 'wishlist'
+                ));
+            } catch (\Throwable $th) {
+            }
+        }
+
         // update Theme to database
         $themeID = Shop::where('url',$url)->pluck('theme_id')->first();
         if(isset($themeID)){
             $update = Shop::where('url',$url)->update(['theme_id' => $ids]);
         }
 
+        // Include Sticky
+        // $hasInsertSticky = false;
+
+        // try {
+        //     $currentHeader = $shopify->Theme($ids)->Asset->get(array(
+        //         "asset" => array(
+        //             "key" => 'sections/header.liquid'
+        //         )
+        //     ));
+        //     if(isset($currentHeader['asset']['value']) && strpos( $currentHeader['asset']['value'], "{% include 'globo.formbuilder.scripts' %}") !== false){
+        //         $hasInsertSticky = true;
+        //     }
+        // } catch (\Throwable $th) {
+
+        // }
+
+        // if(!$hasInsertSticky){
+        //     $newInserted = $currentHeader['asset']['value'];
+        //     $newInserted = str_replace("</header>","<div style=\"position: fixed; top: 50%; right: 0; font-size: 20px; color: red;z-index: 1\">Wishlist</div>\n</header>",$newInserted);
+        //     try {
+        //         $shopify->Theme($ids)->Asset->put(array(
+        //             "key" => "sections/header.liquid",
+        //             "value" => $newInserted,
+        //         ));
+        //     } catch (\Throwable $th) {
+        //     }
+        // }
+
         // Include globo.formbuilder.scripts to theme
         $hasInsertInclude = false;
+        $search = ["{{ content_for_header }}","{{content_for_header}}","{{content_for_header }}","{{ content_for_header}}"];
 
         try {
             $currentThemeLiquid = $shopify->Theme($ids)->Asset->get(array(
@@ -323,7 +380,7 @@ class ShopController extends Controller
 
         if(!$hasInsertInclude){
             $newInserted = $currentThemeLiquid['asset']['value'];
-            $newInserted = str_replace("{% include 'globo.theme.scripts' %}","{% include 'globo.theme.scripts' %}\n{% include 'globo.formbuilder.scripts' %}",$newInserted);
+            $newInserted = str_replace($search,"{{ content_for_header }}\n{% include 'globo.formbuilder.scripts' %}",$newInserted);
             try {
                 $shopify->Theme($ids)->Asset->put(array(
                     "key" => "layout/theme.liquid",
@@ -360,7 +417,8 @@ class ShopController extends Controller
         $this->installCssFile($ids,$shopify);
 
         return response()->json([
-            'status' => 'success'
+            'status' => 'success',
+            "pages" => $pageWishlist
         ]);
     }
 
@@ -461,7 +519,7 @@ class ShopController extends Controller
         ));
         if($currentThemeLiquid){
             $newInserted = $currentThemeLiquid['asset']['value'];
-            $newInserted = str_replace("{% include 'globo.theme.scripts' %}\n{% include 'globo.formbuilder.scripts' %}","{% include 'globo.theme.scripts' %}",$newInserted);
+            $newInserted = str_replace("{{ content_for_header }}\n{% include 'globo.formbuilder.scripts' %}","{{ content_for_header }}",$newInserted);
             try {
                 $shopify->Theme($ids)->Asset->put(array(
                     "key" => "layout/theme.liquid",
@@ -470,6 +528,24 @@ class ShopController extends Controller
             } catch (\Throwable $th) {
             }
         }
+
+        // Delete sticky
+        // $currentHeader = $shopify->Theme($ids)->Asset->get(array(
+        //     "asset" => array(
+        //         "key" => 'sections/header.liquid'
+        //     )
+        // ));
+        // if($currentHeader){
+        //     $newInserted = $currentHeader['asset']['value'];
+        //     $newInserted = str_replace("<div style=\"position: fixed; top: 50%; right: 0; font-size: 20px; color: red;z-index: 1\">Wishlist</div>\n</header>","</header>",$newInserted);
+        //     try {
+        //         $shopify->Theme($ids)->Asset->put(array(
+        //             "key" => "sections/header.liquid",
+        //             "value" => $newInserted,
+        //         ));
+        //     } catch (\Throwable $th) {
+        //     }
+        // }
 
         // Delete scripts.liquid
         try {

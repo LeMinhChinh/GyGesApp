@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illiminate\Http\Response;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Shop;
 use App\Models\CustomerProduct;
 use Illuminate\Support\Facades\Validator;
 use Log;
+use Illuminate\Support\Facades\Session;
+use Cookie;
 
 class ProductController extends Controller
 {
@@ -46,6 +49,13 @@ class ProductController extends Controller
                 'message' => 'Not found shop'
             ]);
 
+        if(!$customId){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Customer not found'
+            ]);
+        }
+
         // first or create customer
         $customer = Customer::firstOrCreate(
             ['id_customer' => $customId],
@@ -59,7 +69,7 @@ class ProductController extends Controller
         );
 
         //first or create customer product
-        $product = CustomerProduct::firstOrCreate(
+        $products = CustomerProduct::firstOrCreate(
             ['customer_id' => $customId, 'product_id' => $id]
         );
 
@@ -81,6 +91,8 @@ class ProductController extends Controller
     public function check(Request $request)
     {
         $arrPr = $request->arr_id;
+        $arr_info = $request->arr_info;
+        $arr_handle = $request->arr_handle;
         $url = $request->shopUrl;
         $cusId = $request->customerId;
 
@@ -89,22 +101,52 @@ class ProductController extends Controller
         if(!$shop)
             return response()->json([
                 'error' => true,
-                'message' => 'Not found shop'
+                'message' => 'Shop not found'
             ]);
 
+        // check customer_request
+        if(!$cusId){
+            if(empty($arr_handle)){
+                return response()->json([
+                    "status" => "Cookie is not exits"
+                ]);
+            }else{
+                return response()->json([
+                    "status" => "Set cookie success",
+                    "ids_cookie" => $arr_handle
+                ]);
+            }
+        }
 
-        //check customer
+        //check customer_db
         $customer = Customer::where('shop_id', $shop->id)->where('id_customer', $cusId)->first();
-        if(!$customer)
-            return response()->json([
-                'error' => true,
-                'message' => 'Not found customer'
-            ]);
+        if(!$customer){
+            // first or create customer
+            Customer::firstOrCreate(
+                ['id_customer' => $cusId],
+                ['shop_id' => $shop->id]
+            );
+        }
+
+        if(!empty($arr_info)){
+            //first or create product
+            foreach ($arr_info as $key => $value) {
+                Product::firstOrCreate(
+                    ['id_product' => $value[0]],
+                    ['shop_id' => $shop->id, 'name' => $value[1], 'price' => $value[2], 'image' => $value[3]]
+                );
+
+                //first or create customer product
+                CustomerProduct::firstOrCreate(
+                    ['customer_id' => $cusId, 'product_id' => $value[0]]
+                );
+            }
+        }
 
         //get product ids by shopid andcustomer id
         $product_ids = CustomerProduct::where('customer_id', $cusId)->whereIn('product_id', $arrPr)->pluck('product_id')->toArray();
             return response()->json([
-                'success' => true,
+                'status' => "Success",
                 'ids' => $product_ids
             ]);
 
@@ -153,6 +195,14 @@ class ProductController extends Controller
             'status' => 'success',
             'idPr' => $idPro
         ]);
+    }
+
+    public function addCookieProduct(Request $request)
+    {
+        $url = $request->shopUrl;
+        $idCus = $request->customerId;
+        $data = $request->data;
+        dd($data);
     }
 
     /**
